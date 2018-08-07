@@ -4,7 +4,7 @@ import facepaint from 'facepaint';
 const breakpoints = [1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-const menu = css`
+const blog = css`
   ul {
     list-style: none;
   }
@@ -14,9 +14,10 @@ const menu = css`
   }
 
   h3 {
-    font-size: 1.4em;
+    font-size: 1.6em;
     margin-bottom: 0.5em;
     line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   a {
@@ -25,8 +26,7 @@ const menu = css`
 
   p {
     line-height: 1.4;
-    padding-left: 10px;
   }
 `;
 
-export default menu;
+export default blog;

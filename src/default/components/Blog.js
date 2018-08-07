@@ -9,7 +9,7 @@ const Blog = props => {
   const { items, themeStyle, author } = props;
 
   return (
-    <nav className={`${themeStyle}`}>
+    <div className={`${themeStyle}`}>
       <ul>
         {items.map(item => {
           const {
@@ -27,6 +27,7 @@ const Blog = props => {
                   categories={categories}
                   prefix={prefix}
                   author={author}
+                  categoryLink={false}
                 />
                 <p>{excerpt}</p>
               </Link>
@@ -34,7 +35,7 @@ const Blog = props => {
           );
         })}
       </ul>
-    </nav>
+    </div>
   );
 };
 

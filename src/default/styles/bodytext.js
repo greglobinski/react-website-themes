@@ -15,6 +15,20 @@ const bodytextStyle = css`
     list-style: none;
   }
 
+  h2,
+  h3 {
+    line-height: 1.2;
+    margin: 1.5em 0 0.8em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+  }
+
   li {
     margin: 0.8em 0;
     position: relative;

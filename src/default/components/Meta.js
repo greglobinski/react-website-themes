@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Meta = props => {
-  const { prefix, categories, themeStyle, author } = props;
+  const { prefix, categories, themeStyle, author, categoryLink = true } = props;
 
   return (
     <p className={`${themeStyle}`}>
@@ -19,11 +19,16 @@ const Meta = props => {
       {categories && (
         <span>
           <FaTag />
-          {categories.map(category => (
-            <Link key={category} to={`/categories/${category}`}>
-              {category}
-            </Link>
-          ))}
+          {categories.map(category => {
+            const link = (
+              <Link key={category} to={`/categories/${category}`}>
+                {category}
+              </Link>
+            );
+            const txt = <span key={category}>{category}</span>;
+
+            return categoryLink ? link : txt;
+          })}
         </span>
       )}
     </p>
@@ -35,6 +40,7 @@ Meta.propTypes = {
   prefix: PropTypes.string,
   categories: PropTypes.array,
   author: PropTypes.string,
+  categoryLink: PropTypes.bool,
 };
 
 export default Meta;

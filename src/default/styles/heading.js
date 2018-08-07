@@ -8,9 +8,10 @@ const headingStyle = css`
   h1 {
     letter-spacing: -0.03em;
     margin-bottom: 1em;
+    line-height: 1.1;
 
     ${mq({
-      fontSize: ['1.8em', '2.1em', '2.4em'],
+      fontSize: ['2em', '2.4em', '2.8em'],
     })};
   }
 `;

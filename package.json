@@ -36,6 +36,7 @@
     "gatsby-plugin-emotion": "^1.1.17",
     "prop-types": "^15.6.0",
     "react": "^16.3.0",
+    "react-custom-share": "^0.4.8",
     "react-dom": "^16.3.0",
     "react-emotion": "^9.2.6",
     "react-helmet": "^5.2.0"
@@ -78,8 +79,10 @@
     "prettier": "1.13.7",
     "prop-types": "^15.6.0",
     "react": "^16.3.0",
+    "react-custom-share": "^0.4.8",
     "react-dom": "^16.3.0",
     "react-emotion": "^9.2.6",
+    "react-facebook": "^5.0.3",
     "react-helmet": "^5.2.0",
     "react-icons": "2.2.7",
     "react-testing-library": "^4.1.2",

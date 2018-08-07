@@ -1279,6 +1279,10 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+can-use-dom@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/can-use-dom/-/can-use-dom-0.1.0.tgz#22cc4a34a0abc43950f42c6411024a3f6366b45a"
+
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000859:
   version "1.0.30000861"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000861.tgz#a32bb9607c34e4639b497ff37de746fc8a160410"
@@ -2818,6 +2822,10 @@ inquirer@^3.0.6:
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
+
+intersection-observer@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.0.tgz#9fe8bee3953c755b1485c38efd9633d535775ea6"
 
 invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.4"
@@ -4663,7 +4671,7 @@ prompts@^0.1.9:
     clorox "^1.0.3"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.4, prop-types@^15.6.0:
+prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -4717,6 +4725,13 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-custom-share@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/react-custom-share/-/react-custom-share-0.4.8.tgz#a92e13fdc1098ece7b7ea46ee8e3b39adae2cacc"
+  dependencies:
+    intersection-observer "^0.5.0"
+    lodash.debounce "^4.0.8"
+
 react-dom@^16.3.0:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"
@@ -4732,6 +4747,16 @@ react-emotion@^9.2.6:
   dependencies:
     babel-plugin-emotion "^9.2.6"
     create-emotion-styled "^9.2.6"
+
+react-facebook@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/react-facebook/-/react-facebook-5.0.3.tgz#0d47596a4418cda205e8118ea194786c1272258f"
+  dependencies:
+    babel-runtime "^6.26.0"
+    can-use-dom "^0.1.0"
+    debug "^3.1.0"
+    prop-types "^15.6.1"
+    react-spinner-children "^1.0.8"
 
 react-helmet@^5.2.0:
   version "5.2.0"
@@ -4758,6 +4783,13 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-spinner-children@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-spinner-children/-/react-spinner-children-1.0.8.tgz#6fdd6a89593c5f233bb56f4deccb812382e6ca74"
+  dependencies:
+    prop-types "^15.6.0"
+    spin.js "^2.3.2"
 
 react-testing-library@^4.1.2:
   version "4.1.2"
@@ -5345,6 +5377,10 @@ spdx-license-ids@^3.0.0:
 specificity@^0.3.1:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.3.2.tgz#99e6511eceef0f8d9b57924937aac2cb13d13c42"
+
+spin.js@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/spin.js/-/spin.js-2.3.2.tgz#6caa56d520673450fd5cfbc6971e6d0772c37a1a"
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
