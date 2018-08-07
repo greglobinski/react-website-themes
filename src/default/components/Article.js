@@ -9,7 +9,7 @@ const Article = props => {
 
 Article.propTypes = {
   children: PropTypes.node.isRequired,
-  themeStyle: PropTypes.string
+  themeStyle: PropTypes.string,
 };
 
 export default Article;

@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 
-const layoutStyle = css`
+const layout = css`
   padding: 15px 25px;
 `;
 
-export default layoutStyle;
+export default layout;

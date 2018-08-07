@@ -13,7 +13,7 @@ const branding = css`
 
   ${mq({
     alignItems: ['center', 'flex-start'],
-    margin: ['10px 0 0', '0'],
+    margin: ['10px 0 20px', '0'],
   })};
 
   h1 {

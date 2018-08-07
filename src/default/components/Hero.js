@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Bodytext = props => {
+const Hero = props => {
   const { html, children, themeStyle } = props;
 
   return (
     <React.Fragment>
       {html ? (
-        <div
+        <section
           className={`${themeStyle}`}
           dangerouslySetInnerHTML={{ __html: html }}
         />
       ) : (
-        <div className={`${themeStyle}`}>{children}</div>
+        <section className={`${themeStyle}`}>{children}</section>
       )}
     </React.Fragment>
   );
 };
 
-Bodytext.propTypes = {
+Hero.propTypes = {
+  children: PropTypes.node,
   html: PropTypes.string,
   themeStyle: PropTypes.string,
 };
 
-export default Bodytext;
+export default Hero;

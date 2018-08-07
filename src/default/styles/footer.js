@@ -6,7 +6,7 @@ const footerStyle = css`
   font-size: 0.9em;
   margin: 20px 0;
 
-  .footerLinks ul {
+  .links ul {
     list-style: none;
     color: #666;
     display: flex;
@@ -15,17 +15,19 @@ const footerStyle = css`
     line-height: 1.1;
   }
 
-  .footerLinks a {
+  .links a {
     text-decoration: none;
     color: #777;
     font-weight: bold;
   }
 
-  .footerLinks li {
+  .links li {
     text-align: center;
+    margin: 2px 10px;
+    position: relative;
   }
 
-  .copyrightNote {
+  .copyright {
     font-size: 0.9em;
     color: #999;
     text-align: center;

@@ -1,17 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import themed from '../../utils/themed';
+
 import MainMenuItem from './MainMenuItem';
+import mainMenuItem from '../styles/mainMenuItem';
+
+const MainMenuItemThemed = themed({ themeStyle: mainMenuItem })(MainMenuItem);
 
 const MainMenu = props => {
-  const { items } = props;
+  const { items, themeStyle } = props;
 
   return (
-    <nav className="menu">
+    <nav className={`${themeStyle}`}>
       <ul>
         {items.map(item => {
           const { label, to, icon } = item;
-          return <MainMenuItem key={label} label={label} to={to} icon={icon} />;
+          return (
+            <MainMenuItemThemed key={label} label={label} to={to} icon={icon} />
+          );
         })}
       </ul>
     </nav>
@@ -19,7 +26,8 @@ const MainMenu = props => {
 };
 
 MainMenu.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  themeStyle: PropTypes.string,
 };
 
 export default MainMenu;

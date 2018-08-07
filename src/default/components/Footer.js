@@ -8,11 +8,11 @@ const Footer = props => {
   return (
     <footer className={`${themeStyle}`}>
       <div
-        className="footerLinks"
+        className="links"
         dangerouslySetInnerHTML={{ __html: footerLinks }}
       />
       <div
-        className="copyrightNote"
+        className="copyright"
         dangerouslySetInnerHTML={{ __html: copyrightNote }}
       />
     </footer>
@@ -22,7 +22,7 @@ const Footer = props => {
 Footer.propTypes = {
   footerLinks: PropTypes.string,
   copyrightNote: PropTypes.string,
-  themeStyle: PropTypes.string
+  themeStyle: PropTypes.string,
 };
 
 export default Footer;

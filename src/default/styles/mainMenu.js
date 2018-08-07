@@ -10,26 +10,17 @@ const mainMenuStyle = css`
   align-items: center;
   z-index: 1;
   background: #fff;
+  justify-content: center;
 
   ${mq({
     justifyContent: ['center', 'flex-end'],
-    position: ['fixed', 'relative'],
-    bottom: [0, 'auto'],
-    left: [0, 'auto'],
-    right: [0, 'auto'],
-    borderTop: ['1px dotted #ddd', 0],
-    height: ['54px', '32px'],
   })};
 
   ul {
     list-style: none;
     display: flex;
-
-    ${mq({
-      height: ['44px', '32px'],
-      flexBasis: ['60%', 'auto'],
-      justifyContent: ['space-around', 'çenter'],
-    })};
+    height: 44px;
+    justify-content: center;
   }
 `;
 
