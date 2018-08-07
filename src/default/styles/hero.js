@@ -1,8 +1,21 @@
 import { css } from 'emotion';
 import facepaint from 'facepaint';
+import { keyframes } from 'react-emotion';
 
 const breakpoints = [1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
+
+const breath = keyframes`
+  from {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+`;
 
 const heroStyle = css`
   align-items: center;
@@ -41,6 +54,7 @@ const heroStyle = css`
     text-transform: uppercase;
     padding: 0 2em;
     margin: 30px 0;
+    animation: ${breath} 6s ease infinite;
   }
 `;
 

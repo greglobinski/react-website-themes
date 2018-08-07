@@ -4,7 +4,7 @@ import facepaint from 'facepaint';
 const breakpoints = [1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-const mainMenuStyle = css`
+const menu = css`
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -22,6 +22,23 @@ const mainMenuStyle = css`
     height: 44px;
     justify-content: center;
   }
+
+  li {
+    padding: 0 5px;
+    line-height: 1;
+
+    a {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5px;
+    }
+
+    svg {
+      margin: 0 3px 0 0;
+    }
+  }
 `;
 
-export default mainMenuStyle;
+export default menu;

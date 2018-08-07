@@ -2,7 +2,7 @@ import { css } from 'emotion';
 
 const bodytextStyle = css`
   margin-bottom: 50px;
-  min-height: 50vh;
+  min-height: 40vh;
 
   p {
     line-height: 1.5;

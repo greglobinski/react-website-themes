@@ -1,27 +1,23 @@
-import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const Footer = props => {
-  const { footerLinks, copyrightNote, themeStyle } = props;
+  const { links, copyright, themeStyle } = props;
 
   return (
     <footer className={`${themeStyle}`}>
-      <div
-        className="links"
-        dangerouslySetInnerHTML={{ __html: footerLinks }}
-      />
+      <div className="links" dangerouslySetInnerHTML={{ __html: links }} />
       <div
         className="copyright"
-        dangerouslySetInnerHTML={{ __html: copyrightNote }}
+        dangerouslySetInnerHTML={{ __html: copyright }}
       />
     </footer>
   );
 };
 
 Footer.propTypes = {
-  footerLinks: PropTypes.string,
-  copyrightNote: PropTypes.string,
+  links: PropTypes.string,
+  copyright: PropTypes.string,
   themeStyle: PropTypes.string,
 };
 
