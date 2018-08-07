@@ -10,10 +10,6 @@ const header = css`
   margin-bottom: 50px;
   padding: 5px 5px 0;
 
-  & [class$='-branding'] {
-    background: yellow;
-  }
-
   ${mq({
     flexDirection: ['column', 'row'],
     marginBottom: ['35px', '50px'],
