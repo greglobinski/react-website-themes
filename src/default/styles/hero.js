@@ -2,7 +2,7 @@ import { css } from 'emotion';
 import facepaint from 'facepaint';
 import { keyframes } from 'react-emotion';
 
-const breakpoints = [1024];
+const breakpoints = [768, 1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const breath = keyframes`
@@ -26,7 +26,11 @@ const heroStyle = css`
   text-align: center;
 
   ${mq({
-    minHeight: ['calc(100vh - 300px)', 'calc(100vh - 220px)'],
+    minHeight: [
+      'calc(100vh - 300px)',
+      'calc(100vh - 280px)',
+      'calc(100vh - 220px)',
+    ],
   })};
 
   h1 {
@@ -34,6 +38,11 @@ const heroStyle = css`
     text-align: center;
     font-size: 2.2em;
     margin-bottom: 0.5em;
+    letter-spacing: -0.03em;
+
+    ${mq({
+      fontSize: ['2.2em', '2.6em', '3em'],
+    })};
   }
 
   img {

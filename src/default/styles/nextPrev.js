@@ -6,7 +6,6 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const nextPrev = css`
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
 
   & svg {

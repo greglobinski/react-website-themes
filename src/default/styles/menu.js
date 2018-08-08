@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 import facepaint from 'facepaint';
 
-const breakpoints = [1024];
+const breakpoints = [768, 1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const menu = css`
@@ -13,7 +13,7 @@ const menu = css`
   justify-content: center;
 
   ${mq({
-    justifyContent: ['center', 'flex-end'],
+    justifyContent: ['center', 'center', 'flex-end'],
   })};
 
   ul {
@@ -37,6 +37,10 @@ const menu = css`
 
     svg {
       margin: 0 3px 0 0;
+
+      ${mq({
+        height: ['20px', '30px', '40px'],
+      })};
     }
   }
 `;

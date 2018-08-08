@@ -6,18 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _gatsby = require('gatsby');
 
-var _calendar = require('react-icons/lib/fa/calendar');
-
-var _calendar2 = _interopRequireDefault(_calendar);
-
-var _tag = require('react-icons/lib/fa/tag');
-
-var _tag2 = _interopRequireDefault(_tag);
-
-var _user = require('react-icons/lib/fa/user');
-
-var _user2 = _interopRequireDefault(_user);
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -34,7 +22,11 @@ var Meta = function Meta(props) {
       themeStyle = props.themeStyle,
       author = props.author,
       _props$categoryLink = props.categoryLink,
-      categoryLink = _props$categoryLink === undefined ? true : _props$categoryLink;
+      categoryLink = _props$categoryLink === undefined ? true : _props$categoryLink,
+      _props$icons = props.icons,
+      CalendarIcon = _props$icons.calendar,
+      UserIcon = _props$icons.user,
+      TagIcon = _props$icons.tag;
 
 
   return _react2.default.createElement(
@@ -43,21 +35,21 @@ var Meta = function Meta(props) {
     _react2.default.createElement(
       'span',
       null,
-      _react2.default.createElement(_calendar2.default, null),
+      CalendarIcon && _react2.default.createElement(CalendarIcon, null),
       ' ',
       prefix
     ),
     _react2.default.createElement(
       'span',
       null,
-      _react2.default.createElement(_user2.default, null),
+      UserIcon && _react2.default.createElement(UserIcon, null),
       ' ',
       author
     ),
     categories && _react2.default.createElement(
       'span',
       null,
-      _react2.default.createElement(_tag2.default, null),
+      TagIcon && _react2.default.createElement(TagIcon, null),
       categories.map(function (category) {
         var link = _react2.default.createElement(
           _gatsby.Link,
@@ -81,7 +73,8 @@ Meta.propTypes = {
   prefix: _propTypes2.default.string,
   categories: _propTypes2.default.array,
   author: _propTypes2.default.string,
-  categoryLink: _propTypes2.default.bool
+  categoryLink: _propTypes2.default.bool,
+  icons: _propTypes2.default.object
 };
 
 exports.default = Meta;

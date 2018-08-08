@@ -6,14 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _gatsby = require('gatsby');
 
-var _arrowLeft = require('react-icons/lib/fa/arrow-left');
-
-var _arrowLeft2 = _interopRequireDefault(_arrowLeft);
-
-var _arrowRight = require('react-icons/lib/fa/arrow-right');
-
-var _arrowRight2 = _interopRequireDefault(_arrowRight);
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -26,6 +18,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var NextPrev = function NextPrev(props) {
   var themeStyle = props.themeStyle,
+      _props$icons = props.icons,
+      NextIcon = _props$icons.next,
+      PrevIcon = _props$icons.prev,
       _props$next = props.next;
   _props$next = _props$next === undefined ? {} : _props$next;
   var _props$next$fields = _props$next.fields;
@@ -49,10 +44,26 @@ var NextPrev = function NextPrev(props) {
   return _react2.default.createElement(
     'div',
     { className: '' + themeStyle },
+    prevSlug && _react2.default.createElement(
+      _gatsby.Link,
+      { to: prevSlug, className: 'prev' },
+      PrevIcon && _react2.default.createElement(PrevIcon, null),
+      _react2.default.createElement(
+        'p',
+        null,
+        prevTitle,
+        ' ',
+        _react2.default.createElement(
+          'time',
+          null,
+          prevPrefix
+        )
+      )
+    ),
     nextSlug && _react2.default.createElement(
       _gatsby.Link,
       { to: nextSlug, className: 'next' },
-      _react2.default.createElement(_arrowRight2.default, null),
+      NextIcon && _react2.default.createElement(NextIcon, null),
       _react2.default.createElement(
         'p',
         null,
@@ -65,22 +76,6 @@ var NextPrev = function NextPrev(props) {
           ' '
         )
       )
-    ),
-    prevSlug && _react2.default.createElement(
-      _gatsby.Link,
-      { to: prevSlug, className: 'prev' },
-      _react2.default.createElement(_arrowLeft2.default, null),
-      _react2.default.createElement(
-        'p',
-        null,
-        prevTitle,
-        ' ',
-        _react2.default.createElement(
-          'time',
-          null,
-          prevPrefix
-        )
-      )
     )
   );
 };
@@ -88,7 +83,8 @@ var NextPrev = function NextPrev(props) {
 NextPrev.propTypes = {
   next: _propTypes2.default.object,
   prev: _propTypes2.default.object,
-  themeStyle: _propTypes2.default.string
+  themeStyle: _propTypes2.default.string,
+  icons: _propTypes2.default.object
 };
 
 exports.default = NextPrev;

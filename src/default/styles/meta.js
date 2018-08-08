@@ -24,6 +24,8 @@ const meta = css`
 
   & svg {
     margin: 2px 5px 0 0;
+    width: 16px;
+    height: 16px;
   }
 `;
 

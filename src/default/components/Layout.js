@@ -1,6 +1,7 @@
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import 'typeface-open-sans';
 
 const Layout = props => {
   const { children, themeStyle } = props;

@@ -1,12 +1,11 @@
 import { Link } from 'gatsby';
-import FaArrowLeft from 'react-icons/lib/fa/arrow-left';
-import FaArrowRight from 'react-icons/lib/fa/arrow-right';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const NextPrev = props => {
   const {
     themeStyle,
+    icons: { next: NextIcon, prev: PrevIcon },
     next: {
       fields: { prefix: nextPrefix, slug: nextSlug } = {},
       frontmatter: { title: nextTitle } = {},
@@ -19,19 +18,19 @@ const NextPrev = props => {
 
   return (
     <div className={`${themeStyle}`}>
-      {nextSlug && (
-        <Link to={nextSlug} className="next">
-          <FaArrowRight />
+      {prevSlug && (
+        <Link to={prevSlug} className="prev">
+          {PrevIcon && <PrevIcon />}
           <p>
-            {nextTitle} <time>{nextPrefix} </time>
+            {prevTitle} <time>{prevPrefix}</time>
           </p>
         </Link>
       )}
-      {prevSlug && (
-        <Link to={prevSlug} className="prev">
-          <FaArrowLeft />
+      {nextSlug && (
+        <Link to={nextSlug} className="next">
+          {NextIcon && <NextIcon />}
           <p>
-            {prevTitle} <time>{prevPrefix}</time>
+            {nextTitle} <time>{nextPrefix} </time>
           </p>
         </Link>
       )}
@@ -43,6 +42,7 @@ NextPrev.propTypes = {
   next: PropTypes.object,
   prev: PropTypes.object,
   themeStyle: PropTypes.string,
+  icons: PropTypes.object,
 };
 
 export default NextPrev;

@@ -6,7 +6,7 @@ import Meta from './Meta';
 import meta from '../styles/meta';
 
 const Blog = props => {
-  const { items, themeStyle, author } = props;
+  const { items, themeStyle, author, metaIcons } = props;
 
   return (
     <div className={`${themeStyle}`}>
@@ -28,6 +28,7 @@ const Blog = props => {
                   prefix={prefix}
                   author={author}
                   categoryLink={false}
+                  icons={metaIcons}
                 />
                 <p>{excerpt}</p>
               </Link>
@@ -43,6 +44,7 @@ Blog.propTypes = {
   items: PropTypes.array.isRequired,
   author: PropTypes.string,
   themeStyle: PropTypes.string,
+  metaIcons: PropTypes.object,
 };
 
 export default Blog;

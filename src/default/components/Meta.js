@@ -1,24 +1,29 @@
 import { Link } from 'gatsby';
-import FaCalendar from 'react-icons/lib/fa/calendar';
-import FaTag from 'react-icons/lib/fa/tag';
-import FaUser from 'react-icons/lib/fa/user';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const Meta = props => {
-  const { prefix, categories, themeStyle, author, categoryLink = true } = props;
+  const {
+    prefix,
+    categories,
+    themeStyle,
+    author,
+    categoryLink = true,
+    icons: { calendar: CalendarIcon, user: UserIcon, tag: TagIcon },
+  } = props;
 
   return (
     <p className={`${themeStyle}`}>
       <span>
-        <FaCalendar /> {prefix}
+        {CalendarIcon && <CalendarIcon />} {prefix}
       </span>
       <span>
-        <FaUser /> {author}
+        {UserIcon && <UserIcon />} {author}
       </span>
       {categories && (
         <span>
-          <FaTag />
+          {TagIcon && <TagIcon />}
           {categories.map(category => {
             const link = (
               <Link key={category} to={`/categories/${category}`}>
@@ -41,6 +46,7 @@ Meta.propTypes = {
   categories: PropTypes.array,
   author: PropTypes.string,
   categoryLink: PropTypes.bool,
+  icons: PropTypes.object,
 };
 
 export default Meta;

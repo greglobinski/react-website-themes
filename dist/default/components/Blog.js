@@ -27,7 +27,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Blog = function Blog(props) {
   var items = props.items,
       themeStyle = props.themeStyle,
-      author = props.author;
+      author = props.author,
+      metaIcons = props.metaIcons;
 
 
   return _react2.default.createElement(
@@ -62,7 +63,8 @@ var Blog = function Blog(props) {
               categories: categories,
               prefix: prefix,
               author: author,
-              categoryLink: false
+              categoryLink: false,
+              icons: metaIcons
             }),
             _react2.default.createElement(
               'p',
@@ -79,7 +81,8 @@ var Blog = function Blog(props) {
 Blog.propTypes = {
   items: _propTypes2.default.array.isRequired,
   author: _propTypes2.default.string,
-  themeStyle: _propTypes2.default.string
+  themeStyle: _propTypes2.default.string,
+  metaIcons: _propTypes2.default.object
 };
 
 exports.default = Blog;

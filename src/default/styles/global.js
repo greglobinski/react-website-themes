@@ -3,7 +3,7 @@ import { injectGlobal } from 'emotion';
 const globalStyle = injectGlobal`
   html {
     box-sizing: border-box;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 16px;
     color: #666;
   }

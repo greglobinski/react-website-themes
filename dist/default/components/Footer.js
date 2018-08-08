@@ -27,7 +27,26 @@ var Footer = function Footer(props) {
     _react2.default.createElement('div', {
       className: 'copyright',
       dangerouslySetInnerHTML: { __html: copyright }
-    })
+    }),
+    _react2.default.createElement(
+      'div',
+      { className: 'credits' },
+      'Built with',
+      ' ',
+      _react2.default.createElement(
+        'a',
+        { href: 'https://github.com/greglobinski/gatsby-starter-kit' },
+        'GatsbyJS Starter Kit'
+      ),
+      '. Design by',
+      ' ',
+      _react2.default.createElement(
+        'a',
+        { href: 'https://github.com/greglobinski/react-website-themes' },
+        'React Website Themes'
+      ),
+      '.'
+    )
   );
 };
 

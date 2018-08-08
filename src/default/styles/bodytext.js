@@ -4,21 +4,34 @@ const bodytextStyle = css`
   margin-bottom: 50px;
   min-height: 40vh;
 
+  & .gatsby-resp-image-wrapper {
+    margin: 2em 0;
+  }
+
   p {
-    line-height: 1.5;
+    line-height: 1.6;
     margin: 0 0 1.5em;
     font-size: 1.1em;
   }
 
   ul {
     margin: 0 0 1.5em;
-    list-style: none;
+    list-style-position: inside;
+  }
+
+  li {
+    margin: 0.8em 0;
+    line-height: 1.4;
+    font-size: 1.1em;
+    line-height: 1.3;
+    padding-left: 5px;
   }
 
   h2,
   h3 {
     line-height: 1.2;
     margin: 1.5em 0 0.8em;
+    letter-spacing: -0.01em;
   }
 
   h2 {
@@ -29,26 +42,14 @@ const bodytextStyle = css`
     font-size: 1.6em;
   }
 
-  li {
-    margin: 0.8em 0;
-    position: relative;
-    padding-left: 25px;
-    line-height: 1.4;
-
-    &::before {
-      content: '';
-      position: absolute;
-      display: block;
-      left: 5px;
-      top: 0.5em;
-      width: 4px;
-      height: 4px;
-      background: #900;
-    }
-  }
-
   pre {
     margin: 0 0 1.5em;
+  }
+
+  blockquote {
+    padding-left: 20px;
+    border-left: 5px solid #ddd;
+    font-style: italic;
   }
 `;
 
