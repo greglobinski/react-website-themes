@@ -33,6 +33,18 @@ const footerStyle = css`
     text-align: center;
     margin: 10px 0 30px;
   }
+
+  .credits {
+    font-size: 0.8em;
+    color: #aaa;
+    margin: 20px 0 0;
+    text-align: center;
+
+    & a {
+      text-decoration: none;
+      color: #888;
+    }
+  }
 `;
 
 export default footerStyle;
