@@ -6,17 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _emotion = require('emotion');
 
-var _facepaint = require('facepaint');
-
-var _facepaint2 = _interopRequireDefault(_facepaint);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var breakpoints = [1024];
-var mq = (0, _facepaint2.default)(breakpoints.map(function (bp) {
-  return '@media (min-width: ' + bp + 'px)';
-}));
-
 var author = /*#__PURE__*/(0, _emotion.css)('margin:50px 0;label:author;');
 
 exports.default = author;

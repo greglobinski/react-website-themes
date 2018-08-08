@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _emotion = require('emotion');
 
-var pageStyle = /*#__PURE__*/(0, _emotion.css)('label:pageStyle;');
+var pageStyle = /*#__PURE__*/(0, _emotion.css)('display:block;label:pageStyle;');
 
 exports.default = pageStyle;

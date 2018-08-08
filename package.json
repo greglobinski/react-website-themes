@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-kit-themes",
+  "name": "react-website-themes",
   "version": "0.0.1",
-  "description": " ",
+  "description": "A set of components with styles for building a website with ReactJS",
   "main": "dist/index.js",
   "publishConfig": {},
   "scripts": {
@@ -12,15 +12,18 @@
     "test:watch": "jest --watch",
     "lint": "eslint src",
     "stylelint": "stylelint src/**/*.js",
-    "validate": "npm-run-all --parallel test lint stylelint transpile"
+    "validate": "npm-run-all --parallel test lint stylelint build"
   },
   "files": [
     "dist"
   ],
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
   "license": "MIT",
-  "homepage": "https://github.com/greglobinski/gatsby-starter-kit-themes",
-  "repository": "https://github.com/gatsby-starter-kit-themes/tree/master/packages/gatsby-starter-kit-themes",
+  "homepage": "https://github.com/greglobinski/react-website-themes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greglobinski/react-website-themes.git"
+  },
   "keywords": [
     "gatsby",
     "gatsbyjs",

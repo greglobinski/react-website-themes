@@ -1,13 +1,8 @@
 import { css } from 'emotion';
-import facepaint from 'facepaint';
-
-const breakpoints = [1024];
-const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const meta = css`
   margin: 0.5em 0 2em;
   font-size: 0.9em;
-  display: flex;
   color: #999;
   display: flex;
 

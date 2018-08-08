@@ -21,7 +21,6 @@ const bodytextStyle = css`
 
   li {
     margin: 0.8em 0;
-    line-height: 1.4;
     font-size: 1.1em;
     line-height: 1.3;
     padding-left: 5px;
