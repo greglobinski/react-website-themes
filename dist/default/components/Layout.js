@@ -14,6 +14,8 @@ var _react2 = _interopRequireDefault(_react);
 
 require('typeface-open-sans');
 
+require('../styles/global');
+
 var _layout = require('../styles/layout');
 
 var _layout2 = _interopRequireDefault(_layout);
