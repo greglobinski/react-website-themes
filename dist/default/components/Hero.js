@@ -12,12 +12,17 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _hero = require('../styles/hero');
+
+var _hero2 = _interopRequireDefault(_hero);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Hero = function Hero(props) {
   var html = props.html,
       children = props.children,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _hero2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

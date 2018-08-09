@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from '../styles/bodytext';
+
 const Bodytext = props => {
-  const { html, children, themeStyle } = props;
+  const { html, children, themeStyle = style } = props;
 
   return (
     <React.Fragment>

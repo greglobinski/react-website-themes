@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import style from '../styles/footer';
+
 const Footer = props => {
-  const { links, copyright, themeStyle } = props;
+  const { links, copyright, themeStyle = style } = props;
 
   return (
     <footer className={`${themeStyle}`}>

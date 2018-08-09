@@ -14,11 +14,16 @@ var _react2 = _interopRequireDefault(_react);
 
 var _gatsby = require('gatsby');
 
+var _menu = require('../styles/menu');
+
+var _menu2 = _interopRequireDefault(_menu);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Menu = function Menu(props) {
   var items = props.items,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _menu2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

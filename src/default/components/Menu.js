@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'gatsby';
 
+import style from '../styles/menu';
+
 const Menu = props => {
-  const { items, themeStyle } = props;
+  const { items, themeStyle = style } = props;
 
   return (
     <nav className={`${themeStyle}`}>

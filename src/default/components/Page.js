@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import style from '../styles/page';
+
 const Page = props => {
-  const { children, themeStyle } = props;
+  const { children, themeStyle = style } = props;
 
   return <div className={`${themeStyle}`}>{children}</div>;
 };

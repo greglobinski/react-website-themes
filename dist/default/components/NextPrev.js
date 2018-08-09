@@ -14,10 +14,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _nextPrev = require('../styles/nextPrev');
+
+var _nextPrev2 = _interopRequireDefault(_nextPrev);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NextPrev = function NextPrev(props) {
-  var themeStyle = props.themeStyle,
+  var _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _nextPrev2.default : _props$themeStyle,
       _props$icons = props.icons,
       NextIcon = _props$icons.next,
       PrevIcon = _props$icons.prev,

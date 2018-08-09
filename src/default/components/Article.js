@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from '../styles/article';
+
 const Article = props => {
-  const { children, themeStyle } = props;
+  const { children, themeStyle = style } = props;
 
   return <article className={`${themeStyle}`}>{children}</article>;
 };

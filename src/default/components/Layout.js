@@ -2,8 +2,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import 'typeface-open-sans';
 
+import '../styles/global';
+import style from '../styles/layout';
+
 const Layout = props => {
-  const { children, themeStyle } = props;
+  const { children, themeStyle = style } = props;
 
   return (
     <div className={`${themeStyle}`}>

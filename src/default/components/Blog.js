@@ -5,8 +5,10 @@ import { Link } from 'gatsby';
 import Meta from './Meta';
 import meta from '../styles/meta';
 
+import style from '../styles/blog';
+
 const Blog = props => {
-  const { items, themeStyle, author, metaIcons } = props;
+  const { items, themeStyle = style, author, metaIcons } = props;
 
   return (
     <div className={`${themeStyle}`}>

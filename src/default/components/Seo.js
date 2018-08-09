@@ -11,7 +11,7 @@ const Seo = props => {
     siteTitlePostfix,
     siteDescription,
     siteLanguage,
-    siteUrl
+    siteUrl,
   } = config;
 
   const url = path ? siteUrl + path : siteUrl;
@@ -64,7 +64,7 @@ Seo.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   path: PropTypes.string,
-  config: PropTypes.object
+  config: PropTypes.object,
 };
 
 export default Seo;

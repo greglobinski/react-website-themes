@@ -12,12 +12,17 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _bodytext = require('../styles/bodytext');
+
+var _bodytext2 = _interopRequireDefault(_bodytext);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Bodytext = function Bodytext(props) {
   var html = props.html,
       children = props.children,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _bodytext2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from '../styles/author';
+
 const Author = props => {
-  const { html, themeStyle } = props;
+  const { html, themeStyle = style } = props;
 
   return (
     <div className={`${themeStyle}`}>

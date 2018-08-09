@@ -12,11 +12,16 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _author = require('../styles/author');
+
+var _author2 = _interopRequireDefault(_author);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Author = function Author(props) {
   var html = props.html,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _author2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

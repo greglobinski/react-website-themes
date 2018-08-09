@@ -14,12 +14,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _branding = require('../styles/branding');
+
+var _branding2 = _interopRequireDefault(_branding);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Branding = function Branding(props) {
   var title = props.title,
       subTitle = props.subTitle,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _branding2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

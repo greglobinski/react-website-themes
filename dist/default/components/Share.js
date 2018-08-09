@@ -14,10 +14,15 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactCustomShare = require('react-custom-share');
 
+var _share = require('../styles/share');
+
+var _share2 = _interopRequireDefault(_share);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PostShare = function PostShare(props) {
-  var themeStyle = props.themeStyle,
+  var _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _share2.default : _props$themeStyle,
       shareBlockProps = props.shareBlockProps;
 
 

@@ -2,8 +2,10 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import style from '../styles/branding';
+
 const Branding = props => {
-  const { title, subTitle, themeStyle } = props;
+  const { title, subTitle, themeStyle = style } = props;
 
   return (
     <Link className={`${themeStyle}`} to="/">

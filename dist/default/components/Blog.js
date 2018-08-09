@@ -22,11 +22,16 @@ var _meta = require('../styles/meta');
 
 var _meta2 = _interopRequireDefault(_meta);
 
+var _blog = require('../styles/blog');
+
+var _blog2 = _interopRequireDefault(_blog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Blog = function Blog(props) {
   var items = props.items,
-      themeStyle = props.themeStyle,
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _blog2.default : _props$themeStyle,
       author = props.author,
       metaIcons = props.metaIcons;
 

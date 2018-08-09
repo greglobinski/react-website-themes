@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FacebookProvider, { Comments as FBComments } from 'react-facebook';
 
+import style from '../styles/comments';
+
 const Comments = props => {
   const { slug, siteUrl, themeStyle } = props;
 

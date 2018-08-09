@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ShareBlockStandard } from 'react-custom-share';
 
+import style from '../styles/share';
+
 const PostShare = props => {
-  const { themeStyle, shareBlockProps } = props;
+  const { themeStyle = style, shareBlockProps } = props;
 
   return (
     <div className={`${themeStyle}`}>

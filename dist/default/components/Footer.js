@@ -12,12 +12,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _footer = require('../styles/footer');
+
+var _footer2 = _interopRequireDefault(_footer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Footer = function Footer(props) {
   var links = props.links,
       copyright = props.copyright,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _footer2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

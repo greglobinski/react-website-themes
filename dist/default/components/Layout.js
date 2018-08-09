@@ -14,11 +14,16 @@ var _react2 = _interopRequireDefault(_react);
 
 require('typeface-open-sans');
 
+var _layout = require('../styles/layout');
+
+var _layout2 = _interopRequireDefault(_layout);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Layout = function Layout(props) {
   var children = props.children,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _layout2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

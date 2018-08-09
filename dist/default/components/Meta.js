@@ -14,12 +14,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _meta = require('../styles/meta');
+
+var _meta2 = _interopRequireDefault(_meta);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Meta = function Meta(props) {
   var prefix = props.prefix,
       categories = props.categories,
-      themeStyle = props.themeStyle,
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _meta2.default : _props$themeStyle,
       author = props.author,
       _props$categoryLink = props.categoryLink,
       categoryLink = _props$categoryLink === undefined ? true : _props$categoryLink,

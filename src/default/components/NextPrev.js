@@ -2,9 +2,11 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import style from '../styles/nextPrev';
+
 const NextPrev = props => {
   const {
-    themeStyle,
+    themeStyle = style,
     icons: { next: NextIcon, prev: PrevIcon },
     next: {
       fields: { prefix: nextPrefix, slug: nextSlug } = {},

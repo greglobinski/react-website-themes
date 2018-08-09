@@ -14,11 +14,16 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _gatsby = require('gatsby');
 
+var _list = require('../styles/list');
+
+var _list2 = _interopRequireDefault(_list);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var List = function List(props) {
   var items = props.items,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _list2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

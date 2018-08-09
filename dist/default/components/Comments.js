@@ -16,6 +16,10 @@ var _reactFacebook = require('react-facebook');
 
 var _reactFacebook2 = _interopRequireDefault(_reactFacebook);
 
+var _comments = require('../styles/comments');
+
+var _comments2 = _interopRequireDefault(_comments);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Comments = function Comments(props) {

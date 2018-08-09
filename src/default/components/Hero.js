@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import style from '../styles/hero';
+
 const Hero = props => {
-  const { html, children, themeStyle } = props;
+  const { html, children, themeStyle = style } = props;
 
   return (
     <React.Fragment>

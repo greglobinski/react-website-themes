@@ -12,12 +12,17 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _heading = require('../styles/heading');
+
+var _heading2 = _interopRequireDefault(_heading);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Heading = function Heading(props) {
   var title = props.title,
       children = props.children,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _heading2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(
