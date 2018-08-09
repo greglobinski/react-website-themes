@@ -25,7 +25,6 @@ const Blog = props => {
               <Link to={slug}>
                 <h3>{title}</h3>
                 <Meta
-                  themeStyle={meta}
                   categories={categories}
                   prefix={prefix}
                   author={author}
