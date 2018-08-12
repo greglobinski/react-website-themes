@@ -25,7 +25,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Comments = function Comments(props) {
   var slug = props.slug,
       siteUrl = props.siteUrl,
-      themeStyle = props.themeStyle;
+      _props$themeStyle = props.themeStyle,
+      themeStyle = _props$themeStyle === undefined ? _comments2.default : _props$themeStyle;
 
 
   return _react2.default.createElement(

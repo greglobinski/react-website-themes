@@ -9,7 +9,7 @@ const header = css`
   display: flex;
   margin-bottom: 50px;
   padding: 5px 5px 0;
-  align-itmes: center;
+  align-items: center;
 
   ${mq({
     flexDirection: ['column', 'row'],

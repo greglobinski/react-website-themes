@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import Meta from './Meta';
-import meta from '../styles/meta';
 
 import style from '../styles/blog';
 

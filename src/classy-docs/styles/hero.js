@@ -5,18 +5,6 @@ import { keyframes } from 'react-emotion';
 const breakpoints = [768, 1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-const breath = keyframes`
-  from {
-    transform: scale(1);
-  }
-  80% {
-    transform: scale(1.2);
-  }
-  to {
-    transform: scale(1);
-  }
-`;
-
 const pulse = keyframes`
   from {
     box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(221,0,0, .5);

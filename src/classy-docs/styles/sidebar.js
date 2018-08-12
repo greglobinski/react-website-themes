@@ -32,7 +32,6 @@ const sidebar = css`
   & h3 {
     font-size: 0.7em;
     letter-spacing: 0.2em;
-    color: #666;
     padding: 10px 30px 0;
     text-transform: uppercase;
     font-weight: 300;

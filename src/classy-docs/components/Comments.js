@@ -5,7 +5,7 @@ import FacebookProvider, { Comments as FBComments } from 'react-facebook';
 import style from '../styles/comments';
 
 const Comments = props => {
-  const { slug, siteUrl, themeStyle } = props;
+  const { slug, siteUrl, themeStyle = style } = props;
 
   return (
     <div className={`${themeStyle}`}>

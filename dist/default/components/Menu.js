@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -35,7 +37,8 @@ var Menu = function Menu(props) {
       items.map(function (item) {
         var label = item.label,
             to = item.to,
-            Icon = item.icon;
+            Icon = item.icon,
+            linkProps = item.linkProps;
 
 
         return _react2.default.createElement(
@@ -43,9 +46,13 @@ var Menu = function Menu(props) {
           { key: label },
           _react2.default.createElement(
             _gatsby.Link,
-            { to: to },
+            _extends({ to: to, activeClassName: 'active' }, linkProps),
             Icon && _react2.default.createElement(Icon, null),
-            label
+            _react2.default.createElement(
+              'span',
+              null,
+              label
+            )
           )
         );
       })

@@ -18,10 +18,6 @@ var _Meta = require('./Meta');
 
 var _Meta2 = _interopRequireDefault(_Meta);
 
-var _meta = require('../styles/meta');
-
-var _meta2 = _interopRequireDefault(_meta);
-
 var _blog = require('../styles/blog');
 
 var _blog2 = _interopRequireDefault(_blog);
@@ -64,7 +60,6 @@ var Blog = function Blog(props) {
               title
             ),
             _react2.default.createElement(_Meta2.default, {
-              themeStyle: _meta2.default,
               categories: categories,
               prefix: prefix,
               author: author,

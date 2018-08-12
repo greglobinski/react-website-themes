@@ -1,14 +1,9 @@
 import { css } from 'emotion';
-import facepaint from 'facepaint';
-
-const breakpoints = [1024, 1280];
-const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const list = css`
   & h3 {
     font-size: 0.7em;
     letter-spacing: 0.2em;
-    color: #666;
     padding: 10px 0 0;
     text-transform: uppercase;
     font-weight: 300;
