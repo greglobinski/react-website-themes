@@ -1,10 +1,18 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
+
+const breakpoints = [1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const footerStyle = css`
   display: flex;
   flex-direction: column;
   font-size: 0.9em;
-  margin: 20px 0;
+  margin: 60px 0 20px;
+
+  ${mq({
+    margin: ['60px 0 60px', '60px 0 20px'],
+  })};
 
   .links ul {
     list-style: none;

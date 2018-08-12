@@ -11,8 +11,8 @@ const variables = injectGlobal`
     --lightTextColor:  #777;
     --superLightTextColor:  #aaa;
 
-    --linkColor: var(--firstActiveColor);
-    --hoverLinkColor: var(--secondActiveColor);
+    --linkColor: #a00;
+    --hoverLinkColor: #d00;
 
     --scrollBarThumb: #eaeaea;
     --scrollBarTrack: #f9f9f9;

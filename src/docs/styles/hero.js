@@ -41,7 +41,7 @@ const hero = css`
     minHeight: [
       'calc(100vh - 300px)',
       'calc(100vh - 280px)',
-      'calc(100vh - 220px)',
+      'calc(100vh - 260px)',
     ],
   })};
 
@@ -73,7 +73,7 @@ const hero = css`
     text-transform: uppercase;
     padding: 1em 2em;
     background: #f9f9f9;
-    margin: 40px 0 15px;
+    margin: 40px 0 0;
     animation: ${pulse} 2s ease infinite;
   }
 

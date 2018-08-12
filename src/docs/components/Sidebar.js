@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import GithubSlugger from 'github-slugger';
 
 import style from '../styles/sidebar';
+
+var slugs = new GithubSlugger();
 
 function organizePagesInCategories(pages, categoryList) {
   return pages.reduce(
@@ -73,10 +76,12 @@ const Sidebar = props => {
                       <ul>
                         {headings.map(heading => {
                           const { value, depth } = heading;
+                          slugs.reset();
+
                           return (
                             depth === 2 && (
                               <li key={value}>
-                                <a href={`#${value.toLowerCase()}`}>{value}</a>
+                                <a href={`#${slugs.slug(value)}`}>{value}</a>
                               </li>
                             )
                           );

@@ -1,30 +1,54 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
 
-const li = `
-  li {
-    border-bottom: 1px dotted #ddd;
+const breakpoints = [1024, 1280];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-    &:last-child {
-      border-bottom: none;
+const list = css`
+  & h3 {
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    color: #666;
+    padding: 10px 0 0;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--lightTextColor);
+    display: flex;
+    align-items: center;
+
+    & svg {
+      width: 15px;
+      margin: 0 5px 0 -5px;
+      stroke: var(--superLightGray);
     }
   }
-`;
 
-const listStyle = css`
   ul {
+    margin: 0 0 1.5em;
     list-style: none;
-    font-size: 1.3em;
   }
 
-  ${li};
-
-  a {
-    text-decoration: none;
-    padding: 0.6em 5px;
+  li {
+    margin: 0.8em 0;
+    line-height: 1.4;
+    padding: 0 5px 0 20px;
     position: relative;
-    display: block;
+
+    &:before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--firstActiveColor);
+      position: absolute;
+      top: 0.45em;
+      left: 1px;
+    }
+  }
+
+  & a {
+    text-decoration: none;
     color: #666;
   }
 `;
 
-export default listStyle;
+export default list;

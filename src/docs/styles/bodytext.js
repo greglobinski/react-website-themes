@@ -14,6 +14,10 @@ const bodytextStyle = css`
     font-size: 1em;
   }
 
+  strong {
+    letter-spacing: -0.02em;
+  }
+
   ul {
     margin: 0 0 1.5em;
     list-style: none;
@@ -21,7 +25,7 @@ const bodytextStyle = css`
 
   li {
     margin: 0.8em 0;
-    line-height: 1.3;
+    line-height: 1.4;
     padding: 0 5px 0 20px;
     position: relative;
 
@@ -39,17 +43,17 @@ const bodytextStyle = css`
   h2,
   h3 {
     line-height: 1.2;
-    margin: 1.5em 0 0.8em;
-    letter-spacing: -0.01em;
+    margin: 1.8em 0 1em;
+    letter-spacing: -0.03em;
     display: flex;
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 1.6em;
   }
 
   h3 {
-    font-size: 1.6em;
+    font-size: 1.3em;
   }
 
   .anchor {

@@ -11,13 +11,13 @@ const Menu = props => {
     <nav className={`${themeStyle}`}>
       <ul>
         {items.map(item => {
-          const { label, to, icon: Icon } = item;
+          const { label, to, icon: Icon, linkProps } = item;
 
           return (
             <li key={label}>
-              <Link to={to}>
+              <Link to={to} activeClassName="active" {...linkProps}>
                 {Icon && <Icon />}
-                {label}
+                <span>{label}</span>
               </Link>
             </li>
           );

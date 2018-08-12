@@ -5,7 +5,6 @@ const breakpoints = [1024, 1280];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const sidebar = css`
-  background: red;
   position: fixed;
   left: 0;
   top: 0;
@@ -14,6 +13,7 @@ const sidebar = css`
   border-right: 1px dotted #ddd;
   overflow: auto;
   transition: 0.3s;
+  padding-bottom: 20px;
 
   ${mq({
     transform: ['translate(-280px, 0)', 'translate(0, 0)', 'translate(0, 0)'],
@@ -24,7 +24,7 @@ const sidebar = css`
     font-size: 0.8em;
     letter-spacing: 0.2em;
     color: var(--superLightTextColor);
-    padding: 25px;
+    padding: 25px 30px;
     border-bottom: 1px dotted #ddd;
     margin-bottom: 15px;
   }
@@ -33,7 +33,7 @@ const sidebar = css`
     font-size: 0.7em;
     letter-spacing: 0.2em;
     color: #666;
-    padding: 10px 25px 0;
+    padding: 10px 30px 0;
     text-transform: uppercase;
     font-weight: 300;
     color: var(--lightTextColor);
@@ -42,7 +42,7 @@ const sidebar = css`
 
     & svg {
       width: 15px;
-      margin-right: 5px;
+      margin: 0 5px 0 -5px;
       stroke: var(--superLightGray);
     }
   }
@@ -62,7 +62,7 @@ const sidebar = css`
       & > a {
         text-decoration: none;
         color: #666;
-        padding: 5px 24px;
+        padding: 6px 29px;
         display: block;
         transition: 0.5s;
         position: relative;
@@ -74,9 +74,9 @@ const sidebar = css`
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 9px;
+            left: 13px;
             width: 1px;
-            transform: translateX(-11px);
+            transform: translateX(-14px);
             background: var(--secondActiveColor);
             transition: 0.3s;
           }
@@ -93,12 +93,12 @@ const sidebar = css`
       & > ul {
         display: none;
         list-style: none;
-        padding: 0 0 10px;
-        margin-left: 13px;
+        margin-left: 17px;
+        font-size: 0.9em;
 
         & > li {
-          padding: 5px 20px;
-          border-left: 1px dashed var(--firstActiveColor);
+          padding: 4px 20px 6px;
+          border-left: 1px dotted var(--firstActiveColor);
 
           & > a {
             color: #999;
