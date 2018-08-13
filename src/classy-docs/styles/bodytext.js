@@ -1,6 +1,6 @@
 import { css } from 'emotion';
 
-const bodytextStyle = css`
+const bodytext = css`
   margin-bottom: 50px;
   min-height: 40vh;
 
@@ -68,6 +68,18 @@ const bodytextStyle = css`
     margin: 0 0 1.5em;
   }
 
+  & *:not(pre) > code[class*='language-'] {
+    background: #eee;
+    color: #333;
+    text-shadow: none;
+    padding: 1px 5px 2px;
+    border-radius: 2px;
+  }
+
+  & pre[class*='language-'] {
+    background: #444;
+  }
+
   blockquote {
     background: #f9f9f9;
     padding: 20px 20px 20px 30px;
@@ -80,4 +92,4 @@ const bodytextStyle = css`
   }
 `;
 
-export default bodytextStyle;
+export default bodytext;

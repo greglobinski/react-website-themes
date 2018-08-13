@@ -48,18 +48,6 @@ const global = injectGlobal`
     }
   }
 
-  :not(pre) > code[class*='language-'] {
-    background: #eee;
-    color: #333;
-    text-shadow: none;
-    padding: 1px 5px 2px;
-    border-radius: 2px;
-  }
-
-   pre[class*="language-"] {
-     background: #444;
-   }
-
   *::-webkit-scrollbar {
     width: var(--scrollBarWidth);
   }
