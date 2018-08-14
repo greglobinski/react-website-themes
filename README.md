@@ -6,7 +6,7 @@
 
 <br />
 <p align="center">
-A collection of styld React components. <br />Built for <a href="https://greglobinski.github.io/gatsby-starter-kit-docs/">Gatsby Starter Kit</a>.
+A collection of sets of styled ready-to-use React components to build a website. <br />Built for <a href="https://greglobinski.github.io/gatsby-starter-kit-docs/">Gatsby Starter Kit</a>.
 </p>
 <p align="center">
 
