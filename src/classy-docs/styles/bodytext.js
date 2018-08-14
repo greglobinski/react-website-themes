@@ -25,7 +25,7 @@ const bodytext = css`
 
   li {
     margin: 0.8em 0;
-    line-height: 1.4;
+    line-height: 1.5;
     padding: 0 5px 0 20px;
     position: relative;
 
