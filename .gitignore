@@ -62,7 +62,5 @@ typings/
 .cache/
 public
 yarn-error.log
-
-
 .vscode
 dist/

@@ -67,19 +67,19 @@ const sidebar = css`
         position: relative;
         line-height: 1.35;
 
-        @media (hover: hover) {
-          &:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 13px;
-            width: 1px;
-            transform: translateX(-14px);
-            background: var(--secondActiveColor);
-            transition: 0.3s;
-          }
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 13px;
+          width: 1px;
+          transform: translateX(-14px);
+          background: var(--secondActiveColor);
+          transition: 0.3s;
+        }
 
+        @media (hover: hover) {
           &:hover {
             &:before {
               transform: translateX(0);
