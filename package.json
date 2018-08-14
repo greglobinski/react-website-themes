@@ -1,6 +1,6 @@
 {
   "name": "react-website-themes",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A set of components with styles for building a website with ReactJS",
   "main": "dist/index.js",
   "publishConfig": {},
