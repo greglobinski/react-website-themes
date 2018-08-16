@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import 'typeface-open-sans';
 
 import '../styles/global';
 import style from '../styles/layout';

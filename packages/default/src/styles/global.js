@@ -1,3 +1,4 @@
+import 'typeface-open-sans';
 import { injectGlobal } from 'emotion';
 
 const globalStyle = injectGlobal`
