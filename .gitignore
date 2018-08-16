@@ -65,6 +65,6 @@ typings/
 public
 yarn-error.log
 dist/
-# packages/*/components/
-# packages/*/styles/
-# packages/*/index.js
+packages/*/components/
+packages/*/styles/
+packages/*/index.js
