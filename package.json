@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build:all": "lerna exec --parallel -- babel src -d dist --ignore /__tests__",
+    "build:all": "lerna exec --parallel -- babel src -d . --ignore /__tests__",
     "clear:all": "lerna exec --parallel -- rimraf index.js components styles",
     "lint": "eslint packages/*/src/**/*.js",
     "stylelint": "stylelint packages/**/src/styles/*.js",
