@@ -4,10 +4,10 @@
   "scripts": {
     "build:all": "lerna exec --parallel -- babel src -d . --ignore /__tests__",
     "clear:all": "lerna exec --parallel -- rimraf index.js components styles",
+    "publish:all": "npm-run-all -s build:all && lerna publish",
     "lint": "eslint packages/*/src/**/*.js",
     "stylelint": "stylelint packages/**/src/styles/*.js",
     "prebootstrap": "yarn",
-    "publish": "lerna publish",
     "test": "npm-run-all -s lint stylelint jest",
     "test:watch": "jest --watch"
   },

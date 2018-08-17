@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 const Seo = props => {
-  const { url, language, title, description } = props;
+  const { url, language = 'en', title, description } = props;
 
   return (
     <Helmet
@@ -46,9 +46,9 @@ const Seo = props => {
 
 Seo.propTypes = {
   language: PropTypes.string,
-  url: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   image: PropTypes.string,
 };
 
