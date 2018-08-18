@@ -8,6 +8,35 @@ const bodytext = css`
     margin: 2em 0;
   }
 
+  img {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  a.demoLink {
+    align-items: center;
+    border-radius: 3px;
+    color: var(--firstActiveColor);
+    font-size: 1em;
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.6em 2em;
+    background: #f9f9f9;
+    font-weight: 700;
+    font-size: 1.2em;
+    border: 1px solid #ddd;
+    margin: 40px 0 0;
+    width: 100%;
+    justify-content: center;
+
+    @media (hover: hover) {
+      &:hover {
+        background: #eee;
+      }
+    }
+  }
+
   p {
     line-height: 1.6;
     margin: 0 0 1.5em;
@@ -25,7 +54,7 @@ const bodytext = css`
 
   li {
     margin: 0.8em 0;
-    line-height: 1.5;
+    line-height: 1.6;
     padding: 0 5px 0 20px;
     position: relative;
 
@@ -35,7 +64,7 @@ const bodytext = css`
       height: 4px;
       background: var(--firstActiveColor);
       position: absolute;
-      top: 0.45em;
+      top: 0.6em;
       left: 1px;
     }
   }
