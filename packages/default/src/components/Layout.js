@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import '../styles/global';
 import style from '../styles/layout';
 
 const Layout = props => {
