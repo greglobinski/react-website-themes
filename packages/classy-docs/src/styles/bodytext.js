@@ -8,7 +8,7 @@ const bodytext = css`
     margin: 2em 0;
   }
 
-  img {
+  img:not(.emojiIcon) {
     border: 1px solid #ddd;
     border-radius: 5px;
   }
