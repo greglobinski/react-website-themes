@@ -26,7 +26,7 @@ const Footer = props => {
         <a href="https://github.com/greglobinski/gatsby-starter-kit">
           Gatsby Starter Kit
         </a>{' '}
-        | Design by{' '}
+        | Design:{' '}
         <a href="https://github.com/greglobinski/react-website-themes">
           React Website Themes
         </a>
