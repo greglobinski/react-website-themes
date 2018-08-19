@@ -1,4 +1,4 @@
-import 'typeface-merriweather-sans';
+import 'typeface-open-sans';
 import { injectGlobal } from 'emotion';
 
 const variables = injectGlobal`

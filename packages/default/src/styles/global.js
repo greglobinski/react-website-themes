@@ -1,7 +1,6 @@
-import 'typeface-open-sans';
 import { injectGlobal } from 'emotion';
 
-const globalStyle = injectGlobal`
+const global = injectGlobal`
   html {
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
@@ -55,4 +54,4 @@ const globalStyle = injectGlobal`
 
 `;
 
-export default globalStyle;
+export default global;

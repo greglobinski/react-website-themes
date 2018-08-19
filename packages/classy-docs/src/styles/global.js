@@ -1,4 +1,3 @@
-import 'typeface-merriweather-sans';
 import { injectGlobal } from 'emotion';
 
 const global = injectGlobal`
