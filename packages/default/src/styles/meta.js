@@ -3,7 +3,7 @@ import { css } from 'emotion';
 const meta = css`
   margin: 0.5em 0 2em;
   font-size: 0.9em;
-  color: #999;
+  color: var(--lightTextColor);
   display: flex;
 
   [class$='-blog'] & {

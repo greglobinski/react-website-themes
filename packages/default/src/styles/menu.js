@@ -33,6 +33,11 @@ const menu = css`
       justify-content: center;
       align-items: center;
       padding: 0 5px;
+      color: var(--lightTextColor);
+
+      &:hover {
+        color: var(--hoverLinkColor);
+      }
     }
 
     svg {

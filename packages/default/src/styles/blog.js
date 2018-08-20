@@ -18,6 +18,11 @@ const blog = css`
 
   a {
     text-decoration: none;
+    color: var(--textColor);
+
+    &:hover {
+      color: var(--hoverLinkColor);
+    }
   }
 
   p {

@@ -1,12 +1,14 @@
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { cx } from 'emotion';
 
 import style from '../styles/nextPrev';
 
 const NextPrev = props => {
   const {
     themeStyle = style,
+    customStyle = '',
     icons: { next: NextIcon, prev: PrevIcon },
     next: {
       fields: { prefix: nextPrefix, slug: nextSlug } = {},
@@ -19,7 +21,7 @@ const NextPrev = props => {
   } = props;
 
   return (
-    <div className={`${themeStyle}`}>
+    <div className={cx(themeStyle, customStyle)}>
       {prevSlug && (
         <Link to={prevSlug} className="prev">
           {PrevIcon && <PrevIcon />}
@@ -45,6 +47,7 @@ NextPrev.propTypes = {
   prev: PropTypes.object,
   themeStyle: PropTypes.string,
   icons: PropTypes.object,
+  customStyle: PropTypes.string,
 };
 
 export default NextPrev;

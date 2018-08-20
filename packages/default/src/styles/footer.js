@@ -8,7 +8,7 @@ const footerStyle = css`
 
   .links ul {
     list-style: none;
-    color: #666;
+    color: var(--textColor);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -17,7 +17,7 @@ const footerStyle = css`
 
   .links a {
     text-decoration: none;
-    color: #777;
+    color: var(--textColor);
     font-weight: bold;
   }
 
@@ -29,20 +29,20 @@ const footerStyle = css`
 
   .copyright {
     font-size: 0.9em;
-    color: #999;
+    color: var(--lightTextColor);
     text-align: center;
     margin: 10px 0 30px;
   }
 
   .credits {
     font-size: 0.8em;
-    color: #aaa;
+    color: var(--superLightTextColor);
     margin: 20px 0 0;
     text-align: center;
 
     & a {
       text-decoration: none;
-      color: #888;
+      color: var(--lightTextColor);
     }
   }
 `;

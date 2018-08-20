@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
-
 import PropTypes from 'prop-types';
 import React from 'react';
+import { cx } from 'emotion';
 
 import style from '../styles/meta';
 
@@ -10,13 +10,14 @@ const Meta = props => {
     prefix,
     categories,
     themeStyle = style,
+    customStyle = '',
     author,
     categoryLink = true,
     icons: { calendar: CalendarIcon, user: UserIcon, tag: TagIcon },
   } = props;
 
   return (
-    <p className={`${themeStyle}`}>
+    <p className={cx(themeStyle, customStyle)}>
       <span>
         {CalendarIcon && <CalendarIcon />} {prefix}
       </span>
@@ -44,6 +45,7 @@ const Meta = props => {
 
 Meta.propTypes = {
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
   prefix: PropTypes.string,
   categories: PropTypes.array,
   author: PropTypes.string,

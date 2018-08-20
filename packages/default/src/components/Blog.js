@@ -1,16 +1,23 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'gatsby';
+import { cx } from 'emotion';
 
 import Meta from './Meta';
 
 import style from '../styles/blog';
 
 const Blog = props => {
-  const { items, themeStyle = style, author, metaIcons } = props;
+  const {
+    items,
+    themeStyle = style,
+    customStyle = '',
+    author,
+    metaIcons,
+  } = props;
 
   return (
-    <div className={`${themeStyle}`}>
+    <div className={cx(themeStyle, customStyle)}>
       <ul>
         {items.map(item => {
           const {
@@ -44,6 +51,7 @@ Blog.propTypes = {
   items: PropTypes.array.isRequired,
   author: PropTypes.string,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
   metaIcons: PropTypes.object,
 };
 

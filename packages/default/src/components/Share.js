@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ShareBlockStandard } from 'react-custom-share';
+import { cx } from 'emotion';
 
 import style from '../styles/share';
 
 const PostShare = props => {
-  const { themeStyle = style, shareBlockProps } = props;
+  const { themeStyle = style, customStyle = '', shareBlockProps } = props;
 
   return (
-    <div className={`${themeStyle}`}>
+    <div className={cx(themeStyle, customStyle)}>
       <ShareBlockStandard {...shareBlockProps} />
     </div>
   );
@@ -16,6 +17,7 @@ const PostShare = props => {
 
 PostShare.propTypes = {
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
   shareBlockProps: PropTypes.object,
 };
 

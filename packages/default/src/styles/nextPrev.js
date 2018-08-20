@@ -29,7 +29,7 @@ const nextPrev = css`
   & time {
     display: block;
     font-size: 0.9em;
-    color: #999;
+    color: var(--lightTextColor);
     margin-top: 5px;
   }
 `;

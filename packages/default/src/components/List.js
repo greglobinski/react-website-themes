@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { cx } from 'emotion';
 
 import style from '../styles/list';
 
 const List = props => {
-  const { items, themeStyle = style } = props;
+  const { items, themeStyle = style, customStyle = '' } = props;
 
   return (
-    <div className={`${themeStyle}`}>
+    <div className={cx(themeStyle, customStyle)}>
       <ul>
         {items.map(item => {
           const {
@@ -32,6 +33,7 @@ const List = props => {
 List.propTypes = {
   items: PropTypes.array.isRequired,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default List;

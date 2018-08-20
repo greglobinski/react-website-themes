@@ -68,3 +68,4 @@ dist/
 packages/*/components/
 packages/*/styles/
 packages/*/index.js
+playground/

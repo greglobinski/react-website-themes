@@ -3,7 +3,7 @@ import { injectGlobal } from 'emotion';
 const global = injectGlobal`
   html {
     box-sizing: border-box;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--fontFamily);
     font-size: 16px;
     color: #666;
   }
@@ -17,7 +17,7 @@ const global = injectGlobal`
   }
 
   p {
-    color: #444;
+    color: var(--textColor);
   }
 
   h1 {
@@ -33,24 +33,25 @@ const global = injectGlobal`
   }
 
   a {
-    color: #666;
+    color: var(--linkColor);
     transition: .3s;
   }
 
   @media (hover: hover)  {
     a:hover {
-      color: #900;
+      color: var(--hoverLinkColor);
     }
   }
 
-  :not(pre) > code[class*='language-'] {
-    background: #eee;
-    color: #666;
-    text-shadow: none;
-    padding: 1px 5px;
-    border-radius: 2px;
+  *::-webkit-scrollbar {
+    width: var(--scrollBarWidth);
   }
-
+  *::-webkit-scrollbar-track {
+    background: var(--scrollBarTrack);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollBarThumb);
+  }
 
 `;
 
