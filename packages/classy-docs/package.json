@@ -1,6 +1,6 @@
 {
   "name": "@react-website-themes/classy-docs",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "",
   "main": "index.js",
   "publishConfig": {
@@ -13,9 +13,9 @@
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
   "license": "MIT",
   "dependencies": {
+    "@react-website-themes/default": "^0.0.17",
     "github-slugger": "^1.2.0",
-    "typeface-merriweather-sans": "^0.0.54",
-    "@react-website-themes/default": "0.0.16"
+    "typeface-merriweather-sans": "^0.0.54"
   },
   "peerDependencies": {
     "emotion": "^9.2.4",
