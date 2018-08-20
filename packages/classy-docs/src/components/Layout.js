@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { cx } from 'emotion';
 
-import '../styles/variables';
-import '../styles/global';
 import style from '../styles/layout';
 
 class Layout extends React.Component {
@@ -17,11 +16,11 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { children, themeStyle = style } = this.props;
+    const { children, themeStyle = style, customStyle = '' } = this.props;
     const { modifier } = this.state;
 
     return (
-      <div className={`${themeStyle} ${modifier}`}>
+      <div className={cx(themeStyle, customStyle, modifier)}>
         <main>{children}</main>
       </div>
     );
@@ -31,6 +30,7 @@ class Layout extends React.Component {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default Layout;

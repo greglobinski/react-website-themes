@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import GithubSlugger from 'github-slugger';
+import { cx } from 'emotion';
 
 import style from '../styles/sidebar';
 
@@ -44,12 +45,19 @@ function organizePagesInCategories(pages, categoryList) {
 }
 
 const Sidebar = props => {
-  const { themeStyle = style, title, pages, categoryList, pathname } = props;
+  const {
+    themeStyle = style,
+    customStyle = '',
+    title,
+    pages,
+    categoryList,
+    pathname,
+  } = props;
 
   const pagesInCategories = organizePagesInCategories(pages, categoryList);
 
   return (
-    <aside className={`${themeStyle}`}>
+    <aside className={cx(themeStyle, customStyle)}>
       <h2>{title}</h2>
       {pagesInCategories.map(category => {
         const { label, icon: Icon } = category;
@@ -105,6 +113,7 @@ Sidebar.propTypes = {
   pages: PropTypes.array,
   categoryList: PropTypes.array,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default Sidebar;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { cx } from 'emotion';
 
 import style from '../styles/list';
 
@@ -41,12 +42,12 @@ function organizePagesInCategories(pages, categoryList) {
 }
 
 const List = props => {
-  const { pages, categoryList, themeStyle = style } = props;
+  const { pages, categoryList, themeStyle = style, customStyle = '' } = props;
 
   const pagesInCategories = organizePagesInCategories(pages, categoryList);
 
   return (
-    <div className={`${themeStyle}`}>
+    <div className={cx(themeStyle, customStyle)}>
       {pagesInCategories.map(category => {
         const { label, icon: Icon } = category;
 
@@ -82,6 +83,7 @@ List.propTypes = {
   pages: PropTypes.array.isRequired,
   categoryList: PropTypes.array,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default List;

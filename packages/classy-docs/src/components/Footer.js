@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { cx } from 'emotion';
 
 import style from '../styles/footer';
 
 const Footer = props => {
-  const { links, copyright, themeStyle = style } = props;
+  const { links, copyright, themeStyle = style, customStyle = '' } = props;
 
   return (
-    <footer className={`${themeStyle}`}>
+    <footer className={cx(themeStyle, customStyle)}>
       <div className="links" dangerouslySetInnerHTML={{ __html: links }} />
       <div
         className="copyright"
@@ -24,12 +25,12 @@ const Footer = props => {
         */}
         Built with{' '}
         <a href="https://github.com/greglobinski/gatsby-starter-kit">
-          Gatsby Starter Kit
+          GatsbyJS Starter Kit
         </a>{' '}
-        | Design:{' '}
+        | Design by{' '}
         <a href="https://github.com/greglobinski/react-website-themes">
           React Website Themes
-        </a>
+        </a>.
       </div>
     </footer>
   );
@@ -39,6 +40,7 @@ Footer.propTypes = {
   links: PropTypes.string,
   copyright: PropTypes.string,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default Footer;

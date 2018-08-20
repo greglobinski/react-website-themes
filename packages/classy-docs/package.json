@@ -14,7 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "github-slugger": "^1.2.0",
-    "typeface-merriweather-sans": "^0.0.54"
+    "typeface-merriweather-sans": "^0.0.54",
+    "@react-website-themes/default": "0.0.16"
   },
   "peerDependencies": {
     "emotion": "^9.2.4",

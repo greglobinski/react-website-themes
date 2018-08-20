@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'gatsby';
+import { cx } from 'emotion';
 
 import style from '../styles/menu';
 
 const Menu = props => {
-  const { items, themeStyle = style } = props;
+  const { items, themeStyle = style, customStyle = '' } = props;
 
   return (
-    <nav className={`${themeStyle}`}>
+    <nav className={cx(themeStyle, customStyle)}>
       <ul>
         {items.map(item => {
           const { label, to, icon: Icon, linkProps } = item;
@@ -30,6 +31,7 @@ const Menu = props => {
 Menu.propTypes = {
   items: PropTypes.array.isRequired,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default Menu;

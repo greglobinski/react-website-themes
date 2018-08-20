@@ -1,14 +1,15 @@
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { cx } from 'emotion';
 
 import style from '../styles/branding';
 
 const Branding = props => {
-  const { title, subTitle, themeStyle = style } = props;
+  const { title, subTitle, themeStyle = style, customStyle = '' } = props;
 
   return (
-    <Link className={`${themeStyle}`} to="/">
+    <Link className={cx(themeStyle, customStyle)} to="/">
       <h1>{title}</h1>
       <p>{subTitle}</p>
     </Link>
@@ -20,6 +21,7 @@ Branding.propTypes = {
   subTitle: PropTypes.string,
   logo: PropTypes.node,
   themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
 export default Branding;

@@ -26,7 +26,8 @@ const Footer = props => {
         Built with{' '}
         <a href="https://github.com/greglobinski/gatsby-starter-kit">
           GatsbyJS Starter Kit
-        </a>. Design by{' '}
+        </a>{' '}
+        | Design by{' '}
         <a href="https://github.com/greglobinski/react-website-themes">
           React Website Themes
         </a>.
