@@ -10,7 +10,7 @@ const li = `
   }
 `;
 
-const listStyle = css`
+const list = css`
   ul {
     list-style: none;
     font-size: 1.3em;
@@ -27,4 +27,4 @@ const listStyle = css`
   }
 `;
 
-export default listStyle;
+export default list;

@@ -17,7 +17,7 @@ const breath = keyframes`
   }
 `;
 
-const heroStyle = css`
+const hero = css`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -67,4 +67,4 @@ const heroStyle = css`
   }
 `;
 
-export default heroStyle;
+export default hero;

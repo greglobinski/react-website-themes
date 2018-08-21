@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 
-const pageStyle = css`
+const page = css`
   display: block;
 `;
 
-export default pageStyle;
+export default page;

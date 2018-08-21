@@ -4,7 +4,7 @@ import facepaint from 'facepaint';
 const breakpoints = [768, 1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-const headingStyle = css`
+const heading = css`
   h1 {
     letter-spacing: -0.03em;
     margin-bottom: 1em;
@@ -16,4 +16,4 @@ const headingStyle = css`
   }
 `;
 
-export default headingStyle;
+export default heading;

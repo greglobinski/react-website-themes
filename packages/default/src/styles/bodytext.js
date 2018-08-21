@@ -1,6 +1,6 @@
 import { css } from 'emotion';
 
-const bodytextStyle = css`
+const bodytext = css`
   margin-bottom: 50px;
   min-height: 40vh;
 
@@ -52,4 +52,4 @@ const bodytextStyle = css`
   }
 `;
 
-export default bodytextStyle;
+export default bodytext;
