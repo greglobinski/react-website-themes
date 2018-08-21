@@ -4,7 +4,7 @@ import facepaint from 'facepaint';
 const breakpoints = [1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-const footerStyle = css`
+const footer = css`
   display: flex;
   flex-direction: column;
   font-size: 0.9em;
@@ -57,4 +57,4 @@ const footerStyle = css`
   }
 `;
 
-export default footerStyle;
+export default footer;

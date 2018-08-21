@@ -13,7 +13,6 @@
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
   "license": "MIT",
   "dependencies": {
-    "@react-website-themes/default": "^0.0.17",
     "github-slugger": "^1.2.0",
     "typeface-merriweather-sans": "^0.0.54"
   },

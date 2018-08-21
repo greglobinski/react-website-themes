@@ -5,7 +5,7 @@ const breakpoints = [1024, 1280];
 
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
-const articleStyle = css`
+const article = css`
   margin: 0 auto 30px;
 
   ${mq({
@@ -13,4 +13,4 @@ const articleStyle = css`
   })};
 `;
 
-export default articleStyle;
+export default article;
