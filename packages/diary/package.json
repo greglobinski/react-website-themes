@@ -14,7 +14,12 @@
   "license": "MIT",
   "dependencies": {
     "@react-website-themes/default": "0.0.17",
-    "typeface-open-sans": "^0.0.54"
+    "dayjs": "^1.7.5",
+    "typeface-fredericka-the-great": "^0.0.54",
+    "typeface-merriweather": "^0.0.54",
+    "typeface-open-sans": "^0.0.54",
+    "typeface-pacifico": "^0.0.54",
+    "typeface-pt-serif": "^0.0.54"
   },
   "peerDependencies": {
     "emotion": "^9.2.4",

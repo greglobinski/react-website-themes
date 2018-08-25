@@ -3,7 +3,7 @@ import { injectGlobal } from 'emotion';
 const global = injectGlobal`
   html {
     box-sizing: border-box;
-    font-family: var(--fontFamily);
+    font-family: var(--firstFontFamily);
     font-size: 16px;
     color: #666;
   }
