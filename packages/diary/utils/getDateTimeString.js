@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = getDateTimeString;
 
 function getDateTimeString(str, offset) {
-  var dateString = /^(\d{4}-\d{2}-\d{2})/.exec(str)[1];
+  var dateString = /^(\d{4}-\d{2}-\d{2})/.exec(str);
+  dateString = dateString ? dateString[1] : '';
   var timeString = /--(\d{2}-\d{2})$/.exec(str);
   timeString = timeString ? timeString[1].replace('-', ':') : '00:00';
   var timeOffset = offset || '+00:00';
