@@ -13,7 +13,7 @@
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
   "license": "MIT",
   "dependencies": {
-    "@react-website-themes/default": "^0.0.19",
+    "@react-website-themes/base": "^0.0.3",
     "dayjs": "^1.7.5",
     "typeface-fredericka-the-great": "^0.0.54",
     "typeface-merriweather": "^0.0.54",
