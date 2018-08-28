@@ -1,17 +1,28 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
+
+const breakpoints = [768, 1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const bodytext = css`
   margin-bottom: 50px;
   min-height: 40vh;
+  font-family: var(--secondFontFamily);
 
   & .gatsby-resp-image-wrapper {
     margin: 2em 0;
   }
 
   p {
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0 0 1.5em;
     font-size: 1.1em;
+  }
+
+  .gatsby-resp-image-wrapper {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
   }
 
   ul {
@@ -29,8 +40,8 @@ const bodytext = css`
   h2,
   h3 {
     line-height: 1.2;
-    margin: 1.5em 0 0.8em;
-    letter-spacing: -0.01em;
+    margin: 1.6em 0 0.9em;
+    font-family: var(--firstFontFamily);
   }
 
   h2 {
@@ -46,9 +57,47 @@ const bodytext = css`
   }
 
   blockquote {
-    padding-left: 20px;
-    border-left: 5px solid #ddd;
+    font-family: var(--firstFontFamily);
+    font-size: 1.1em;
     font-style: italic;
+    text-align: left;
+    position: relative;
+    margin: 50px 30px;
+    color: var(--accentColor);
+
+    small {
+      text-align: right;
+      display: block;
+      font-size: 0.6em;
+      font-style: normal;
+      margin: 0.5em 0;
+      font-family: var(--secondFontFamily);
+    }
+
+    p {
+      color: var(--accentColor);
+      line-height: 1.6;
+    }
+
+    &:before,
+    &:after {
+      content: open-quote;
+      color: #ddd;
+      padding-right: 0.1em;
+      position: absolute;
+      top: -25px;
+      left: -50px;
+      transform: translateY(0.1em);
+      font-size: 4em;
+    }
+
+    &:after {
+      content: close-quote;
+      top: auto;
+      bottom: -45px;
+      left: auto;
+      right: -45px;
+    }
   }
 `;
 

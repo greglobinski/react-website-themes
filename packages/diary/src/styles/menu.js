@@ -11,10 +11,7 @@ const menu = css`
   z-index: 1;
   background: #fff;
   justify-content: center;
-
-  ${mq({
-    justifyContent: ['center', 'center', 'flex-end'],
-  })};
+  font-family: var(--secondFontFamily);
 
   ul {
     list-style: none;
@@ -35,8 +32,10 @@ const menu = css`
       padding: 0 5px;
       color: var(--lightTextColor);
 
-      &:hover {
-        color: var(--hoverLinkColor);
+      @media (any-hover: hover) {
+        &:hover {
+          color: var(--hoverLinkColor);
+        }
       }
     }
 

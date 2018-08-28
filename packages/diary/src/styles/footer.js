@@ -1,10 +1,11 @@
 import { css } from 'emotion';
 
 const footer = css`
+  font-family: var(--secondFontFamily);
   display: flex;
   flex-direction: column;
   font-size: 0.9em;
-  margin: 20px 0;
+  margin: 60px 0 30px;
 
   .links ul {
     list-style: none;

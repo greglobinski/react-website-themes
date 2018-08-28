@@ -1,7 +1,8 @@
 import { css } from 'emotion';
 
 const comments = css`
-  margin: 30px 0;
+  margin: 60px 0;
+  position: relative;
 `;
 
 export default comments;
