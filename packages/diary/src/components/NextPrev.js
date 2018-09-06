@@ -4,7 +4,7 @@ import React from 'react';
 import { cx } from 'emotion';
 import dayjs from 'dayjs';
 
-import getDateTimeString from '../utils/getDateTimeString';
+import prefixToDateTimeString from '../utils/prefixToDateTimeString';
 import style from '../styles/nextPrev';
 
 const NextPrev = props => {
@@ -24,10 +24,10 @@ const NextPrev = props => {
   } = props;
 
   const prevDateTimeString = prevPrefix
-    ? getDateTimeString(prevPrefix, timeOffset)
+    ? prefixToDateTimeString(prevPrefix)
     : null;
   const nextDateTimeString = nextPrefix
-    ? getDateTimeString(nextPrefix, timeOffset)
+    ? prefixToDateTimeString(nextPrefix)
     : null;
 
   return (
@@ -64,7 +64,6 @@ NextPrev.propTypes = {
   themeStyle: PropTypes.string,
   icons: PropTypes.object,
   customStyle: PropTypes.string,
-  timeOffset: PropTypes.string,
 };
 
 export default NextPrev;

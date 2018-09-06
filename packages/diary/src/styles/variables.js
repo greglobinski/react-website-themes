@@ -4,21 +4,23 @@ import { injectGlobal } from 'emotion';
 
 const variables = injectGlobal`
   :root {
-    --accentColor: #7EA800;
-    --specialColor: #FF9900;
+    --brandColor: #639300;
+    --accentColor: #F06000;
 
     --textColor: #555;
     --lightTextColor: #888;
     --superLightTextColor: #aaa;
 
-    --lineColor: #eee;
+    --footerBgColor: #f9f9f9;
+
+    --lineColor: #ddd;
 
     --firstFontFamily: "PT Serif", serif;
     --secondFontFamily: "Open Sans", sans-serif;
 
     --radius: 4px;
 
-    --linkColor:  var(--accentColor);
+    --linkColor:  var(--brandColor);
     --hoverLinkColor:  #9ED200;
 
     --scrollBarThumb: #eaeaea;

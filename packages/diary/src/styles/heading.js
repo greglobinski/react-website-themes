@@ -34,7 +34,7 @@ const heading = css`
     margin-top: -10px;
 
     strong {
-      background: var(--specialColor);
+      background: var(--accentColor);
       padding: 1px 6px;
       color: white;
       border-radius: 3px;

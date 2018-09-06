@@ -1,8 +1,4 @@
 import { css } from 'emotion';
-import facepaint from 'facepaint';
-
-const breakpoints = [768, 1024];
-const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const bodytext = css`
   margin-bottom: 50px;
@@ -63,7 +59,7 @@ const bodytext = css`
     text-align: left;
     position: relative;
     margin: 50px 30px;
-    color: var(--accentColor);
+    color: var(--brandColor);
 
     small {
       text-align: right;
@@ -75,7 +71,7 @@ const bodytext = css`
     }
 
     p {
-      color: var(--accentColor);
+      color: var(--brandColor);
       line-height: 1.6;
     }
 

@@ -56,13 +56,14 @@ const nextPrev = css`
 
   & .prev {
     & > p {
-      padding: 0 50px 20px 0;
+      padding: 0 50px 0 0;
     }
   }
 
   & .next {
     flex-direction: row-reverse;
     text-align: right;
+    margin-top: 20px;
 
     & > p {
       padding: 0 0 0 50px;

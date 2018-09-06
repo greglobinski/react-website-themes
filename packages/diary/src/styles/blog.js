@@ -4,27 +4,44 @@ import facepaint from 'facepaint';
 const breakpoints = [768, 1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
+const ornament = `
+  background: white;
+  border: 1px solid var(--lineColor);
+  border-radius: 50%;
+  content: '';
+  height: 14px;
+  left: 50%;
+  position: absolute;
+  width: 14px;
+`;
+
 const blog = css`
   ul {
     list-style: none;
+    padding: 0 25px;
+    margin: 0 auto;
+    max-width: 600px;
   }
 
   li {
-    border-bottom: 1px solid var(--lineColor);
+    border-top: 1px solid var(--lineColor);
     text-align: center;
     position: relative;
 
-    &:after {
-      background: white;
-      border: 1px solid var(--lineColor);
-      border-radius: 50%;
-      bottom: 0;
-      content: '';
-      height: 14px;
-      left: 50%;
-      position: absolute;
-      transform: translate(-50%, 50%);
-      width: 14px;
+    &:before {
+      ${ornament};
+      top: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    &:last-child {
+      border-bottom: 1px solid var(--lineColor);
+
+      &:after {
+        ${ornament};
+        bottom: 0;
+        transform: translate(-50%, 50%);
+      }
     }
   }
 
@@ -48,8 +65,8 @@ const blog = css`
           content: 'new';
           position: absolute;
           top: -29px;
-          left: calc(50% + 25px);
-          background: var(--specialColor);
+          left: calc(50% + 20px);
+          background: var(--accentColor);
           color: white;
           font-weight: 700;
           padding: 3px 8px;
@@ -62,12 +79,12 @@ const blog = css`
         &:before {
           content: '';
           position: absolute;
-          width: 15px;
-          height: 15px;
-          top: -19px;
-          left: calc(50% + 30px);
-          transform: rotate(45deg) skewY(40deg);
-          background: var(--specialColor);
+          width: 8px;
+          height: 8px;
+          left: calc(50% + 17px);
+          top: -20px;
+          transform: rotate(45deg);
+          background: var(--accentColor);
         }
       }
     }
@@ -81,7 +98,7 @@ const blog = css`
 
       time {
         margin-bottom: 0.2em;
-        color: var(--accentColor);
+        color: var(--brandColor);
         position: relative;
       }
 
@@ -90,7 +107,7 @@ const blog = css`
       }
 
       small {
-        color: var(--superLightTextColor);
+        color: var(--brandColor);
         font-weight: 500;
         font-style: normal;
         font-size: 0.8em;
@@ -114,8 +131,8 @@ const blog = css`
 
     a {
       text-decoration: none;
-      color: var(--accentColor);
-      border: 1px solid var(--accentColor);
+      color: var(--brandColor);
+      border: 1px solid var(--brandColor);
       margin: 2em 0 0.2em;
       display: inline-flex;
       font-family: var(--secondFontFamily);
@@ -135,7 +152,7 @@ const blog = css`
           svg {
             width: 1em;
             margin-right: 0.3em;
-            stroke: var(--accentColor);
+            stroke: var(--brandColor);
             transition: 0.3s;
           }
         }
@@ -161,13 +178,13 @@ const blog = css`
 
       @media (hover: hover) {
         &:hover span {
-          color: var(--accentColor);
+          color: var(--brandColor);
 
           &.time {
             transform: translate(20px);
 
             svg {
-              fill: var(--accentColor);
+              fill: var(--brandColor);
               stroke: white;
               width: 1.4em;
             }
@@ -203,16 +220,15 @@ const blog = css`
 
     & p:before,
     & p:after {
-      color: var(--accentColor);
+      color: var(--brandColor);
       display: inline-block;
-      padding-right: 0.1em;
       position: relative;
-      transform: translateY(0.1em);
     }
 
     & p:first-child:before {
       content: open-quote;
       padding-right: 0.2em;
+      transform: translateY(0.1em);
     }
 
     & p:nth-last-child(2):after {

@@ -4,7 +4,7 @@ const list = css`
   ul {
     list-style: none;
 
-    margin: 40px 0 60px;
+    margin: 40px 0;
   }
 
   li {
@@ -17,14 +17,16 @@ const list = css`
   time {
     font-family: var(--secondFontFamily);
     font-size: 0.6em;
-    color: var(--accentColor);
+    color: var(--brandColor);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 4px;
 
     & svg {
       width: 14px;
       margin-right: 5px;
+      stroke: var(--accentColor);
     }
   }
 

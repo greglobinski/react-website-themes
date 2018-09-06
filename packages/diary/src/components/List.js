@@ -4,17 +4,11 @@ import { Link } from 'gatsby';
 import { cx } from 'emotion';
 import dayjs from 'dayjs';
 
-import getDateTimeString from '../utils/getDateTimeString';
+import prefixToDateTimeString from '../utils/prefixToDateTimeString';
 import style from '../styles/list';
 
 const List = props => {
-  const {
-    items,
-    themeStyle = style,
-    customStyle = '',
-    icon: Icon,
-    timeOffset,
-  } = props;
+  const { items, themeStyle = style, customStyle = '', icon: Icon } = props;
 
   return (
     <div className={cx(themeStyle, customStyle)}>
@@ -25,13 +19,13 @@ const List = props => {
             fields: { slug, prefix },
           } = item;
 
-          const dateTimeString = getDateTimeString(prefix, timeOffset);
+          const dateTimeString = prefixToDateTimeString(prefix);
 
           return (
             <li key={slug}>
               <Link to={slug} activeClassName="active">
                 <time>
-                  <Icon />{' '}
+                  <Icon />
                   {`${dayjs(dateTimeString).format('dddd')} at ${dayjs(
                     dateTimeString
                   ).format('h:mm a')}, ${dayjs(dateTimeString).format(
@@ -53,7 +47,6 @@ List.propTypes = {
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
   icon: PropTypes.func,
-  timeOffset: PropTypes.string,
 };
 
 export default List;

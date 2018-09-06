@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'gatsby';
 import { cx } from 'emotion';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
+import parse from 'date-fns/parse';
+import format from 'date-fns/format';
+import isAfter from 'date-fns/is_after';
+import startOfToday from 'date-fns/start_of_today';
 
-import getDateTimeString from '../utils/getDateTimeString';
+import prefixToDateTimeString from '../utils/prefixToDateTimeString';
 import style from '../styles/blog';
-
-dayjs.extend(relativeTime);
 
 const Blog = props => {
   const {
@@ -17,7 +17,7 @@ const Blog = props => {
     customStyle = '',
     icons: { post: PostIcon, arrow: ArrowIcon, time: TimeIcon },
     prevVisit,
-    timeOffset,
+    location: defaultLocation,
   } = props;
 
   return (
@@ -25,16 +25,17 @@ const Blog = props => {
       <ul>
         {items.map(item => {
           const {
-            frontmatter: { title, author, cite },
+            frontmatter: { title, author, cite, location },
             fields: { slug, prefix, source },
             timeToRead,
             html,
             excerpt,
           } = item;
 
-          const dateTimeString = getDateTimeString(prefix, timeOffset);
-
-          const newPost = dayjs(dateTimeString).isAfter(dayjs(prevVisit));
+          const dateTimeString = prefixToDateTimeString(prefix);
+          const itemDate = parse(dateTimeString);
+          const prevVisitDate = parse(prevVisit);
+          const newPost = isAfter(itemDate, prevVisitDate);
 
           return (
             <li key={prefix}>
@@ -42,36 +43,17 @@ const Blog = props => {
                 <article className={`post ${newPost ? 'new' : ''}`}>
                   <header>
                     <PostIcon />
-                    {dayjs().diff(dayjs(dateTimeString), 'days') < 30 ? (
-                      <div className="date">
-                        <time dateTime={dateTimeString}>
-                          <strong>
-                            {dayjs(dateTimeString).toNow(dayjs())}
-                          </strong>{' '}
-                          ago
-                        </time>{' '}
-                        <small>
-                          {`${dayjs(dateTimeString).format('dddd')} at ${dayjs(
-                            dateTimeString
-                          ).format('h:mm a')}, ${dayjs(dateTimeString).format(
-                            'MMMM D, YYYY Z'
-                          )}`}
-                        </small>
-                      </div>
-                    ) : (
-                      <div className="date">
-                        <time dateTime={dateTimeString}>
-                          <strong>
-                            {dayjs(dateTimeString).format('MMMM D, YYYY')}
-                          </strong>
-                        </time>
-                        <small>
-                          {`${dayjs(dateTimeString).format('dddd')} at ${dayjs(
-                            dateTimeString
-                          ).format('h:mm a')}`}
-                        </small>
-                      </div>
-                    )}
+
+                    <div className="date">
+                      <time dateTime={dateTimeString}>
+                        <strong>{format(itemDate, 'MMMM D, YYYY')}</strong>
+                      </time>
+                      <small>
+                        {format(itemDate, 'dddd [at] h:mm a')},{' '}
+                        {location ? location : defaultLocation}
+                      </small>
+                    </div>
+
                     <h3>{title}</h3>
                   </header>
                   <p>{excerpt}</p>
@@ -108,7 +90,7 @@ Blog.propTypes = {
   customStyle: PropTypes.string,
   icons: PropTypes.object,
   prevVisit: PropTypes.string,
-  timeOffset: PropTypes.string,
+  location: PropTypes.string,
 };
 
 export default Blog;

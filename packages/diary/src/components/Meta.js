@@ -4,7 +4,7 @@ import React from 'react';
 import { cx } from 'emotion';
 import dayjs from 'dayjs';
 
-import getDateTimeString from '../utils/getDateTimeString';
+import prefixToDateTimeString from '../utils/prefixToDateTimeString';
 import style from '../styles/meta';
 
 const Meta = props => {
@@ -15,10 +15,9 @@ const Meta = props => {
     customStyle = '',
     categoryLink = true,
     icons: { calendar: CalendarIcon, tag: TagIcon },
-    timeOffset,
   } = props;
 
-  const dateTimeString = getDateTimeString(prefix, timeOffset);
+  const dateTimeString = prefixToDateTimeString(prefix);
 
   return (
     <p className={cx(themeStyle, customStyle)}>
@@ -55,7 +54,6 @@ Meta.propTypes = {
   author: PropTypes.string,
   categoryLink: PropTypes.bool,
   icons: PropTypes.object,
-  timeOffset: PropTypes.string,
 };
 
 export default Meta;
