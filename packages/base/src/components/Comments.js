@@ -4,11 +4,11 @@ import FacebookProvider, { Comments as FBComments } from 'react-facebook';
 import { cx } from 'emotion';
 
 const Comments = props => {
-  const { slug, siteUrl, themeStyle = '', customStyle = '' } = props;
+  const { slug, siteUrl, appId, themeStyle = '', customStyle = '' } = props;
 
   return (
     <div className={cx(themeStyle, customStyle)}>
-      <FacebookProvider appId={process.env.GATSBY_FACEBOOK_APPID}>
+      <FacebookProvider appId={appId}>
         <FBComments
           href={`${siteUrl}${slug}`}
           width="100%"
@@ -22,6 +22,7 @@ const Comments = props => {
 Comments.propTypes = {
   slug: PropTypes.string.isRequired,
   siteUrl: PropTypes.string.isRequired,
+  appId: PropTypes.string.isRequired,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
 };
