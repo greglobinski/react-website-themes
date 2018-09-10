@@ -2,13 +2,14 @@ import { css } from 'emotion';
 
 const sidebar = css`
   background: var(--sidebarBgColor);
-  bottom: 0;
   color: var(--sidebarTextColor);
   font-family: var(--secondFontFamily);
   left: 0;
+  padding-top: var(--sidebarHeight);
   position: fixed;
   top: 0;
   width: var(--sidebarWidth);
+  bottom: 0;
 
   & a {
     color: var(--sidebarTextColor);
@@ -25,8 +26,9 @@ const sidebar = css`
     left: 0;
     width: var(--sidebarWidth);
     height: var(--sidebarHeight);
+    z-index: 2;
 
-    .actions {
+    .switches {
       button {
         background: #600;
         border: none;
@@ -42,14 +44,20 @@ const sidebar = css`
     }
   }
 
+  .appliedFilters {
+    padding: 20px;
+    background: black;
+  }
+
   nav {
-    position: absolute;
-    top: var(--sidebarHeight);
-    bottom: 0;
-    left: 0;
-    width: 100%;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+    bottom: 0;
+    left: 0;
+    width: var(--sidebarWidth);
+    transition: 0.3s;
+    position: fixed;
+    top: var(--sidebarHeight);
 
     & ul {
       list-style: none;

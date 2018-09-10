@@ -34,14 +34,14 @@ const variables = injectGlobal`
 
 
 
-    --radius: 4px;
+    --radius: 2px;
 
     --linkColor:  var(--brandColor);
     --hoverLinkColor:  #9ED200;
 
     --scrollBarThumb: #eaeaea;
     --scrollBarTrack: #f9f9f9;
-    --scrollBarWidth: 10px;
+    --scrollBarWidth: 8px;
   }
 `;
 
