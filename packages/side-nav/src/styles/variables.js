@@ -4,18 +4,39 @@ import { injectGlobal } from 'emotion';
 
 const variables = injectGlobal`
   :root {
-    --sidebarWidth: 40%;
-    --sidebarHeight: 50px;
-    --sidebarTextColor: #f9f9f9;
-    --sidebarBgColor: #900;
-    --sidebarHeaderBgColor: #800;
 
+    /* base colors */
+    --darkColor: #333;
+    --brightColor: #fff;
+    --accentColor: orange;
+    --colorA: #605B71;
+    --colorB: #524D60;
+    --colorC: #464252;
+    --monthColor: #5F8C40;
+    --categoryColor: #3E8A8E;
+    --tagColor: #815A9A;
+
+    /* elements' colors */
+    --sidebarBgColor: var(--colorA);
+    --sidebarLineColor: var(--colorB);
+    --sidebarTextColor: var(--brightColor);
+    --sidebarActiveLinkBgColor: var(--colorC);
+    --sidebarLinkHoverBgColor: var(--colorB);
+    --sidebarBarBgColor: var(--colorB);
+    --sidebarSwitchBgColor: var(--colorC);
+
+    /* space */
     --spaceXS: 2px;
     --spaceS: 4px;
     --spaceM: 8px;
     --spaceL: 14px;
     --spaceXL: 20px;
 
+    --barHeight: 60px;
+    --desktopSidebarWidth: 40%;
+    --mobileSidebarWidth: calc(100% - var(--barHeight));
+
+    --transitionTime: .5s;
 
     --firstFontFamily: "Open Sans", sans-serif;
     --secondFontFamily: "Open Sans", sans-serif;
@@ -39,8 +60,8 @@ const variables = injectGlobal`
     --linkColor:  var(--brandColor);
     --hoverLinkColor:  #9ED200;
 
-    --scrollBarThumb: #eaeaea;
-    --scrollBarTrack: #f9f9f9;
+    --scrollBarThumb: rgba(0,0,0, .2);
+    --scrollBarTrack: rgba(0,0,0, .1);
     --scrollBarWidth: 8px;
   }
 `;

@@ -1,15 +1,12 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
+
+const breakpoints = [1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const sidebar = css`
-  background: var(--sidebarBgColor);
-  color: var(--sidebarTextColor);
-  font-family: var(--secondFontFamily);
-  left: 0;
-  padding-top: var(--sidebarHeight);
-  position: fixed;
-  top: 0;
-  width: var(--sidebarWidth);
-  bottom: 0;
+  position: relative;
+  z-index: 1;
 
   & a {
     color: var(--sidebarTextColor);
@@ -17,25 +14,98 @@ const sidebar = css`
     text-decoration: none;
   }
 
-  header {
-    background: var(--sidebarHeaderBgColor);
-    display: flex;
-    justify-content: space-between;
+  .content {
+    background: var(--sidebarBgColor);
+    color: var(--sidebarTextColor);
+    font-family: var(--secondFontFamily);
+    padding-top: var(--barHeight);
     position: fixed;
-    top: 0;
     left: 0;
-    width: var(--sidebarWidth);
-    height: var(--sidebarHeight);
+    top: 0;
+    transition: transform 0.5s;
+    bottom: 0;
+
+    ${mq({
+      transform: ['translateX(-100%)', 'translateX(0)'],
+      width: ['var(--mobileSidebarWidth)', 'var(--desktopSidebarWidth)'],
+    })};
+
+    &.toggled {
+      transform: translateX(0);
+    }
+  }
+
+  .filterBar {
+    background: var(--sidebarBarBgColor);
+    display: flex;
+    left: 0;
+    width: 100%;
+    height: var(--barHeight);
     z-index: 2;
+    position: absolute;
+
+    ${mq({
+      position: ['fixed', 'absolute'],
+      top: ['auto', 0],
+      bottom: [0, 'auto'],
+    })};
+
+    .branding {
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 0 0 0 20px;
+      justify-content: center;
+
+      ${mq({
+        display: ['none', 'flex'],
+      })};
+
+      h3 {
+        font-size: 1.1em;
+        line-height: 1;
+        margin-top: -1px;
+      }
+
+      p {
+        font-size: 0.8em;
+        font-weight: 300;
+        line-height: 1;
+        opacity: 0.8;
+        margin-top: 3px;
+        color: var(--sidebarTextColor);
+      }
+    }
+
+    .tip {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        font-size: 1.2em;
+        font-weight: 300;
+      }
+
+      ${mq({
+        display: ['flex', 'none'],
+      })};
+    }
 
     .switches {
+      flex-grow: 0;
+      flex-shrink: 0;
+      display: flex;
+
       button {
-        background: #600;
+        display: flex;
+        background: var(--sidebarSwitchBgColor);
         border: none;
-        width: var(--sidebarHeight);
-        height: var(--sidebarHeight);
-        margin-left: 1px;
+        flex-shrink: 0;
+        width: var(--barHeight);
         cursor: pointer;
+        justify-content: center;
+        align-items: center;
 
         svg {
           stroke: white;
@@ -44,42 +114,71 @@ const sidebar = css`
     }
   }
 
+  .mobileBar {
+    position: fixed;
+    width: 100%;
+    background: red;
+    left: 0;
+    height: var(--barHeight);
+    transition: all var(--transitionTime);
+
+    ${mq({
+      bottom: [0, 'calc(var(--barHeight) * -1)'],
+    })};
+
+    &.toggled {
+      transform: translateX(calc(100% - 60px));
+    }
+  }
+
   .appliedFilters {
     padding: 20px;
     background: black;
   }
 
-  nav {
+  .list {
     overflow-y: scroll;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     bottom: 0;
     left: 0;
-    width: var(--sidebarWidth);
-    transition: 0.3s;
-    position: fixed;
-    top: var(--sidebarHeight);
+    width: 100%;
+    transition: var(--transitionTime);
+    position: absolute;
+
+    ${mq({
+      top: [0, 'var(--barHeight)'],
+      bottom: ['var(--barHeight)', 0],
+    })};
 
     & ul {
       list-style: none;
       font-size: 1.1em;
       line-height: 1.3;
-      padding: var(--spaceXL);
     }
 
     & li {
-      margin: var(--spaceS) 0;
-
-      &:first-child {
-        margin-top: 0;
-      }
+      border-bottom: 1px solid var(--sidebarLineColor);
+      position: relative;
 
       & a {
-        padding: 10px 15px;
-        border-radius: 4px;
+        padding: var(--spaceL) calc(var(--spaceXL) + var(--spaceM))
+          var(--spaceL) var(--spaceXL);
 
-        &:hover {
-          background: #700;
-          transform: scale(1.03);
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background: var(--accentColor);
+          width: var(--spaceM);
+          transform: translateX(-100%);
+        }
+
+        &.active {
+          background: var(--sidebarActiveLinkBgColor);
+          transform: translateX(var(--spaceM));
         }
       }
 
@@ -95,6 +194,12 @@ const sidebar = css`
         width: 14px;
         height: 14px;
         margin-right: var(--spaceS);
+      }
+
+      @media (hover: hover) {
+        & a:hover {
+          background: var(--sidebarLinkHoverBgColor);
+        }
       }
     }
   }

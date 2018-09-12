@@ -146,14 +146,14 @@ const blog = css`
         padding: 0 1em;
         white-space: nowrap;
         flex-basis: auto;
-        transition: 0.3s;
+        transition: var(--transitionTime);
 
         &.time {
           svg {
             width: 1em;
             margin-right: 0.3em;
             stroke: var(--brandColor);
-            transition: 0.3s;
+            transition: var(--transitionTime);
           }
         }
 

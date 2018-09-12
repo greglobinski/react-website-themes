@@ -1,14 +1,27 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
 
-const filters = css`
-  background: #600;
-  width: var(--sidebarWidth);
+const breakpoints = [1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
+
+const filterWidget = css`
+  background: var(--sidebarBgColor);
+  width: 100%;
   position: fixed;
-  bottom: calc(100vh - var(--sidebarHeight));
-  height: calc(100vh - var(--sidebarHeight));
+  height: calc(100% - var(--barHeight));
   z-index: 1;
-  transition: 0.25s;
-  transform: translateY(0);
+  transition: var(--transitionTime);
+
+  ${mq({
+    top: [0, 'var(--barHeight)'],
+    transform: ['translateY(100%)', 'translateY(-100%)'],
+  })};
+
+  &.open {
+    ${mq({
+      transform: 'translateY(0)',
+    })};
+  }
 
   & .title {
     padding: 18px 20px 5px 20px;
@@ -57,9 +70,4 @@ const filters = css`
   }
 `;
 
-export default filters;
-
-/*
-  position: absolute;
-  bottom: calc(100% - var(--sidebarHeight) - 2px);
-   */
+export default filterWidget;

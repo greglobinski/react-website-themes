@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { cx } from 'emotion';
 
-import style from '../styles/filters';
+import style from '../styles/filtersWidget';
 
-const Filters = props => {
+const FiltersWidget = props => {
   const {
-    onFilter,
+    onClick,
     items = [],
     group = '',
     themeStyle = style,
@@ -15,11 +15,10 @@ const Filters = props => {
 
   return (
     <div
-      className={cx(themeStyle, customStyle)}
+      className={`${cx(themeStyle, customStyle)} ${items.length ? 'open' : ''}`}
       style={{
-        transform: `translateY(${
-          items.length ? 'calc(100vh - var(--sidebarHeight))' : 0
-        })`,
+        //transform: `translateY(${items.length ? '100%' : 0})`,
+        background: `${group ? `var(--${group}Color)` : ''}`,
       }}
     >
       {group && (
@@ -35,7 +34,7 @@ const Filters = props => {
             return (
               <button
                 key={value}
-                onClick={onFilter}
+                onClick={onClick}
                 data-group={group}
                 data-value={value}
               >
@@ -50,11 +49,13 @@ const Filters = props => {
   );
 };
 
-Filters.propTypes = {
-  onFilter: PropTypes.func.isRequired,
+FiltersWidget.propTypes = {
+  onClick: PropTypes.func.isRequired,
   applied: PropTypes.object.isRequired,
   items: PropTypes.array,
   group: PropTypes.string,
+  themeStyle: PropTypes.string,
+  customStyle: PropTypes.string,
 };
 
-export default Filters;
+export default FiltersWidget;

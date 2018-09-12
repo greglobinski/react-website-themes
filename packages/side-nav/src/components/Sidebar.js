@@ -6,7 +6,8 @@ import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 
 import prefixToDateTimeString from '../utils/prefixToDateTimeString';
-import Filters from './Filters';
+import FiltersWidget from './FiltersWidget';
+import FiltersInfo from './FiltersInfo';
 
 import style from '../styles/sidebar';
 
@@ -22,6 +23,7 @@ class Sidebar extends React.Component {
     activeFilterGroup: null,
     appliedFilters: { category: null, tag: null, month: null },
     searchPhrase: '',
+    toggled: false,
   };
 
   getListOfFrom(parameter, posts) {
@@ -114,6 +116,14 @@ class Sidebar extends React.Component {
     );
   };
 
+  onToggle = e => {
+    this.setState(state => ({ toggled: !state.toggled }));
+  };
+
+  onLink = e => {
+    this.setState({ toggled: false });
+  };
+
   filterPosts = () => {
     const appliedFilters = this.state.appliedFilters;
     const allPosts = this.state.allPosts;
@@ -191,6 +201,7 @@ class Sidebar extends React.Component {
         list: ListIcon,
         search: SearchIcon,
         tag: TagIcon,
+        home: HomeIcon,
       },
     } = this.props;
 
@@ -199,56 +210,79 @@ class Sidebar extends React.Component {
       activeFilterGroup,
       appliedFilters,
       offset,
+      toggled,
     } = this.state;
 
     return (
       <aside className={cx(themeStyle, customStyle)}>
-        <header>
-          <Link to="/" className="branding">
-            <h3>{title}</h3>
-          </Link>
-          <div className="switches">
-            <button data-filter-name="month" onClick={this.onSwitch}>
-              <CalendarIcon />
-            </button>
-            <button data-filter-name="category" onClick={this.onSwitch}>
-              <CategoryIcon />
-            </button>
-            <button data-filter-name="tag" onClick={this.onSwitch}>
-              <TagIcon />
-            </button>
+        <div className={`content ${toggled ? 'toggled' : ''}`}>
+          <div className="filterBar">
+            <Link to="/" className="branding">
+              <h3>{title}</h3>
+              <p>{subTitle}</p>
+            </Link>
+            <div className="tip">
+              <h3>Filters »</h3>
+            </div>
+            <div className="switches">
+              <button data-filter-name="month" onClick={this.onSwitch}>
+                <CalendarIcon />
+              </button>
+              <button data-filter-name="category" onClick={this.onSwitch}>
+                <CategoryIcon />
+              </button>
+              <button data-filter-name="tag" onClick={this.onSwitch}>
+                <TagIcon />
+              </button>
+            </div>
           </div>
-        </header>
 
-        <Filters
-          items={this.state[`${activeFilterGroup}List`]}
-          group={this.state.activeFilterGroup}
-          onFilter={this.onFilter}
-          applied={appliedFilters}
-          offset={this.state.offset}
-        />
+          <FiltersWidget
+            items={this.state[`${activeFilterGroup}List`]}
+            group={this.state.activeFilterGroup}
+            onClick={this.onFilter}
+            applied={appliedFilters}
+            offset={this.state.offset}
+          />
 
-        <nav ref={this.nav}>
-          <div className="appliedFilters">{JSON.stringify(appliedFilters)}</div>
-          <ul>
-            {posts.map(item => {
-              const { title, slug, date } = item;
-              const itemDate = parse(date);
+          <nav className="list" ref={this.nav}>
+            <FiltersInfo
+              appliedFilters={appliedFilters}
+              onClick={this.onFilter}
+            />
+            <ul>
+              {posts.map(item => {
+                const { title, slug, date } = item;
+                const itemDate = parse(date);
 
-              return (
-                <li key={slug}>
-                  <Link to={slug}>
-                    {title}
-                    <small>
-                      <CalendarIcon />
-                      {format(itemDate, 'MMMM D, YYYY')}
-                    </small>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+                return (
+                  <li key={slug}>
+                    <Link
+                      to={slug}
+                      onClick={this.onLink}
+                      activeClassName="active"
+                    >
+                      {title}
+                      <small>
+                        <CalendarIcon />
+                        {format(itemDate, 'MMMM D, YYYY')}
+                      </small>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+
+        <aside className={`mobileBar ${toggled ? 'toggled' : ''}`}>
+          <Link to="/">
+            <HomeIcon />
+          </Link>
+          <button onClick={this.onToggle}>
+            <ListIcon />
+          </button>
+        </aside>
       </aside>
     );
   }

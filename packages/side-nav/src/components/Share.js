@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ShareBlockAside } from 'react-custom-share';
+import { ShareBlockStandard } from 'react-custom-share';
 import { cx } from 'emotion';
 
 import style from '../styles/share';
@@ -10,7 +10,7 @@ const PostShare = props => {
 
   return (
     <div className={cx(themeStyle, customStyle)}>
-      <ShareBlockAside {...shareBlockProps} />
+      <ShareBlockStandard {...shareBlockProps} />
     </div>
   );
 };
