@@ -6,8 +6,9 @@ import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 
 import prefixToDateTimeString from '../utils/prefixToDateTimeString';
-import FiltersWidget from './FiltersWidget';
-import FiltersInfo from './FiltersInfo';
+import FilterWidget from './FilterWidget';
+import FilterInfo from './FilterInfo';
+import FilterSwitcher from './FilterSwitcher';
 
 import style from '../styles/sidebar';
 
@@ -91,10 +92,10 @@ class Sidebar extends React.Component {
 
     if (this.state.activeFilterGroup != filterName) {
       this.setState(state => {
-        return { activeFilterGroup: filterName, offset: '200px' };
+        return { activeFilterGroup: filterName };
       });
     } else {
-      this.setState({ activeFilterGroup: null, offset: 0 });
+      this.setState({ activeFilterGroup: null });
     }
 
     //e.currentTarget.blur();
@@ -202,6 +203,7 @@ class Sidebar extends React.Component {
         search: SearchIcon,
         tag: TagIcon,
         home: HomeIcon,
+        close: CloseIcon,
       },
     } = this.props;
 
@@ -224,20 +226,32 @@ class Sidebar extends React.Component {
             <div className="tip">
               <h3>Filters »</h3>
             </div>
-            <div className="switches">
-              <button data-filter-name="month" onClick={this.onSwitch}>
-                <CalendarIcon />
-              </button>
-              <button data-filter-name="category" onClick={this.onSwitch}>
-                <CategoryIcon />
-              </button>
-              <button data-filter-name="tag" onClick={this.onSwitch}>
-                <TagIcon />
-              </button>
+            <div className="switchers">
+              <FilterSwitcher
+                onClick={this.onSwitch}
+                activeFilterGroup={activeFilterGroup}
+                appliedFilters={appliedFilters}
+                icons={{ group: CalendarIcon, close: CloseIcon }}
+                filterName="month"
+              />
+              <FilterSwitcher
+                onClick={this.onSwitch}
+                activeFilterGroup={activeFilterGroup}
+                appliedFilters={appliedFilters}
+                icons={{ group: CategoryIcon, close: CloseIcon }}
+                filterName="category"
+              />
+              <FilterSwitcher
+                onClick={this.onSwitch}
+                activeFilterGroup={activeFilterGroup}
+                appliedFilters={appliedFilters}
+                icons={{ group: TagIcon, close: CloseIcon }}
+                filterName="tag"
+              />
             </div>
           </div>
 
-          <FiltersWidget
+          <FilterWidget
             items={this.state[`${activeFilterGroup}List`]}
             group={this.state.activeFilterGroup}
             onClick={this.onFilter}
@@ -246,7 +260,7 @@ class Sidebar extends React.Component {
           />
 
           <nav className="list" ref={this.nav}>
-            <FiltersInfo
+            <FilterInfo
               appliedFilters={appliedFilters}
               onClick={this.onFilter}
             />

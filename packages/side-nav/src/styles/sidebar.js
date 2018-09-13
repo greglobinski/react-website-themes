@@ -17,7 +17,7 @@ const sidebar = css`
   .content {
     background: var(--sidebarBgColor);
     color: var(--sidebarTextColor);
-    font-family: var(--secondFontFamily);
+    font-family: var(--firstFontFamily);
     padding-top: var(--barHeight);
     position: fixed;
     left: 0;
@@ -92,25 +92,10 @@ const sidebar = css`
       })};
     }
 
-    .switches {
+    .switchers {
       flex-grow: 0;
       flex-shrink: 0;
       display: flex;
-
-      button {
-        display: flex;
-        background: var(--sidebarSwitchBgColor);
-        border: none;
-        flex-shrink: 0;
-        width: var(--barHeight);
-        cursor: pointer;
-        justify-content: center;
-        align-items: center;
-
-        svg {
-          stroke: white;
-        }
-      }
     }
   }
 
@@ -158,11 +143,12 @@ const sidebar = css`
     }
 
     & li {
+      background: var(--sidebarBgColor);
       border-bottom: 1px solid var(--sidebarLineColor);
       position: relative;
 
       & a {
-        padding: var(--spaceL) calc(var(--spaceXL) + var(--spaceM))
+        padding: var(--spaceL) calc(var(--spaceXL) + var(--spaceS))
           var(--spaceL) var(--spaceXL);
 
         &:before {
@@ -197,8 +183,9 @@ const sidebar = css`
       }
 
       @media (hover: hover) {
-        & a:hover {
+        & a:not(.active):hover {
           background: var(--sidebarLinkHoverBgColor);
+          transform: translateX(var(--spaceXS));
         }
       }
     }

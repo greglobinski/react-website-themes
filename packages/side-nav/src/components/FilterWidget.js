@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { cx } from 'emotion';
 
-import style from '../styles/filtersWidget';
+import style from '../styles/filterWidget';
 
-const FiltersWidget = props => {
+const FilterWidget = props => {
   const {
     onClick,
     items = [],
@@ -49,7 +49,7 @@ const FiltersWidget = props => {
   );
 };
 
-FiltersWidget.propTypes = {
+FilterWidget.propTypes = {
   onClick: PropTypes.func.isRequired,
   applied: PropTypes.object.isRequired,
   items: PropTypes.array,
@@ -58,4 +58,4 @@ FiltersWidget.propTypes = {
   customStyle: PropTypes.string,
 };
 
-export default FiltersWidget;
+export default FilterWidget;

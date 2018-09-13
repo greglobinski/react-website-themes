@@ -71,7 +71,7 @@ const blog = css`
           font-weight: 700;
           padding: 3px 8px;
           text-transform: uppercase;
-          font-family: var(--secondFontFamily);
+          font-family: var(--firstFontFamily);
           font-size: 0.7em;
           border-radius: 3px;
           font-style: normal;
@@ -111,7 +111,7 @@ const blog = css`
         font-weight: 500;
         font-style: normal;
         font-size: 0.8em;
-        font-family: var(--secondFontFamily);
+        font-family: var(--firstFontFamily);
       }
     }
 
@@ -126,7 +126,7 @@ const blog = css`
     p {
       line-height: 1.6;
       color: var(--lightTextColor);
-      font-family: var(--secondFontFamily);
+      font-family: var(--firstFontFamily);
     }
 
     a {
@@ -135,7 +135,7 @@ const blog = css`
       border: 1px solid var(--brandColor);
       margin: 2em 0 0.2em;
       display: inline-flex;
-      font-family: var(--secondFontFamily);
+      font-family: var(--firstFontFamily);
       border-radius: var(--radius);
       overflow: hidden;
 
@@ -215,7 +215,7 @@ const blog = css`
       font-size: 0.6em;
       font-style: normal;
       margin: 0.5em 0;
-      font-family: var(--secondFontFamily);
+      font-family: var(--firstFontFamily);
     }
 
     & p:before,

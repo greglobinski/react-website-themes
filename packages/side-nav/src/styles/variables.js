@@ -7,8 +7,8 @@ const variables = injectGlobal`
 
     /* base colors */
     --darkColor: #333;
-    --brightColor: #fff;
-    --accentColor: orange;
+    --brightColor: #FFF;
+    --accentColor: #FFA500;
     --colorA: #605B71;
     --colorB: #524D60;
     --colorC: #464252;
@@ -17,6 +17,8 @@ const variables = injectGlobal`
     --tagColor: #815A9A;
 
     /* elements' colors */
+    --bodyBgColor: var(--brightColor);
+
     --sidebarBgColor: var(--colorA);
     --sidebarLineColor: var(--colorB);
     --sidebarTextColor: var(--brightColor);
@@ -25,12 +27,17 @@ const variables = injectGlobal`
     --sidebarBarBgColor: var(--colorB);
     --sidebarSwitchBgColor: var(--colorC);
 
+    --headingColor: --colorB;
+
     /* space */
     --spaceXS: 2px;
     --spaceS: 4px;
     --spaceM: 8px;
     --spaceL: 14px;
     --spaceXL: 20px;
+    --spaceXXL: 30px;
+
+    --textMaxWidth: 640px;
 
     --barHeight: 60px;
     --desktopSidebarWidth: 40%;

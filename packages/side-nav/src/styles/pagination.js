@@ -2,7 +2,7 @@ import { css } from 'emotion';
 
 const pagination = css`
   padding: 40px 0;
-  font-family: var(--secondFontFamily);
+  font-family: var(--firstFontFamily);
   display: flex;
   justify-content: center;
 

@@ -73,7 +73,7 @@ const nextPrev = css`
   & time {
     display: block;
     font-size: 0.65em;
-    font-family: var(--secondFontFamily);
+    font-family: var(--firstFontFamily);
     color: var(--lightTextColor);
     margin-top: 6px;
   }

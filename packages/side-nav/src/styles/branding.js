@@ -35,7 +35,7 @@ const branding = css`
 
   p {
     font-size: 1em;
-    font-family: var(--secondFontFamily);
+    font-family: var(--firstFontFamily);
     letter-spacing: -0.01em;
   }
 

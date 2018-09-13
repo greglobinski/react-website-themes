@@ -3,22 +3,43 @@ import { css } from 'emotion';
 const bodytext = css`
   margin-bottom: 50px;
   min-height: 40vh;
-  font-family: var(--secondFontFamily);
+  font-family: var(--firstFontFamily);
 
-  & .gatsby-resp-image-wrapper {
-    margin: 2em 0;
+  p,
+  ul,
+  h1,
+  h2,
+  h3 {
+    max-width: var(--textMaxWidth);
+    margin: var(--spaceXL) auto;
+    padding: 0 var(--spaceXL);
+  }
+
+  & figure {
+    margin: calc(var(--spaceXL) * 2) auto;
+    max-width: 1023px;
+    position: relative;
+  }
+
+  & figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 14px;
+    max-width: 100%;
+    color: white;
+  }
+
+  & pre[class*='language-'] {
+    margin: calc(var(--spaceXL) * 2) auto;
+    max-width: 1023px;
+    border-radius: 0;
   }
 
   p {
     line-height: 1.7;
-    margin: 0 0 1.5em;
     font-size: 1.1em;
-  }
-
-  .gatsby-resp-image-wrapper {
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
   }
 
   ul {
@@ -36,20 +57,17 @@ const bodytext = css`
   h2,
   h3 {
     line-height: 1.2;
-    margin: 1.6em 0 0.9em;
-    font-family: var(--firstFontFamily);
+    margin: 1.6em auto 0.9em;
+    letter-spacing: -0.02em;
   }
 
   h2 {
     font-size: 2em;
+    letter-spacing: -0.03em;
   }
 
   h3 {
     font-size: 1.6em;
-  }
-
-  pre {
-    margin: 0 0 1.5em;
   }
 
   blockquote {
@@ -67,7 +85,7 @@ const bodytext = css`
       font-size: 0.6em;
       font-style: normal;
       margin: 0.5em 0;
-      font-family: var(--secondFontFamily);
+      font-family: var(--firstFontFamily);
     }
 
     p {

@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { cx } from 'emotion';
 
-import style from '../styles/filtersInfo';
-import { map } from '../../../../node_modules/rxjs/operators';
+import style from '../styles/filterInfo';
 
-const FiltersInfo = props => {
+const FilterInfo = props => {
   const {
     appliedFilters,
     onClick,
@@ -16,8 +15,6 @@ const FiltersInfo = props => {
   const filters = Object.keys(appliedFilters)
     .map(key => ({ group: key, value: appliedFilters[key] }))
     .filter(item => item.value !== null);
-
-  console.log(filters);
 
   return filters.length ? (
     <div className={cx(themeStyle, customStyle)}>
@@ -43,11 +40,11 @@ const FiltersInfo = props => {
   ) : null;
 };
 
-FiltersInfo.propTypes = {
+FilterInfo.propTypes = {
   appliedFilters: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
 };
 
-export default FiltersInfo;
+export default FilterInfo;

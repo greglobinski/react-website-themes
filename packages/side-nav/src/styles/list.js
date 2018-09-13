@@ -15,7 +15,7 @@ const list = css`
   }
 
   time {
-    font-family: var(--secondFontFamily);
+    font-family: var(--firstFontFamily);
     font-size: 0.6em;
     color: var(--brandColor);
     display: flex;

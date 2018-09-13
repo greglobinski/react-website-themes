@@ -11,10 +11,10 @@ const Meta = props => {
   const {
     prefix,
     categories,
+    tags,
     themeStyle = style,
     customStyle = '',
-    categoryLink = true,
-    icons: { calendar: CalendarIcon, tag: TagIcon },
+    icons: { calendar: CalendarIcon, tag: TagIcon, folder: FolderIcon },
   } = props;
 
   const dateTimeString = prefixToDateTimeString(prefix);
@@ -23,22 +23,23 @@ const Meta = props => {
     <p className={cx(themeStyle, customStyle)}>
       <span>
         {CalendarIcon && <CalendarIcon />}{' '}
-        {`${dayjs(dateTimeString).format('dddd')} at ${dayjs(
+        {`${dayjs(dateTimeString).format('dddd')}, ${dayjs(
           dateTimeString
-        ).format('h:mm a')}, ${dayjs(dateTimeString).format('MMMM D, YYYY')}`}
+        ).format('MMMM D, YYYY')}`}
       </span>
       {categories && (
         <span>
+          {FolderIcon && <FolderIcon />}
+          {categories.map((category, idx) => {
+            return `${idx ? ', ' : ''}${category}`;
+          })}
+        </span>
+      )}
+      {tags && (
+        <span>
           {TagIcon && <TagIcon />}
-          {categories.map(category => {
-            const link = (
-              <Link key={category} to={`/categories/${category}`}>
-                {category}
-              </Link>
-            );
-            const txt = <span key={category}>{category}</span>;
-
-            return categoryLink ? link : txt;
+          {tags.map((tag, idx) => {
+            return `${idx ? ', ' : ''}${tag}`;
           })}
         </span>
       )}
@@ -52,7 +53,6 @@ Meta.propTypes = {
   prefix: PropTypes.string,
   categories: PropTypes.array,
   author: PropTypes.string,
-  categoryLink: PropTypes.bool,
   icons: PropTypes.object,
 };
 

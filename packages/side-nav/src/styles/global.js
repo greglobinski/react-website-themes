@@ -8,6 +8,10 @@ const global = injectGlobal`
     color: #666;
   }
 
+  body {
+    background: var(--bodyBgColor);
+  }
+
   *,
   *:after,
   *:before {

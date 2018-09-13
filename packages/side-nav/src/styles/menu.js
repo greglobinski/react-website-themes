@@ -12,7 +12,7 @@ const menu = css`
   display: flex;
   z-index: 1;
 
-  font-family: var(--secondFontFamily);
+  font-family: var(--firstFontFamily);
   margin: 10px;
 
   ${mq({

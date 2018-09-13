@@ -6,7 +6,7 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const footer = css`
   background: var(--footerBgColor);
-  font-family: var(--secondFontFamily);
+  font-family: var(--firstFontFamily);
   display: flex;
   flex-direction: column;
   font-size: 0.9em;

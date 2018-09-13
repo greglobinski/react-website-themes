@@ -17,7 +17,6 @@ const Menu = props => {
   } = props;
 
   function scrollTop(e) {
-    console.log(e.currentTarget);
     window.scroll({
       top: 0,
       left: 0,

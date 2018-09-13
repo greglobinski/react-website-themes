@@ -5,36 +5,25 @@ const breakpoints = [1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const meta = css`
-  margin: 0.5em 0 2em;
+  max-width: var(--textMaxWidth);
+  margin: 0 auto var(--spaceXXL);
   font-size: 0.9em;
-  color: var(--brandColor);
+  color: var(--headingColor);
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  font-family: var(--secondFontFamily);
-
-  ${mq({
-    flexDirection: ['column', 'row'],
-  })};
-
-  [class$='-blog'] & {
-    margin-bottom: 1em;
-  }
+  font-family: var(--firstFontFamily);
+  align-items: flex-start;
+  padding: 0 var(--spaceXL);
 
   & span {
-    padding: 2px 0;
+    padding: var(--spaceXS) 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    line-height: 1;
-
-    ${mq({
-      marginBottom: ['6px', '0'],
-    })};
+    margin-bottom: var(--spaceS);
   }
 
   & svg {
-    margin: 0 5px 0 0;
+    margin: 0 var(--spaceS) 0 0;
     width: 16px;
     height: 16px;
     stroke: var(--accentColor);
