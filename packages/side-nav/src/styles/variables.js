@@ -12,24 +12,37 @@ const variables = injectGlobal`
     --colorA: #605B71;
     --colorB: #524D60;
     --colorC: #464252;
+    --colorD: #EEEEEE;
+    --colorE: #DDDDDD;
+    --colorF: #CCCCCC;
+    --colorG: #847d9c;
     --monthColor: #5F8C40;
     --categoryColor: #3E8A8E;
     --tagColor: #815A9A;
 
     /* elements' colors */
     --bodyBgColor: var(--brightColor);
+    --linkColor:  var(--colorG);
+    --hoverLinkColor:  var(--accentColor);
+    --textColor: #555;
+    --lightTextColor: #888;
+    --superLightTextColor: #aaa;
 
     --sidebarBgColor: var(--colorA);
-    --sidebarLineColor: var(--colorB);
+    --sidebarLineColor: var(--colorG);
     --sidebarTextColor: var(--brightColor);
     --sidebarActiveLinkBgColor: var(--colorC);
     --sidebarLinkHoverBgColor: var(--colorB);
     --sidebarBarBgColor: var(--colorB);
     --sidebarSwitchBgColor: var(--colorC);
 
-    --headingColor: --colorB;
+    --headingColor: var(--colorA);
+    --quoteColor: var(--colorA);
+    --nextPrevBgColor: var(--colorD);
+    --commentsBgColor: var(--colorE);
+    --footerBgColor: var(--colorF);
 
-    /* space */
+    /* spaces */
     --spaceXS: 2px;
     --spaceS: 4px;
     --spaceM: 8px;
@@ -43,29 +56,16 @@ const variables = injectGlobal`
     --desktopSidebarWidth: 40%;
     --mobileSidebarWidth: calc(100% - var(--barHeight));
 
-    --transitionTime: .5s;
 
+
+    /* fonts */
     --firstFontFamily: "Open Sans", sans-serif;
-    --secondFontFamily: "Open Sans", sans-serif;
+    --secondFontFamily: "PT Serif", serif;
 
-
-    --brandColor: #639300;
-    --accentColor: #F06000;
-
-    --textColor: #555;
-    --lightTextColor: #888;
-    --superLightTextColor: #aaa;
-
-    --footerBgColor: #f9f9f9;
-
-    --lineColor: #ddd;
-
-
-
+    /* other */
+    --transitionTime: .5s;
     --radius: 2px;
 
-    --linkColor:  var(--brandColor);
-    --hoverLinkColor:  #9ED200;
 
     --scrollBarThumb: rgba(0,0,0, .2);
     --scrollBarTrack: rgba(0,0,0, .1);

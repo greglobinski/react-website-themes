@@ -13,7 +13,10 @@ const meta = css`
   flex-direction: column;
   font-family: var(--firstFontFamily);
   align-items: flex-start;
-  padding: 0 var(--spaceXL);
+
+  ${mq({
+    padding: ['0 var(--spaceXL)', '0 var(--spaceXXL)'],
+  })};
 
   & span {
     padding: var(--spaceXS) 0;

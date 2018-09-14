@@ -5,7 +5,6 @@ import { Link } from 'gatsby';
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 
-import prefixToDateTimeString from '../utils/prefixToDateTimeString';
 import FilterWidget from './FilterWidget';
 import FilterInfo from './FilterInfo';
 import FilterSwitcher from './FilterSwitcher';
@@ -97,8 +96,6 @@ class Sidebar extends React.Component {
     } else {
       this.setState({ activeFilterGroup: null });
     }
-
-    //e.currentTarget.blur();
   };
 
   onFilter = e => {
@@ -123,6 +120,16 @@ class Sidebar extends React.Component {
 
   onLink = e => {
     this.setState({ toggled: false });
+  };
+
+  onToTop = e => {
+    if (
+      document.body.scrollTop !== 0 ||
+      document.documentElement.scrollTop !== 0
+    ) {
+      window.scrollBy(0, -150);
+      requestAnimationFrame(this.onToTop);
+    }
   };
 
   filterPosts = () => {
@@ -195,15 +202,14 @@ class Sidebar extends React.Component {
       customStyle = '',
       title,
       subTitle = '',
-      siteUrl,
       icons: {
         calendar: CalendarIcon,
         category: CategoryIcon,
         list: ListIcon,
-        search: SearchIcon,
         tag: TagIcon,
         home: HomeIcon,
         close: CloseIcon,
+        arrow: ArrowIcon,
       },
     } = this.props;
 
@@ -211,7 +217,6 @@ class Sidebar extends React.Component {
       listedPosts: posts,
       activeFilterGroup,
       appliedFilters,
-      offset,
       toggled,
     } = this.state;
 
@@ -290,11 +295,15 @@ class Sidebar extends React.Component {
         </div>
 
         <aside className={`mobileBar ${toggled ? 'toggled' : ''}`}>
-          <Link to="/">
-            <HomeIcon />
+          <button onClick={this.onToggle} className="toggle">
+            {toggled ? <ArrowIcon /> : <ListIcon />}
+          </button>
+          <Link to="/" className="branding">
+            <h3>{title}</h3>
+            <p>{subTitle}</p>
           </Link>
-          <button onClick={this.onToggle}>
-            <ListIcon />
+          <button onClick={this.onToTop} className="toTop">
+            <ArrowIcon />
           </button>
         </aside>
       </aside>

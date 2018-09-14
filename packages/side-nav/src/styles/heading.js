@@ -11,10 +11,10 @@ const heading = css`
     margin: 0 auto var(--spaceXXL);
     line-height: 1.1;
     color: var(--headingColor);
-    padding: 0 var(--spaceXL);
 
     ${mq({
       fontSize: ['2em', '2.3em', '2.6em'],
+      padding: ['0 var(--spaceXL)', '0 var(--spaceXXL)'],
     })};
   }
 `;

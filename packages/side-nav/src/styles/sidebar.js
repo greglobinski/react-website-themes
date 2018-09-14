@@ -22,8 +22,9 @@ const sidebar = css`
     position: fixed;
     left: 0;
     top: 0;
-    transition: transform 0.5s;
+    transition: transform var(--transitionTime);
     bottom: 0;
+    z-index: 1;
 
     ${mq({
       transform: ['translateX(-100%)', 'translateX(0)'],
@@ -32,6 +33,29 @@ const sidebar = css`
 
     &.toggled {
       transform: translateX(0);
+    }
+  }
+
+  .branding {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 0 0 20px;
+    justify-content: center;
+
+    h3 {
+      font-size: 1.1em;
+      line-height: 1;
+      margin-top: -1px;
+    }
+
+    p {
+      font-size: 0.8em;
+      font-weight: 300;
+      line-height: 1;
+      opacity: 0.8;
+      margin-top: 3px;
+      color: var(--sidebarTextColor);
     }
   }
 
@@ -51,29 +75,9 @@ const sidebar = css`
     })};
 
     .branding {
-      flex-direction: column;
-      flex-grow: 1;
-      padding: 0 0 0 20px;
-      justify-content: center;
-
       ${mq({
         display: ['none', 'flex'],
       })};
-
-      h3 {
-        font-size: 1.1em;
-        line-height: 1;
-        margin-top: -1px;
-      }
-
-      p {
-        font-size: 0.8em;
-        font-weight: 300;
-        line-height: 1;
-        opacity: 0.8;
-        margin-top: 3px;
-        color: var(--sidebarTextColor);
-      }
     }
 
     .tip {
@@ -101,11 +105,46 @@ const sidebar = css`
 
   .mobileBar {
     position: fixed;
+    display: flex;
     width: 100%;
-    background: red;
-    left: 0;
+    background: var(--sidebarBgColor);
+    left: -0;
     height: var(--barHeight);
     transition: all var(--transitionTime);
+
+    button {
+      width: var(--barHeight);
+      height: var(--barHeight);
+      background: var(--sidebarBarBgColor);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      flex-grow: 0;
+      flex-shrink: 0;
+
+      &.toTop {
+        position: relative;
+
+        ${mq({
+          width: ['var(--barHeight)', '40px'],
+          height: ['var(--barHeight)', '40px'],
+          transform: [
+            '',
+            'translate(calc(var(--spaceL) * -1), calc(-100% - var(--spaceL)))',
+          ],
+        })};
+
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+
+      svg {
+        stroke: var(--brightColor);
+      }
+    }
 
     ${mq({
       bottom: [0, 'calc(var(--barHeight) * -1)'],
@@ -116,12 +155,8 @@ const sidebar = css`
     }
   }
 
-  .appliedFilters {
-    padding: 20px;
-    background: black;
-  }
-
   .list {
+    background: var(--sidebarBgColor);
     overflow-y: scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -144,7 +179,7 @@ const sidebar = css`
 
     & li {
       background: var(--sidebarBgColor);
-      border-bottom: 1px solid var(--sidebarLineColor);
+      border-bottom: 1px dashed var(--sidebarLineColor);
       position: relative;
 
       & a {

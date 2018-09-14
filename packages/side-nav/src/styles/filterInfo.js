@@ -2,7 +2,7 @@ import { css } from 'emotion';
 
 const filtersInfo = css`
   & p {
-    color: white;
+    color: var(--brightColor);
   }
 
   & li {

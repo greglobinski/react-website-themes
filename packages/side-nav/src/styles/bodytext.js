@@ -1,27 +1,39 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
+
+const breakpoints = [1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const bodytext = css`
   margin-bottom: 50px;
   min-height: 40vh;
-  font-family: var(--firstFontFamily);
 
   p,
   ul,
+  ol,
   h1,
   h2,
-  h3 {
+  h3,
+  blockquote {
     max-width: var(--textMaxWidth);
     margin: var(--spaceXL) auto;
-    padding: 0 var(--spaceXL);
+
+    ${mq({
+      padding: ['0 var(--spaceXL)', '0 var(--spaceXXL)'],
+    })};
   }
 
-  & figure {
+  a {
+    font-weight: 700;
+  }
+
+  figure {
     margin: calc(var(--spaceXL) * 2) auto;
     max-width: 1023px;
     position: relative;
   }
 
-  & figcaption {
+  figcaption {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -35,6 +47,10 @@ const bodytext = css`
     margin: calc(var(--spaceXL) * 2) auto;
     max-width: 1023px;
     border-radius: 0;
+
+    ${mq({
+      padding: ['var(--spaceXL)', 'var(--spaceXL) var(--spaceXXL)'],
+    })};
   }
 
   p {
@@ -42,16 +58,16 @@ const bodytext = css`
     font-size: 1.1em;
   }
 
-  ul {
-    margin: 0 0 1.5em;
-    list-style-position: inside;
+  ul,
+  ol {
+    margin: var(--spaceXXL) auto;
+    list-style-position: outside;
   }
 
   li {
-    margin: 0.8em 0;
+    margin: 0.8em 0 0.8em 1.1em;
     font-size: 1.1em;
     line-height: 1.3;
-    padding-left: 5px;
   }
 
   h2,
@@ -71,46 +87,39 @@ const bodytext = css`
   }
 
   blockquote {
-    font-family: var(--firstFontFamily);
+    font-family: var(--secondFontFamily);
+    margin: calc(var(--spaceXL) * 2) auto;
     font-size: 1.1em;
     font-style: italic;
-    text-align: left;
     position: relative;
-    margin: 50px 30px;
-    color: var(--brandColor);
-
-    small {
-      text-align: right;
-      display: block;
-      font-size: 0.6em;
-      font-style: normal;
-      margin: 0.5em 0;
-      font-family: var(--firstFontFamily);
-    }
-
+    color: var(--quoteColor);
     p {
-      color: var(--brandColor);
       line-height: 1.6;
-    }
+      padding: 0 var(--spaceXL) var(--spaceXL);
 
-    &:before,
-    &:after {
-      content: open-quote;
-      color: #ddd;
-      padding-right: 0.1em;
-      position: absolute;
-      top: -25px;
-      left: -50px;
-      transform: translateY(0.1em);
-      font-size: 4em;
-    }
+      &:first-child {
+        text-indent: 1em;
 
-    &:after {
-      content: close-quote;
-      top: auto;
-      bottom: -45px;
-      left: auto;
-      right: -45px;
+        &:before {
+          content: open-quote;
+          color: var(--quoteColor);
+          position: absolute;
+          font-size: 3em;
+          transform: translate(-1em, -0.3em);
+        }
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+
+        &:after {
+          content: close-quote;
+          color: var(--blockquoteSignColor);
+          position: absolute;
+          font-size: 3em;
+          transform: translate(-0.3em, -0.2em);
+        }
+      }
     }
   }
 `;

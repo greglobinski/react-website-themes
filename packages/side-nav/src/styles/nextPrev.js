@@ -1,43 +1,24 @@
 import { css } from 'emotion';
+import facepaint from 'facepaint';
 
-const circle = `
-  background: white;
-  border: 1px solid var(--lineColor);
-  border-radius: 50%;
-  content: '';
-  height: 14px;
-  left: 50%;
-  position: absolute;
-  width: 14px;
-`;
+const breakpoints = [1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const nextPrev = css`
+  background: var(--nextPrevBgColor);
   display: flex;
-  justify-content: space-between;
-  border-top: 1px solid var(--lineColor);
-  border-bottom: 1px solid var(--lineColor);
-  padding: 60px 0;
   flex-direction: column;
   font-size: 1.3em;
   line-height: 1.2;
   position: relative;
 
-  &:before {
-    ${circle};
-    top: 0;
-    transform: translate(-50%, -50%);
-  }
-
-  &:after {
-    ${circle};
-    bottom: 0;
-    transform: translate(-50%, 50%);
-  }
+  ${mq({
+    flexDirection: ['column', 'row'],
+  })};
 
   & svg {
     width: 30px;
     height: 30px;
-    margin: 0 10px;
     flex-shrink: 0;
   }
 
@@ -48,6 +29,10 @@ const nextPrev = css`
   & .next,
   & .prev {
     display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+    padding: 20px;
 
     & > svg {
       flex-grow: 0;
@@ -55,18 +40,25 @@ const nextPrev = css`
   }
 
   & .prev {
-    & > p {
-      padding: 0 50px 0 0;
+    border-right: ;
+
+    ${mq({
+      borderRight: [0, '1px dashed var(--brightColor)'],
+      borderBottom: ['1px dashed var(--brightColor)', 0],
+    })};
+
+    & > svg {
+      margin-right: 10px;
     }
   }
 
   & .next {
+    margin-right: 1px;
     flex-direction: row-reverse;
     text-align: right;
-    margin-top: 20px;
 
-    & > p {
-      padding: 0 0 0 50px;
+    & > svg {
+      margin-left: 10px;
     }
   }
 

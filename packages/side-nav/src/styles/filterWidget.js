@@ -26,7 +26,7 @@ const filterWidget = css`
   & .title {
     padding: 18px 20px 5px 20px;
     font-weight: 300;
-    font-size: 1em;
+    font-size: 1.4em;
   }
 
   & .items {

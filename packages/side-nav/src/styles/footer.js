@@ -5,14 +5,15 @@ const breakpoints = [1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const footer = css`
+  border-top: 1px dashed var(--brightColor);
   background: var(--footerBgColor);
-  font-family: var(--firstFontFamily);
   display: flex;
   flex-direction: column;
   font-size: 0.9em;
+  padding: calc(var(--spaceXL) * 2);
 
   ${mq({
-    padding: ['40px 40px 90px', '40px 40px'],
+    paddingBottom: ['calc(var(--spaceXL) * 5)', 'calc(var(--spaceXL) * 2)'],
   })};
 
   .links ul {
@@ -32,7 +33,7 @@ const footer = css`
 
   .links li {
     text-align: center;
-    margin: 2px 10px;
+    margin: var(--spaceXS) var(--spaceM);
     position: relative;
   }
 
@@ -40,13 +41,13 @@ const footer = css`
     font-size: 0.9em;
     color: var(--lightTextColor);
     text-align: center;
-    margin: 10px 0 30px;
+    margin: var(--spaceM) 0;
   }
 
   .credits {
     font-size: 0.8em;
-    color: var(--superLightTextColor);
-    margin: 20px 0 0;
+    color: var(--lightTextColor);
+    margin: var(--spaceXL) 0 0;
     text-align: center;
 
     & a {
