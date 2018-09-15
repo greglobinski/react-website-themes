@@ -8,7 +8,7 @@ const nextPrev = css`
   background: var(--nextPrevBgColor);
   display: flex;
   flex-direction: column;
-  font-size: 1.3em;
+  font-size: 1.2em;
   line-height: 1.2;
   position: relative;
 

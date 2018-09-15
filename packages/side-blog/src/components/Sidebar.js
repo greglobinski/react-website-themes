@@ -140,7 +140,6 @@ class Sidebar extends React.Component {
 
     const filteredPosts = allPosts.filter(post => {
       const {
-        title,
         tags: postTags,
         categories: postCategories,
         date: postDate,
@@ -210,6 +209,7 @@ class Sidebar extends React.Component {
         home: HomeIcon,
         close: CloseIcon,
         arrow: ArrowIcon,
+        check: CheckIcon,
       },
     } = this.props;
 
@@ -260,8 +260,9 @@ class Sidebar extends React.Component {
             items={this.state[`${activeFilterGroup}List`]}
             group={this.state.activeFilterGroup}
             onClick={this.onFilter}
-            applied={appliedFilters}
+            appliedFilters={appliedFilters}
             offset={this.state.offset}
+            icons={{ check: CheckIcon }}
           />
 
           <nav className="list" ref={this.nav}>

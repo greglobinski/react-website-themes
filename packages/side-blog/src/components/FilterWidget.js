@@ -8,16 +8,17 @@ const FilterWidget = props => {
   const {
     onClick,
     items = [],
+    appliedFilters,
     group = '',
     themeStyle = style,
     customStyle = '',
+    icons: { check: CheckIcon },
   } = props;
 
   return (
     <div
       className={`${cx(themeStyle, customStyle)} ${items.length ? 'open' : ''}`}
       style={{
-        //transform: `translateY(${items.length ? '100%' : 0})`,
         background: `${group ? `var(--${group}Color)` : ''}`,
       }}
     >
@@ -30,16 +31,21 @@ const FilterWidget = props => {
         <div className="items">
           {items.map(item => {
             const { value, label, postsNumber } = item;
-
+            const isApplied = appliedFilters[group] === value;
             return (
               <button
                 key={value}
                 onClick={onClick}
                 data-group={group}
                 data-value={value}
+                className={`item ${isApplied ? 'applied' : ''}`}
               >
-                <span className="label">{label}</span>
-                <span className="posts">{postsNumber}</span>
+                <span className="wrapper">
+                  <span className="label">{label}</span>
+                  <span className="posts">
+                    {isApplied ? <CheckIcon /> : postsNumber}
+                  </span>
+                </span>
               </button>
             );
           })}
@@ -51,7 +57,8 @@ const FilterWidget = props => {
 
 FilterWidget.propTypes = {
   onClick: PropTypes.func.isRequired,
-  applied: PropTypes.object.isRequired,
+  appliedFilters: PropTypes.object.isRequired,
+  icons: PropTypes.object.isRequired,
   items: PropTypes.array,
   group: PropTypes.string,
   themeStyle: PropTypes.string,
@@ -59,3 +66,5 @@ FilterWidget.propTypes = {
 };
 
 export default FilterWidget;
+
+/* <span className="posts">{isApplied ? <CheckIcon /> : postsNumber}</span> */

@@ -5,6 +5,8 @@ import { cx } from 'emotion';
 import style from '../styles/filterInfo';
 
 const FilterInfo = props => {
+  function isApplied(item) {}
+
   const {
     appliedFilters,
     onClick,
@@ -21,7 +23,7 @@ const FilterInfo = props => {
       <p>There are filters applied to the list:</p>
       <ul>
         {filters.map(item => (
-          <li>
+          <li key={item.value}>
             <div>
               <span>{item.group} » </span>
               <em>{item.value}</em>

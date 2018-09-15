@@ -37,7 +37,7 @@ const variables = injectGlobal`
     --sidebarSwitchBgColor: var(--colorC);
 
     --headingColor: var(--colorA);
-    --quoteColor: var(--colorA);
+    --quoteColor: var(--cpadding: 0 12px;olorA);
     --nextPrevBgColor: var(--colorD);
     --commentsBgColor: var(--colorE);
     --footerBgColor: var(--colorF);
