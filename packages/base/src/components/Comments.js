@@ -4,7 +4,6 @@ import FacebookProvider, { Comments as FBComments } from 'react-facebook';
 import { cx } from 'emotion';
 
 const Comments = props => {
-  console.log('base', props);
   const {
     slug,
     siteUrl,
