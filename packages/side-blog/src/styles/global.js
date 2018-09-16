@@ -61,6 +61,10 @@ const global = injectGlobal`
     }
   }
 
+  button {
+    font-family: var(--firstFontFamily);
+  }
+
 `;
 
 export default global;

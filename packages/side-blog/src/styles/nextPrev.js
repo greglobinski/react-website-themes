@@ -40,8 +40,6 @@ const nextPrev = css`
   }
 
   & .prev {
-    border-right: ;
-
     ${mq({
       borderRight: [0, '1px dashed var(--brightColor)'],
       borderBottom: ['1px dashed var(--brightColor)', 0],

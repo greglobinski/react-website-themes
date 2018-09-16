@@ -111,7 +111,6 @@ const sidebar = css`
     z-index: 10;
 
     ${mq({
-      //bottom: [0, 'calc(var(--barHeight) * -1 + 10px)'],
       display: ['flex', 'none'],
     })};
 

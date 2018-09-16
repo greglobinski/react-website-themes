@@ -131,16 +131,6 @@ class Sidebar extends React.Component {
     this.props.fixMainContent(this.state.toggled);
   };
 
-  onToTop = e => {
-    if (
-      document.body.scrollTop !== 0 ||
-      document.documentElement.scrollTop !== 0
-    ) {
-      window.scrollBy(0, -150);
-      requestAnimationFrame(this.onToTop);
-    }
-  };
-
   filterPosts = () => {
     const appliedFilters = this.state.appliedFilters;
     const allPosts = this.state.allPosts;
@@ -318,9 +308,6 @@ class Sidebar extends React.Component {
             <h3>{title}</h3>
             <p>{subTitle}</p>
           </Link>
-          <button onClick={this.onToTop} className="toTop">
-            <ArrowIcon />
-          </button>
         </aside>
       </aside>
     );
