@@ -23,7 +23,9 @@ const sidebar = css`
     left: 0;
     top: 0;
     transition: transform var(--transitionTime);
+    transition-delay: 100ms;
     bottom: 0;
+    padding: 5px;
     z-index: 1;
 
     ${mq({
@@ -63,7 +65,7 @@ const sidebar = css`
     background: var(--sidebarBarBgColor);
     display: flex;
     left: 0;
-    width: 100%;
+
     height: var(--barHeight);
     z-index: 2;
     position: absolute;
@@ -72,6 +74,7 @@ const sidebar = css`
       position: ['fixed', 'absolute'],
       top: ['auto', 0],
       bottom: [0, 'auto'],
+      right: ['60px', 0],
     })};
 
     .branding {
@@ -86,18 +89,12 @@ const sidebar = css`
       justify-content: center;
       align-items: center;
 
-      h3 {
-        font-size: 1.2em;
-        font-weight: 300;
-      }
-
       ${mq({
         display: ['flex', 'none'],
       })};
     }
 
     .switchers {
-      flex-grow: 0;
       flex-shrink: 0;
       display: flex;
     }
@@ -105,12 +102,18 @@ const sidebar = css`
 
   .mobileBar {
     position: fixed;
-    display: flex;
+    bottom: 0;
     width: 100%;
     background: var(--sidebarBgColor);
-    left: -0;
+    left: 0;
     height: var(--barHeight);
     transition: all var(--transitionTime);
+    z-index: 10;
+
+    ${mq({
+      //bottom: [0, 'calc(var(--barHeight) * -1 + 10px)'],
+      display: ['flex', 'none'],
+    })};
 
     button {
       width: var(--barHeight);
@@ -145,10 +148,6 @@ const sidebar = css`
         stroke: var(--brightColor);
       }
     }
-
-    ${mq({
-      bottom: [0, 'calc(var(--barHeight) * -1)'],
-    })};
 
     &.toggled {
       transform: translateX(calc(100% - 60px));

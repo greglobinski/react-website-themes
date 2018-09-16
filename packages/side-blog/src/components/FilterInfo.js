@@ -12,6 +12,8 @@ const FilterInfo = props => {
     onClick,
     themeStyle = style,
     customStyle = '',
+    icons,
+    icons: { close: CloseIcon },
   } = props;
 
   const filters = Object.keys(appliedFilters)
@@ -20,24 +22,37 @@ const FilterInfo = props => {
 
   return filters.length ? (
     <div className={cx(themeStyle, customStyle)}>
-      <p>There are filters applied to the list:</p>
-      <ul>
-        {filters.map(item => (
-          <li key={item.value}>
-            <div>
-              <span>{item.group} » </span>
-              <em>{item.value}</em>
-            </div>
+      <p className="title">Applied filters:</p>
+      <div className="items">
+        {filters.map(item => {
+          const { group, value } = item;
+          const Icon = icons[group];
+
+          return (
             <button
+              key={value}
               onClick={onClick}
-              data-group={item.group}
-              data-value={item.value}
+              data-group={group}
+              data-value={value}
+              className="item"
             >
-              x
+              <span
+                className="wrapper"
+                style={{
+                  background: `${group ? `var(--${group}Color)` : ''}`,
+                }}
+              >
+                <span className="value">
+                  <Icon /> {value}
+                </span>
+                <span className="sign">
+                  <CloseIcon />
+                </span>
+              </span>
             </button>
-          </li>
-        ))}
-      </ul>
+          );
+        })}
+      </div>
     </div>
   ) : null;
 };
@@ -47,6 +62,7 @@ FilterInfo.propTypes = {
   onClick: PropTypes.func.isRequired,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
+  icons: PropTypes.object,
 };
 
 export default FilterInfo;

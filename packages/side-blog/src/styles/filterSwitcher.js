@@ -16,6 +16,7 @@ const filterSwitcher = css`
   background: var(--sidebarSwitchBgColor);
   border: none;
   flex-shrink: 0;
+  flex-grow: 1;
   width: var(--barHeight);
   cursor: pointer;
   justify-content: center;

@@ -8,6 +8,10 @@ const global = injectGlobal`
     color: #666;
   }
 
+  .main:focus {
+    background: red;
+  }
+
   body {
     background: var(--bodyBgColor);
   }
@@ -45,16 +49,16 @@ const global = injectGlobal`
     a:hover {
       color: var(--hoverLinkColor);
     }
-  }
 
-  *::-webkit-scrollbar {
-    width: var(--scrollBarWidth);
-  }
-  *::-webkit-scrollbar-track {
-    background: var(--scrollBarTrack);
-  }
-  *::-webkit-scrollbar-thumb {
-    background-color: var(--scrollBarThumb);
+    *::-webkit-scrollbar {
+      width: var(--scrollBarWidth);
+    }
+    *::-webkit-scrollbar-track {
+      background: var(--scrollBarTrack);
+    }
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--scrollBarThumb);
+    }
   }
 
 `;

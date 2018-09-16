@@ -12,9 +12,9 @@ const variables = injectGlobal`
     --colorA: #605B71;
     --colorB: #524D60;
     --colorC: #464252;
-    --colorD: #EEEEEE;
-    --colorE: #DDDDDD;
-    --colorF: #CCCCCC;
+    --colorD: #F6F6F6;
+    --colorE: #EEEEEE;
+    --colorF: #DDDDDD;
     --colorG: #847d9c;
     --monthColor: #5F8C40;
     --categoryColor: #3E8A8E;
@@ -37,7 +37,7 @@ const variables = injectGlobal`
     --sidebarSwitchBgColor: var(--colorC);
 
     --headingColor: var(--colorA);
-    --quoteColor: var(--cpadding: 0 12px;olorA);
+    --quoteColor: var(--colorA);
     --nextPrevBgColor: var(--colorD);
     --commentsBgColor: var(--colorE);
     --footerBgColor: var(--colorF);
@@ -54,18 +54,15 @@ const variables = injectGlobal`
 
     --barHeight: 60px;
     --desktopSidebarWidth: 40%;
-    --mobileSidebarWidth: calc(100% - var(--barHeight));
-
-
+    --mobileSidebarWidth: 100%;
 
     /* fonts */
     --firstFontFamily: "Open Sans", sans-serif;
     --secondFontFamily: "PT Serif", serif;
 
     /* other */
-    --transitionTime: .5s;
+    --transitionTime: 0.5s;
     --radius: 2px;
-
 
     --scrollBarThumb: rgba(0,0,0, .2);
     --scrollBarTrack: rgba(0,0,0, .1);

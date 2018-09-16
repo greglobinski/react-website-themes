@@ -7,10 +7,9 @@ const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 const comments = css`
   border-top: 1px dashed var(--brightColor);
   background: var(--commentsBgColor);
-  position: relative;
 
   ${mq({
-    padding: ['var(--spaceM)', 'var(--spaceM) var(--spaceL)'],
+    padding: ['var(--spaceXL)', 'var(--spaceXL) var(--spaceXXL)'],
   })};
 `;
 

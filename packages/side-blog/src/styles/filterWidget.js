@@ -8,6 +8,7 @@ const filterWidget = css`
   background: var(--sidebarBgColor);
   width: 100%;
   position: fixed;
+  left: 0;
   height: calc(100% - var(--barHeight));
   z-index: 1;
   transition: var(--transitionTime);
@@ -77,6 +78,7 @@ const filterWidget = css`
     display: flex;
     align-items: center;
     padding: 0 10px;
+    transition: all var(--transitionTime);
   }
 
   .label {

@@ -115,11 +115,20 @@ class Sidebar extends React.Component {
   };
 
   onToggle = e => {
-    this.setState(state => ({ toggled: !state.toggled }));
+    this.setState(state => ({ toggled: !state.toggled }), this.fixMainContent);
   };
 
   onLink = e => {
-    this.setState({ toggled: false });
+    this.setState(state => ({ toggled: false }), this.fixMainContent);
+
+    // setTimeout(() => {
+    //   const toNav = document.getElementById('toNav');
+    //   console.log(toNav.focus());
+    // }, 1000);
+  };
+
+  fixMainContent = () => {
+    this.props.fixMainContent(this.state.toggled);
   };
 
   onToTop = e => {
@@ -224,7 +233,7 @@ class Sidebar extends React.Component {
       <aside className={cx(themeStyle, customStyle)}>
         <div className={`content ${toggled ? 'toggled' : ''}`}>
           <div className="filterBar">
-            <Link to="/" className="branding">
+            <Link to="/" className="branding" id="nav">
               <h3>{title}</h3>
               <p>{subTitle}</p>
             </Link>
@@ -269,6 +278,12 @@ class Sidebar extends React.Component {
             <FilterInfo
               appliedFilters={appliedFilters}
               onClick={this.onFilter}
+              icons={{
+                close: CloseIcon,
+                month: CalendarIcon,
+                category: CategoryIcon,
+                tag: TagIcon,
+              }}
             />
             <ul>
               {posts.map(item => {
@@ -319,6 +334,7 @@ Sidebar.propTypes = {
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
   icons: PropTypes.object,
+  fixMainContent: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
