@@ -8,6 +8,7 @@ const layout = css`
   main {
     ${mq({
       marginLeft: [0, 'var(--desktopSidebarWidth)'],
+      width: ['100%', 'auto'],
     })};
   }
 `;
