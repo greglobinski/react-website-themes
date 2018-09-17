@@ -17,6 +17,16 @@ const heading = css`
       padding: ['0 var(--spaceXL)', '0 var(--spaceXXL)'],
     })};
   }
+
+  &.home {
+    text-align: center;
+
+    h1 {
+      ${mq({
+        fontSize: ['2.8em', '3.2em', '3.6em'],
+      })};
+    }
+  }
 `;
 
 export default heading;
