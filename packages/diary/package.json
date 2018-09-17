@@ -1,6 +1,6 @@
 {
   "name": "@react-website-themes/diary",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "main": "index.js",
   "publishConfig": {
@@ -13,7 +13,7 @@
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
   "license": "MIT",
   "dependencies": {
-    "@react-website-themes/base": "^0.0.4",
+    "@react-website-themes/base": "^0.0.5",
     "dayjs": "^1.7.5",
     "typeface-fredericka-the-great": "^0.0.54",
     "typeface-merriweather": "^0.0.54",
