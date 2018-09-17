@@ -78,12 +78,12 @@ const bodytext = css`
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 1.6em;
     letter-spacing: -0.03em;
   }
 
   h3 {
-    font-size: 1.6em;
+    font-size: 1.3em;
   }
 
   blockquote {

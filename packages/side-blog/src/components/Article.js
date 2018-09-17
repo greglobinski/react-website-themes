@@ -12,6 +12,7 @@ class Article extends React.Component {
 
   componentDidMount() {
     this.addEntryStyle();
+    this.props.updateArticleRendered(true);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -20,6 +21,7 @@ class Article extends React.Component {
 
     if (prevPath !== path) {
       this.addEntryStyle();
+      this.props.updateArticleRendered(true);
     }
   }
 
@@ -42,7 +44,6 @@ class Article extends React.Component {
       <article
         className={`${cx(themeStyle, customStyle)} ${this.state.entryClass}`}
       >
-        {/* <button id="toNav">to nav</button> */}
         {children}
       </article>
     );
@@ -54,6 +55,8 @@ Article.propTypes = {
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
   location: PropTypes.object.isRequired,
+  articleRendered: PropTypes.bool.isRequired,
+  updateArticleRendered: PropTypes.func.isRequired,
 };
 
 export default Article;

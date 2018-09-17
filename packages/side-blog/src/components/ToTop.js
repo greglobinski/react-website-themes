@@ -19,7 +19,7 @@ const ToTop = props => {
     themeStyle = '',
     customStyle = style,
     icons: { arrow: ArrowIcon },
-    mobileSideExposed,
+    sideOnMobileExposed,
   } = props;
 
   return (
@@ -27,7 +27,7 @@ const ToTop = props => {
       className={cx(themeStyle, customStyle)}
       onClick={onClick}
       style={{
-        transform: mobileSideExposed ? 'translateX(100%)' : 'translate(0)',
+        transform: sideOnMobileExposed ? 'translateX(100%)' : 'translate(0)',
       }}
     >
       <span className="wrapper">
@@ -41,7 +41,7 @@ ToTop.propTypes = {
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
   icons: PropTypes.object.isRequired,
-  mobileSideExposed: PropTypes.bool.isRequired,
+  sideOnMobileExposed: PropTypes.bool.isRequired,
 };
 
 export default ToTop;

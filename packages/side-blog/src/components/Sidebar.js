@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { cx } from 'emotion';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 
@@ -25,6 +25,24 @@ class Sidebar extends React.Component {
     searchPhrase: '',
     toggled: false,
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevSideOnMobileExposed = prevProps.sideOnMobileExposed;
+    const prevArticleRendered = prevProps.articleRendered;
+
+    /*
+      hides the sidebar only if the new content of Article component is ready,
+      this prevents from seeing the flash of the previous post's content on mobile
+    */
+    if (
+      prevSideOnMobileExposed === this.props.sideOnMobileExposed &&
+      this.props.sideOnMobileExposed === true &&
+      prevArticleRendered !== this.props.articleRendered &&
+      this.props.articleRendered === true
+    ) {
+      this.props.updateSideOnMobileExposed(false);
+    }
+  }
 
   getListOfFrom(parameter, posts) {
     const parameterReduced = posts.reduce((acc, post) => {
@@ -115,20 +133,34 @@ class Sidebar extends React.Component {
   };
 
   onToggle = e => {
-    this.setState(state => ({ toggled: !state.toggled }), this.fixMainContent);
+    this.props.updateSideOnMobileExposed(!this.props.sideOnMobileExposed);
+    // this.setState(
+    //   state => ({ toggled: !state.toggled }),
+    //   this.updateSideOnMobileExposed
+    // );
   };
 
   onLink = e => {
-    this.setState(state => ({ toggled: false }), this.fixMainContent);
+    e.preventDefault();
 
+    this.props.updateArticleRendered(false);
+
+    const to = e.currentTarget.getAttribute('href');
+    navigate(to);
+
+    //this.setState(state => ({ toggled: false }), this.updateArticleRendered);
     // setTimeout(() => {
     //   const toNav = document.getElementById('toNav');
     //   console.log(toNav.focus());
     // }, 1000);
   };
 
-  fixMainContent = () => {
-    this.props.fixMainContent(this.state.toggled);
+  updateArticleRendered = () => {
+    this.props.updateArticleRendered(false);
+  };
+
+  updateSideOnMobileExposed = () => {
+    this.props.updateSideOnMobileExposed(this.state.toggled);
   };
 
   filterPosts = () => {
@@ -210,18 +242,19 @@ class Sidebar extends React.Component {
         arrow: ArrowIcon,
         check: CheckIcon,
       },
+      sideOnMobileExposed,
     } = this.props;
 
     const {
       listedPosts: posts,
       activeFilterGroup,
       appliedFilters,
-      toggled,
+      //toggled,
     } = this.state;
 
     return (
       <aside className={cx(themeStyle, customStyle)}>
-        <div className={`content ${toggled ? 'toggled' : ''}`}>
+        <div className={`content ${sideOnMobileExposed ? 'toggled' : ''}`}>
           <div className="filterBar">
             <Link to="/" className="branding" id="nav">
               <h3>{title}</h3>
@@ -300,9 +333,9 @@ class Sidebar extends React.Component {
           </nav>
         </div>
 
-        <aside className={`mobileBar ${toggled ? 'toggled' : ''}`}>
+        <aside className={`mobileBar ${sideOnMobileExposed ? 'toggled' : ''}`}>
           <button onClick={this.onToggle} className="toggle">
-            {toggled ? <ArrowIcon /> : <ListIcon />}
+            {sideOnMobileExposed ? <ArrowIcon /> : <ListIcon />}
           </button>
           <Link to="/" className="branding">
             <h3>{title}</h3>
@@ -321,7 +354,10 @@ Sidebar.propTypes = {
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
   icons: PropTypes.object,
-  fixMainContent: PropTypes.func.isRequired,
+  sideOnMobileExposed: PropTypes.bool.isRequired,
+  updateSideOnMobileExposed: PropTypes.func.isRequired,
+  articleRendered: PropTypes.bool.isRequired,
+  updateArticleRendered: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

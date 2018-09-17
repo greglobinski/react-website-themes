@@ -7,7 +7,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf index.js components styles utils && babel src -d . --ignore /__tests__"
+    "build": "rimraf index.js components styles store utils && babel src -d . --ignore /__tests__"
   },
   "keywords": [],
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
