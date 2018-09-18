@@ -15,7 +15,7 @@ const Author = props => {
 
   return (
     <div className={cx(themeStyle, customStyle)}>
-      <img src={avatar} alt={name} className="avatar" />
+      {avatar && <img src={avatar} alt={name} className="avatar" />}
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
