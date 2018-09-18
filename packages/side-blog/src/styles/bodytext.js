@@ -53,6 +53,14 @@ const bodytext = css`
     })};
   }
 
+  & *:not(pre) > code[class*='language-'] {
+    background: #eee;
+    color: #333;
+    text-shadow: none;
+    padding: 1px 5px 2px;
+    border-radius: 2px;
+  }
+
   p {
     line-height: 1.7;
     font-size: 1.1em;
