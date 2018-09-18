@@ -2,7 +2,8 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { cx } from 'emotion';
-import dayjs from 'dayjs';
+import parse from 'date-fns/parse';
+import format from 'date-fns/format';
 
 import prefixToDateTimeString from '../utils/prefixToDateTimeString';
 import style from '../styles/nextPrev';
@@ -23,12 +24,11 @@ const NextPrev = props => {
     timeOffset,
   } = props;
 
-  const prevDateTimeString = prevPrefix
-    ? prefixToDateTimeString(prevPrefix)
-    : null;
-  const nextDateTimeString = nextPrefix
-    ? prefixToDateTimeString(nextPrefix)
-    : null;
+  const prevDateString = prevPrefix ? prefixToDateTimeString(prevPrefix) : null;
+  const nextDateString = nextPrefix ? prefixToDateTimeString(nextPrefix) : null;
+
+  const prevDate = parse(prevDateString);
+  const nextDate = parse(nextDateString);
 
   return (
     <div className={cx(themeStyle, customStyle)}>
@@ -36,10 +36,7 @@ const NextPrev = props => {
         <Link to={prevSlug} className="prev">
           {PrevIcon && <PrevIcon />}
           <p>
-            {prevTitle}{' '}
-            <time>
-              {dayjs(prevDateTimeString).format('dddd, MMMM D, YYYY')}
-            </time>
+            {prevTitle} <time>{format(prevDate, 'dddd, MMMM D, YYYY')}</time>
           </p>
         </Link>
       )}
@@ -47,10 +44,7 @@ const NextPrev = props => {
         <Link to={nextSlug} className="next">
           {NextIcon && <NextIcon />}
           <p>
-            {nextTitle}{' '}
-            <time>
-              {dayjs(nextDateTimeString).format('dddd, MMMM D, YYYY')}
-            </time>
+            {nextTitle} <time>{format(nextDate, 'dddd, MMMM D, YYYY')}</time>
           </p>
         </Link>
       )}
