@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { cx } from 'emotion';
 
 import style from '../styles/heading';
-import { getByTitle } from '../../../../node_modules/react-testing-library';
 
 const Heading = props => {
   const {
