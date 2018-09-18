@@ -35,6 +35,7 @@ const footer = css`
     text-align: center;
     margin: var(--spaceXS) var(--spaceM);
     position: relative;
+    line-height: 1.2;
   }
 
   .copyright {
