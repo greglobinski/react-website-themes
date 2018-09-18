@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { cx } from 'emotion';
 
 import style from '../styles/heading';
+import { getByTitle } from '../../../../node_modules/react-testing-library';
 
 const Heading = props => {
   const {
@@ -10,11 +11,13 @@ const Heading = props => {
     children,
     themeStyle = style,
     customStyle = '',
-    home = false,
+    special = false,
   } = props;
 
   return (
-    <header className={`${cx(themeStyle, customStyle)} ${home ? 'home' : ''}`}>
+    <header
+      className={`${cx(themeStyle, customStyle)} ${special ? 'special' : ''}`}
+    >
       {title ? <h1>{title}</h1> : children}
     </header>
   );
@@ -25,7 +28,7 @@ Heading.propTypes = {
   children: PropTypes.node,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
-  home: PropTypes.bool,
+  special: PropTypes.bool,
 };
 
 export default Heading;
