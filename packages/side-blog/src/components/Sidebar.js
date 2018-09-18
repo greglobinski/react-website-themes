@@ -134,10 +134,6 @@ class Sidebar extends React.Component {
 
   onToggle = e => {
     this.props.updateSideOnMobileExposed(!this.props.sideOnMobileExposed);
-    // this.setState(
-    //   state => ({ toggled: !state.toggled }),
-    //   this.updateSideOnMobileExposed
-    // );
   };
 
   onLink = e => {
@@ -147,12 +143,6 @@ class Sidebar extends React.Component {
 
     const to = e.currentTarget.getAttribute('href');
     navigate(to);
-
-    //this.setState(state => ({ toggled: false }), this.updateArticleRendered);
-    // setTimeout(() => {
-    //   const toNav = document.getElementById('toNav');
-    //   console.log(toNav.focus());
-    // }, 1000);
   };
 
   updateArticleRendered = () => {
@@ -249,7 +239,6 @@ class Sidebar extends React.Component {
       listedPosts: posts,
       activeFilterGroup,
       appliedFilters,
-      //toggled,
     } = this.state;
 
     return (
