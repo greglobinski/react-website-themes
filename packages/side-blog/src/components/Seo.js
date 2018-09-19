@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 const Seo = props => {
-  const { url, language = 'en', title, description } = props;
+  const { url, language = 'en', title, description, image } = props;
 
   return (
     <Helmet
@@ -16,7 +16,7 @@ const Seo = props => {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {/* <meta property="og:image" content={image} /> */}
+      <meta property="og:image" content={image} />
       <meta property="og:type" content="website" />
 
       {/* Twitter Card tags */}
@@ -27,12 +27,6 @@ const Seo = props => {
       /> */}
     </Helmet>
   );
-
-  // const { data, facebook } = props;
-  // const postTitle = ((data || {}).frontmatter || {}).title;
-  // const postDescription = ((data || {}).frontmatter || {}).description;
-  // const postCover = ((data || {}).frontmatter || {}).cover;
-  // const postSlug = ((data || {}).fields || {}).slug;
 
   // const title = postTitle
   //   ? `${postTitle} - ${config.shortSiteTitle}`
