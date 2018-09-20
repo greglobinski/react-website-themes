@@ -30,14 +30,21 @@ const Menu = props => {
     <nav className={cx(themeStyle, customStyle)}>
       <ul>
         {items.map(item => {
-          const { label, to, icon: Icon, linkProps } = item;
+          const { label, to, icon: Icon, external, linkProps } = item;
 
           return (
             <li key={label}>
-              <Link to={to} activeClassName="active" {...linkProps}>
-                {Icon && <Icon />}
-                <span>{label}</span>
-              </Link>
+              {external ? (
+                <a href={to} target="_blank">
+                  {Icon && <Icon />}
+                  <span>{label}</span>
+                </a>
+              ) : (
+                <Link to={to} activeClassName="active" {...linkProps}>
+                  {Icon && <Icon />}
+                  <span>{label}</span>
+                </Link>
+              )}
             </li>
           );
         })}
