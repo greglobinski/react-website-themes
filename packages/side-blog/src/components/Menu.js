@@ -34,7 +34,7 @@ const Menu = props => {
           return (
             <li key={label}>
               {external ? (
-                <a href={to} target="_blank">
+                <a href={to} target="_blank" {...linkProps}>
                   {Icon && <Icon />}
                   <span>{label}</span>
                 </a>
