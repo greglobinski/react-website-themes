@@ -16,6 +16,7 @@ class Scroller extends React.Component {
   screens = {};
 
   componentDidMount() {
+    window.scrollTo(0, 1);
     this.setState({ containerHeight: this.container.current.offsetHeight });
     window.addEventListener('scroll', this.updateScrollPositon);
   }
@@ -52,14 +53,6 @@ class Scroller extends React.Component {
         scaleToFull
       );
     }
-
-    // if (scrollY <= 0) {
-    //   this.screens[4].current.scaleScreen(1);
-    // } else if (scrollY > 0 && scrollY < 600) {
-    //   this.screens[4].current.scaleScreen(zoom);
-    // } else {
-    //   this.screens[4].current.scaleScreen(6);
-    // }
   };
 
   render() {

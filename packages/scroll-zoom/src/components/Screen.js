@@ -48,12 +48,6 @@ class Screen extends React.Component {
 	c41.42,0,75-33.579,75-75S1291.42,2345,1250,2345z"
             />
           </svg>
-          {/* <div className="fill">&nbsp;</div>
-          <div className="porthole">
-            <div className="fill">&nbsp;</div>
-            <div className="hole">&nbsp;</div>
-            <div className="fill">&nbsp;</div>
-          </div> */}
         </div>
         <div className="text">{children}</div>
       </div>

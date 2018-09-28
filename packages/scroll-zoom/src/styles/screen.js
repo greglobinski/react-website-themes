@@ -29,14 +29,13 @@ const screen = bg => css`
 
     &::after {
       content: '';
-      border: 1px solid black;
-      opacity: 0.1;
       width: 150px;
       height: 150px;
       position: absolute;
       bottom: 5px;
       border-radius: 50%;
       left: 50%;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
       transform: translateX(-50%);
     }
   }
@@ -52,9 +51,25 @@ const screen = bg => css`
     h2 {
       text-align: center;
       line-height: 1.05;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.06em;
     }
   }
 `;
 
 export default screen;
+
+/*
+    &::after {
+      content: '';
+      border: 1px solid black;
+      opacity: 0.1;
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      bottom: 5px;
+      border-radius: 50%;
+      left: 50%;
+      filter: blur(5px);
+      transform: translateX(-50%);
+    }
+*/

@@ -1,8 +1,8 @@
 import { css } from 'emotion';
 
 const scroller = css`
-  background: red;
-  height: 400vh;
+  background: white;
+  height: 800vh;
 `;
 
 export default scroller;
