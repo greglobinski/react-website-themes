@@ -28,8 +28,16 @@ class Scroller extends React.Component {
     const { containerHeight, numberOfScreens } = this.state;
 
     const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
     const documentHeight = document.body.offsetHeight;
-    const scaleToFull = windowHeight / 150 + 1;
+
+    const scaleToFull =
+      (Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2)) / 150) *
+      2;
+
+    const scaleToFull2 = windowHeight / 150 + 1;
+
+    console.log(scaleToFull, scaleToFull2);
 
     const scrolledHeight = window.scrollY;
 

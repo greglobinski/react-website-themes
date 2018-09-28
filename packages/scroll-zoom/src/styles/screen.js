@@ -12,40 +12,48 @@ const screen = bg => css`
   height: 100%;
   transform-origin: center calc(50% - 75px);
 
-  .top {
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-  }
+  .mask {
+    height: calc(50% + 1px);
+    overflow: hidden;
+    position: relative;
+    transform: translateY(1px);
+    z-index: 1;
 
-  .bottom {
-    height: 50%;
-    background: ${bg};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    svg {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      fill: ${bg};
+      transform: translateX(-50%);
+    }
 
-  .fill {
-    flex-basis: 50%;
-    flex-grow: 1;
-    background: ${bg};
-  }
-
-  .porthole {
-    height: 150px;
-    display: flex;
-
-    .fill {
-      flex-shrink: 1;
+    &::after {
+      content: '';
+      border: 1px solid black;
+      opacity: 0.1;
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      bottom: 5px;
+      border-radius: 50%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
-  .hole {
-    background: transparent;
-    width: 150px;
-    flex-grow: 0;
-    flex-shrink: 0;
+  .text {
+    height: 50%;
+    background: ${bg};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+
+    h2 {
+      text-align: center;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
   }
 `;
 
