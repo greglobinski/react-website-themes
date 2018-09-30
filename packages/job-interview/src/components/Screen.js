@@ -9,15 +9,24 @@ class Screen extends React.Component {
 
   state = {
     superSized: false,
+    display: true,
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { id, activeScreen } = this.props;
+    const { id, activeScreen, numberOfScreens } = this.props;
     if (prevProps.activeScreen !== this.props.activeScreen) {
       if (activeScreen > id && this.state.superSized === false) {
         this.setState({ superSized: true });
       } else if (activeScreen === id && this.state.superSized === true) {
         this.setState({ superSized: false });
+      } 
+
+      if (id < numberOfScreens) {
+        if (activeScreen - id > 1 || id - activeScreen > 1) {
+          this.setState({ display: false });
+        } else if (activeScreen - id <= 1 || id - activeScreen >= 1) {
+          this.setState({ display: true });
+        }
       }
     }
   }
@@ -27,7 +36,7 @@ class Screen extends React.Component {
 
     let { themeStyle = style, avatar } = this.props;
 
-    const { superSized } = this.state;
+    const { superSized, display } = this.state;
 
     themeStyle = themeStyle(this.props);
 
@@ -37,10 +46,13 @@ class Screen extends React.Component {
           superSized ? 'superSized' : ''
         } ${activeScreen === id ? 'exposed' : ''} ${last ? 'last' : ''}`}
         ref={this.screen}
+        style={{ display: display ? 'flex' : 'none' }}
       >
         <div className="mask">
           {avatar ? (
-            <img src={avatar} alt="" />
+            <div className="avatar">
+              <img src={avatar} alt="" />
+            </div>
           ) : (
             <svg
               version="1.1"

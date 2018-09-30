@@ -4,46 +4,63 @@ import { cx } from 'emotion';
 import debounce from 'lodash.debounce';
 
 import style from '../styles/screens';
-import Screen from './Screen';
 
 class Screens extends React.Component {
   state = {
     numberOfScreens: this.props.screens.length,
     activeScreen: 1,
-    windowHeight: window.innerHeight,
-    windowWidth: window.innerWidth,
-    documentHeight: document.body.offsetHeight,
+    windowHeight: 0,
+    windowWidth: 0,
     maxScale: 1,
   };
 
   screens = {};
   lastTouchY = null;
+  lastTouchX = null;
   lastTouchSwipe = null;
 
   componentDidMount() {
-    const { windowHeight, windowWidth } = this.state;
+    if (typeof window !== 'undefined') {
+      this.setInitialStateValues();
 
-    window.scrollTo(0, 0);
-
-    this.setState({
-      maxScale:
-        (Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2)) /
-          150) *
-        1.3,
-    });
-
-    window.addEventListener('wheel', debounce(this.mouseWheelHandler, 250));
-    window.addEventListener('touchstart', this.touchstartHandler);
-    window.addEventListener('touchmove', this.touchmoveHandler);
-    window.addEventListener('touchend', this.touchendHandler);
+      window.addEventListener(
+        'resize',
+        debounce(this.setInitialStateValues, 500)
+      );
+      window.addEventListener('wheel', debounce(this.mouseWheelHandler, 250));
+      window.addEventListener('touchstart', this.touchstartHandler);
+      window.addEventListener('touchmove', this.touchmoveHandler);
+      window.addEventListener('touchend', this.touchendHandler);
+      window.addEventListener('keydown', this.keydownHandler);
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('wheel', debounce(this.mouseWheelHandler, 250));
-    window.removeEventListener('touchstart', this.touchstartHandler);
-    window.removeEventListener('touchmove', this.touchmoveHandler);
-    window.removeEventListener('touchend', this.touchendHandler);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener(
+        'wheel',
+        debounce(this.mouseWheelHandler, 250)
+      );
+      window.removeEventListener('touchstart', this.touchstartHandler);
+      window.removeEventListener('touchmove', this.touchmoveHandler);
+      window.removeEventListener('touchend', this.touchendHandler);
+      window.removeEventListener('keydown ', this.keydownHandler);
+    }
   }
+
+  setInitialStateValues = () => {
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+
+    this.setState({
+      windowHeight: windowHeight,
+      windowWidth: windowWidth,
+      maxScale:
+        (Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2)) /
+          150) *
+        1.5,
+    });
+  };
 
   mouseWheelHandler = e => {
     const delta = e.deltaY;
@@ -56,18 +73,23 @@ class Screens extends React.Component {
 
   touchmoveHandler = e => {
     var currentTouchY = e.touches[0].clientY;
-    if (currentTouchY > this.lastTouchY) {
-      this.lastTouchSwipe = 'down';
-    } else if (currentTouchY < this.lastTouchY) {
-      this.lastTouchSwipe = 'up';
+    var currentTouchX = e.touches[0].clientX;
+    if (currentTouchX < this.lastTouchX || currentTouchY < this.lastTouchY) {
+      this.lastTouchSwipe = 'next';
+    } else if (
+      currentTouchX > this.lastTouchX ||
+      currentTouchY > this.lastTouchY
+    ) {
+      this.lastTouchSwipe = 'prev';
     }
     this.lastTouchY = currentTouchY;
+    this.lastTouchX = currentTouchX;
   };
 
   touchendHandler = e => {
-    if (this.lastTouchSwipe === 'up') {
+    if (this.lastTouchSwipe === 'next') {
       this.nextScreen();
-    } else if (this.lastTouchSwipe === 'down') {
+    } else if (this.lastTouchSwipe === 'prev') {
       this.prevScreen();
     }
 
@@ -75,29 +97,45 @@ class Screens extends React.Component {
     this.lastTouchSwipe = null;
   };
 
-  nextScreen = val => {
+  keydownHandler = e => {
+    const keyCode = e.which;
+    if (keyCode === 39 || keyCode === 40) {
+      this.nextScreen();
+    } else if (keyCode === 37 || keyCode === 38) {
+      this.prevScreen();
+    }
+  };
+
+  nextScreen = e => {
     if (this.state.activeScreen < this.state.numberOfScreens) {
       this.setState({ activeScreen: this.state.activeScreen + 1 });
     }
   };
 
-  prevScreen = val => {
+  prevScreen = e => {
     if (this.state.activeScreen > 1) {
       this.setState({ activeScreen: this.state.activeScreen - 1 });
     }
   };
 
   render() {
-    const { screens, themeStyle = style, customStyle = '' } = this.props;
-    const { activeScreen, maxScale } = this.state;
+    const {
+      screens,
+      themeStyle = style,
+      customStyle = '',
+      screenComponent: Screen,
+      navComponent: Nav,
+      icons,
+    } = this.props;
+    const { activeScreen, maxScale, numberOfScreens } = this.state;
 
     return (
       <main className={cx(themeStyle, customStyle)} ref={this.container}>
-        <div className="info">activeScreen: {this.state.activeScreen}</div>
+        {/* <div className="info">activeScreen: {this.state.activeScreen}</div> */}
         {screens.map((item, idx) => {
           const { id, headline, text, background, avatar } = item;
           this.screens[id] = React.createRef();
-          console.log(idx, id);
+
           return (
             <Screen
               key={id}
@@ -108,12 +146,21 @@ class Screens extends React.Component {
               superSizeScale={maxScale}
               avatar={avatar}
               last={idx === 0 ? true : false}
+              numberOfScreens={numberOfScreens}
             >
               <h2>{headline}</h2>
               <p>{text}</p>
             </Screen>
           );
         })}
+
+        <Nav
+          numberOfScreens={numberOfScreens}
+          activeScreen={activeScreen}
+          nextScreen={this.nextScreen}
+          prevScreen={this.prevScreen}
+          icons={icons}
+        />
       </main>
     );
   }
@@ -121,8 +168,11 @@ class Screens extends React.Component {
 
 Screens.propTypes = {
   screens: PropTypes.array.isRequired,
+  screenComponent: PropTypes.func.isRequired,
+  navComponent: PropTypes.func.isRequired,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
+  icons: PropTypes.object.isRequired,
 };
 
 export default Screens;

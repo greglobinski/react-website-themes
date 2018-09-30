@@ -1,4 +1,8 @@
 import { css, keyframes } from 'emotion';
+import facepaint from 'facepaint';
+
+const breakpoints = [768, 1024];
+const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
 const screen = props => css`
   display: flex;
@@ -10,7 +14,7 @@ const screen = props => css`
   left: 0;
   width: 100%;
   height: 100%;
-  transform-origin: center calc(50% - 75px);
+  transform-origin: center calc(45% - 75px);
   transition: transform 0.5s ease;
 
   &.superSized {
@@ -22,26 +26,29 @@ const screen = props => css`
     .mask svg {
       fill: var(--exposedBackground);
     }
-    &.last .mask {
-      background: var(--exposedBackground);
-    }
     .text {
       background: var(--exposedBackground);
     }
   }
 
-  &.last .mask {
-    background: var(--background);
-    transition: 1s;
+  &.last {
+    .mask {
+      background: var(--lastBackground);
+      transition: 1s;
+    }
+    .text {
+      background: var(--lastBackground);
+      color: white;
+    }
   }
 
   .mask {
-    height: 50%;
+    height: 45%;
     overflow: hidden;
     position: relative;
 
     svg,
-    img {
+    .avatar {
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -54,10 +61,17 @@ const screen = props => css`
       transition: 1s;
     }
 
-    img {
+    .avatar {
       bottom: 5px;
       border-radius: 50%;
+      width: 150px;
+      height: 150px;
       overflow: hidden;
+      background: white;
+
+      img {
+        width: 100%;
+      }
     }
 
     &::after {
@@ -75,23 +89,34 @@ const screen = props => css`
   }
 
   .text {
-    height: 50%;
+    height: 55%;
     background: var(--background);
     transition: 1s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px;
+    text-align: center;
 
     h2 {
-      text-align: center;
-      line-height: 1.05;
+      margin: 0 auto;
+      line-height: 1;
       font-size: 2em;
-      margin-top: 0.5em;
+      margin: 0.6em 0 0.4em;
       letter-spacing: -0.06em;
+
+      ${mq({
+        fontSize: ['1.8em', '2.2em', '2.8em'],
+        maxWidth: ['500px', '600px', '700px'],
+      })};
     }
 
     p {
+      font-size: 1.2em;
+      max-width: 500px;
+      margin: 0 auto;
+      margin: 0;
+      line-height: 1.5;
     }
   }
 `;

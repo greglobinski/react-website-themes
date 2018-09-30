@@ -8,7 +8,8 @@ const global = injectGlobal`
   }
 
   body {
-    overflow-y: hidden
+    overflow-y: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,.05);
   }
 
   *,

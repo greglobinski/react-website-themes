@@ -5,6 +5,7 @@ const variables = injectGlobal`
   :root {
 
     --background: #eee;
+    --lastBackground: #333;
     --exposedBackground: #fff;
 
     --textColor: #555;
