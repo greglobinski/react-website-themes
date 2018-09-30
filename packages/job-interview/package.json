@@ -1,5 +1,5 @@
 {
-  "name": "@react-website-themes/scroll-zoom",
+  "name": "@react-website-themes/job-interview",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,7 @@
   "author": "greg lobinski <greglobinski@gmail.com> (https://www.greglobinski.com/)",
   "license": "MIT",
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "typeface-open-sans": "^0.0.54"
   },
   "peerDependencies": {

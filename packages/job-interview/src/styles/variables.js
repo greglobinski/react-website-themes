@@ -3,6 +3,10 @@ import { injectGlobal } from 'emotion';
 
 const variables = injectGlobal`
   :root {
+
+    --background: #eee;
+    --exposedBackground: #fff;
+
     --textColor: #555;
     --lightTextColor: #888;
     --superLightTextColor: #aaa;
