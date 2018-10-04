@@ -4,6 +4,39 @@ import facepaint from 'facepaint';
 const breakpoints = [768, 1024];
 const mq = facepaint(breakpoints.map(bp => `@media (min-width: ${bp}px)`));
 
+const maximize = props => keyframes`
+  0% {
+     transform: scale(1) translateX(0);
+  }
+  99% {
+     transform: scale(${props.superSizeScale}) translateX(0);
+  }
+  100% {
+     transform: scale(${props.superSizeScale}) translateX(100%);
+  }
+`;
+
+const minimize = props => keyframes`
+  0% {
+    transform: scale(${props.superSizeScale}) translateX(100%);
+  }
+  1% {
+    transform: scale(${props.superSizeScale}) translateX(0);
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+`;
+
+const fillTransition = keyframes`
+  0% {
+    fill: var(--transitionBackground);
+  }
+  100% {
+     fill: var(--background);
+  }
+`;
+
 const screen = props => css`
   display: flex;
   flex-direction: column;
@@ -14,89 +47,57 @@ const screen = props => css`
   left: 0;
   width: 100%;
   height: 100%;
-  transform-origin: center calc(45% - 75px);
-  transition: transform 0.5s ease;
-
-  &.superSized {
-    transform: scale(${props.superSizeScale});
-    transition: transform 1.2s ease;
-  }
-
-  &.exposed {
-    .mask svg {
-      fill: var(--exposedBackground);
-    }
-    .text {
-      background: var(--exposedBackground);
-    }
-  }
-
-  &.last {
-    .mask {
-      background: var(--lastBackground);
-      transition: 1s;
-    }
-    .text {
-      background: var(--lastBackground);
-      color: white;
-    }
-  }
+  transform-origin: center calc(50% - 115px);
+  overflow: hidden;
 
   .mask {
-    height: 45%;
+    fill: var(--background);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc((50% + 50px) * -1));
+  }
+
+  &::after {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    box-shadow: inset 0 0 5px #ddd;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc((50% + 115px) * -1));
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 132px;
+    height: 132px;
     overflow: hidden;
-    position: relative;
+    background: var(--background);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc((50% + 115px) * -1));
 
-    svg,
-    .avatar {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      transform-origin: center bottom;
-    }
-
-    svg {
-      fill: var(--background);
-      transition: 1s;
-    }
-
-    .avatar {
-      bottom: 5px;
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      overflow: hidden;
-      background: white;
-
-      img {
-        width: 100%;
-      }
-    }
-
-    &::after {
-      content: '';
-      width: 150px;
-      height: 150px;
-      position: absolute;
-      bottom: 5px;
-      border-radius: 50%;
-      left: 50%;
-      box-shadow: inset 0 0 3px #ddd;
-      transform: translateX(-50%) scale(0.9);
-      transform-origin: center bottom;
+    img {
+      width: 100%;
     }
   }
 
-  .text {
-    height: 55%;
-    background: var(--background);
+  .content {
+    height: calc(50% + 49px);
     transition: 1s;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 30px;
     text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 
     h2 {
       margin: 0 auto;
@@ -117,6 +118,66 @@ const screen = props => css`
       margin: 0 auto;
       margin: 0;
       line-height: 1.5;
+      z-index: 1000;
+
+      ${mq({
+        maxWidth: ['500px', '600px', '700px'],
+      })};
+    }
+
+    .credits {
+      margin-top: 20px;
+      color: #aaa;
+      font-size: 0.8em;
+
+      a {
+        color: #ddd;
+        text-decoration: none;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  &.maximized {
+    transform: scale(${props.superSizeScale});
+  }
+
+  &.maximize {
+    animation: ${maximize(props)} 1.4s ease 1 forwards;
+  }
+
+  &.minimized {
+    transform: scale(1);
+  }
+
+  &.minimize {
+    animation: ${minimize(props)} 0.5s ease 1 forwards;
+
+    .mask {
+      animation: ${fillTransition} 1s ease 1 forwards;
+    }
+  }
+
+  &.expose {
+    .mask {
+      animation: ${fillTransition} 1s ease 1 forwards;
+    }
+  }
+
+  &.last {
+    .picture {
+      background: var(--lastBackground);
+      transition: 1s;
+    }
+    .mask {
+      fill: var(--lastBackground);
+    }
+    .content {
+      color: white;
+
+      p {
+        color: #ddd;
+      }
     }
   }
 `;

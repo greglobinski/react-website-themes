@@ -6,32 +6,33 @@ import debounce from 'lodash.debounce';
 import style from '../styles/screens';
 
 class Screens extends React.Component {
-  state = {
-    numberOfScreens: this.props.screens.length,
-    activeScreen: 1,
-    windowHeight: 0,
-    windowWidth: 0,
-    maxScale: 1,
-  };
-
-  screens = {};
   lastTouchY = null;
-  lastTouchX = null;
   lastTouchSwipe = null;
+
+  state = {
+    screens: this.props.screensData.filter(item => item.id <= 2),
+    lastScreen: this.props.screensData[this.props.screensData.length - 1],
+    numberOfScreens: this.props.screensData.length,
+    exposedScreenId: 1,
+    superSizeScale: 1,
+  };
 
   componentDidMount() {
     if (typeof window !== 'undefined') {
-      this.setInitialStateValues();
+      this.setWindowBasedValues();
 
       window.addEventListener(
         'resize',
-        debounce(this.setInitialStateValues, 500)
+        debounce(this.setWindowBasedValues, 500)
       );
+
       window.addEventListener('wheel', debounce(this.mouseWheelHandler, 250));
       window.addEventListener('touchstart', this.touchstartHandler);
       window.addEventListener('touchmove', this.touchmoveHandler);
       window.addEventListener('touchend', this.touchendHandler);
       window.addEventListener('keydown', this.keydownHandler);
+
+      this.turnOffHiddenLinks();
     }
   }
 
@@ -48,18 +49,37 @@ class Screens extends React.Component {
     }
   }
 
-  setInitialStateValues = () => {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.exposedScreenId !== this.state.exposedScreenId) {
+      this.turnOffHiddenLinks();
+    }
+  }
+
+  setWindowBasedValues = () => {
     const windowHeight = window.innerHeight;
     const windowWidth = window.innerWidth;
+    const superSizeScale =
+      Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight + 250, 2)) /
+      130;
 
     this.setState({
-      windowHeight: windowHeight,
-      windowWidth: windowWidth,
-      maxScale:
-        (Math.sqrt(Math.pow(windowWidth, 2) + Math.pow(windowHeight, 2)) /
-          150) *
-        1.5,
+      superSizeScale: superSizeScale,
     });
+  };
+
+  turnOffHiddenLinks = () => {
+    const hiddenLinks = Array.from(
+      document.querySelectorAll(
+        `:not(#id-${this.state.exposedScreenId}) .content a`
+      )
+    );
+
+    const exposedLinks = Array.from(
+      document.querySelectorAll(`#id-${this.state.exposedScreenId} .content a`)
+    );
+
+    hiddenLinks.forEach(link => (link.tabIndex = -1));
+    exposedLinks.forEach(link => (link.tabIndex = 0));
   };
 
   mouseWheelHandler = e => {
@@ -73,17 +93,14 @@ class Screens extends React.Component {
 
   touchmoveHandler = e => {
     var currentTouchY = e.touches[0].clientY;
-    var currentTouchX = e.touches[0].clientX;
-    if (currentTouchX < this.lastTouchX || currentTouchY < this.lastTouchY) {
+
+    if (currentTouchY < this.lastTouchY) {
       this.lastTouchSwipe = 'next';
-    } else if (
-      currentTouchX > this.lastTouchX ||
-      currentTouchY > this.lastTouchY
-    ) {
+    } else if (currentTouchY > this.lastTouchY) {
       this.lastTouchSwipe = 'prev';
     }
+
     this.lastTouchY = currentTouchY;
-    this.lastTouchX = currentTouchX;
   };
 
   touchendHandler = e => {
@@ -106,73 +123,134 @@ class Screens extends React.Component {
     }
   };
 
-  nextScreen = e => {
-    if (this.state.activeScreen < this.state.numberOfScreens) {
-      this.setState({ activeScreen: this.state.activeScreen + 1 });
+  getNewScreens = (screensData, newExposedScreenId, action) => {
+    return screensData
+      .filter(
+        item =>
+          item.id >= newExposedScreenId - 1 &&
+          item.id <= newExposedScreenId + 1 &&
+          item.id < screensData.length
+      )
+      .map(item => {
+        if (item.id === newExposedScreenId - 1) {
+          item.transitionClass = action === 'next' ? 'maximize' : 'maximized';
+        } else if (item.id === newExposedScreenId) {
+          item.transitionClass = action === 'next' ? 'expose' : 'minimize';
+        } else if (item.id === newExposedScreenId + 1) {
+          item.transitionClass = action === 'next' ? 'minimized' : 'minimized';
+        }
+
+        return item;
+      });
+  };
+
+  rebuildScreensFor = val => {
+    this.setState((state, props) => {
+      let newExposedScreenId;
+
+      if (val === 'next') {
+        newExposedScreenId = state.exposedScreenId + 1;
+      } else if (val === 'prev') {
+        newExposedScreenId = state.exposedScreenId - 1;
+      }
+
+      const newScreens = this.getNewScreens(
+        props.screensData,
+        newExposedScreenId,
+        val
+      );
+
+      return { screens: newScreens, exposedScreenId: newExposedScreenId };
+    });
+  };
+
+  nextScreen = () => {
+    if (this.state.exposedScreenId < this.state.numberOfScreens) {
+      return this.rebuildScreensFor('next');
     }
   };
 
-  prevScreen = e => {
-    if (this.state.activeScreen > 1) {
-      this.setState({ activeScreen: this.state.activeScreen - 1 });
+  prevScreen = () => {
+    if (this.state.exposedScreenId > 1) {
+      return this.rebuildScreensFor('prev');
     }
   };
 
   render() {
     const {
-      screens,
       themeStyle = style,
       customStyle = '',
       screenComponent: Screen,
       navComponent: Nav,
-      icons,
+      socialComponent: Social,
+      navIcons,
+      socialLinks,
     } = this.props;
-    const { activeScreen, maxScale, numberOfScreens } = this.state;
+
+    const {
+      screens,
+      numberOfScreens,
+      exposedScreenId,
+      lastScreen,
+      superSizeScale,
+    } = this.state;
+
+    const reversedScreens = [...screens].reverse();
 
     return (
-      <main className={cx(themeStyle, customStyle)} ref={this.container}>
-        {/* <div className="info">activeScreen: {this.state.activeScreen}</div> */}
-        {screens.map((item, idx) => {
-          const { id, headline, text, background, avatar } = item;
-          this.screens[id] = React.createRef();
+      <main className={cx(themeStyle, customStyle)}>
+        {/* <div className="info">exposedScreen: {exposedScreenId}</div> */}
+        <Nav
+          numberOfScreens={numberOfScreens}
+          exposedScreenId={exposedScreenId}
+          nextScreen={this.nextScreen}
+          prevScreen={this.prevScreen}
+          icons={navIcons}
+        />
+
+        <Screen
+          id={lastScreen.id}
+          avatar={lastScreen.avatar}
+          numberOfScreens={numberOfScreens}
+          superSizeScale={superSizeScale}
+          exposedScreenId={exposedScreenId}
+        >
+          <h2>{lastScreen.headline}</h2>
+          <p>{lastScreen.body}</p>
+          <Social links={socialLinks} />
+        </Screen>
+
+        {reversedScreens.map((item, idx) => {
+          const { id, headline, body, transitionClass } = item;
 
           return (
             <Screen
               key={id}
               id={id}
-              background={background}
-              ref={this.screens[id]}
-              activeScreen={activeScreen}
-              superSizeScale={maxScale}
-              avatar={avatar}
-              last={idx === 0 ? true : false}
+              transitionClass={transitionClass}
+              superSizeScale={superSizeScale}
               numberOfScreens={numberOfScreens}
+              exposedScreenId={exposedScreenId}
             >
               <h2>{headline}</h2>
-              <p>{text}</p>
+              <p>{body}</p>
             </Screen>
           );
         })}
-
-        <Nav
-          numberOfScreens={numberOfScreens}
-          activeScreen={activeScreen}
-          nextScreen={this.nextScreen}
-          prevScreen={this.prevScreen}
-          icons={icons}
-        />
       </main>
     );
   }
 }
 
 Screens.propTypes = {
-  screens: PropTypes.array.isRequired,
+  screensData: PropTypes.array.isRequired,
   screenComponent: PropTypes.func.isRequired,
   navComponent: PropTypes.func.isRequired,
+  socialComponent: PropTypes.func,
+  navIcons: PropTypes.object.isRequired,
+  socialLinks: PropTypes.array,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
-  icons: PropTypes.object.isRequired,
 };
 
 export default Screens;
