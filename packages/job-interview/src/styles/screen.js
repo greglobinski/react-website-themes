@@ -30,10 +30,10 @@ const minimize = props => keyframes`
 
 const fillTransition = keyframes`
   0% {
-    fill: var(--transitionBackground);
+    fill: var(--transitionBackgroundColor);
   }
   100% {
-     fill: var(--background);
+     fill: var(--backgroundColor);
   }
 `;
 
@@ -51,7 +51,7 @@ const screen = props => css`
   overflow: hidden;
 
   .mask {
-    fill: var(--background);
+    fill: var(--backgroundColor);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,7 +75,7 @@ const screen = props => css`
     width: 132px;
     height: 132px;
     overflow: hidden;
-    background: var(--background);
+    background: var(--backgroundColor);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -98,8 +98,9 @@ const screen = props => css`
     bottom: 0;
     left: 0;
     width: 100%;
+    color: var(--textColor);
 
-    h2 {
+    h1 {
       margin: 0 auto;
       line-height: 1;
       font-size: 2em;
@@ -125,14 +126,22 @@ const screen = props => css`
       })};
     }
 
+    a {
+      color: var(--linkColor);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--hoverLinkColor);
+      }
+    }
+
     .credits {
       margin-top: 20px;
-      color: #aaa;
+      color: var(--brightTextColor);
       font-size: 0.8em;
 
       a {
-        color: #ddd;
-        text-decoration: none;
+        color: var(--brightLinkColor);
         line-height: 1.5;
       }
     }
@@ -166,11 +175,11 @@ const screen = props => css`
 
   &.last {
     .picture {
-      background: var(--lastBackground);
+      background: var(--lastBackgroundColor);
       transition: 1s;
     }
     .mask {
-      fill: var(--lastBackground);
+      fill: var(--lastBackgroundColor);
     }
     .content {
       color: white;

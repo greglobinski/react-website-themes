@@ -4,21 +4,18 @@ import { injectGlobal } from 'emotion';
 const variables = injectGlobal`
   :root {
 
-    --background: #fff;
-    --lastBackground: #333;
-    --transitionBackground: #ddd;
+    --accentColor: #c00;
+    --backgroundColor: #fff;
+    --lastBackgroundColor: #333;
+    --transitionBackgroundColor: #ddd;
 
     --textColor: #555;
-    --lightTextColor: #888;
-    --superLightTextColor: #aaa;
-    --fontFamily: "Open Sans", sans-serif;
+    --brightTextColor: #aaa;
+    --fontFamily: "Open Sans", Arial, sans-serif;
 
-    --linkColor: #a00;
-    --hoverLinkColor: #d00;
-
-    --scrollBarThumb: #eaeaea;
-    --scrollBarTrack: #f9f9f9;
-    --scrollBarWidth: 10px;
+    --linkColor: #c00;
+    --hoverLinkColor: #a00;
+    --brightLinkColor: #ddd;
   }
 `;
 

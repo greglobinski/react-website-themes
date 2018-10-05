@@ -17,17 +17,17 @@ const social = css`
   }
 
   a:hover {
-    background: rgba(255, 255, 255, 1);
+    background: var(--backgroundColor);
 
     svg {
-      stroke: red;
+      stroke: var(--accentColor);
       transform: scale(1.2);
     }
   }
 
   svg {
     transition: all 0.5s;
-    stroke: white;
+    stroke: var(--backgroundColor);
   }
 `;
 

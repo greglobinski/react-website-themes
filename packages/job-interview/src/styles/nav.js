@@ -77,8 +77,8 @@ const nav = css`
       transition: 0.3s;
 
       &.active {
-        background: #c00;
-        border: 1px solid #c00;
+        background: var(--accentColor);
+        border: 1px solid var(--accentColor);
       }
     }
   }
@@ -97,7 +97,7 @@ const nav = css`
       outline: none;
 
       svg {
-        stroke: #c00;
+        stroke: var(--accentColor);
       }
     }
 

@@ -4,6 +4,25 @@ import { cx } from 'emotion';
 
 import style from '../styles/screen';
 
+const Credist = () => (
+  <div className="credits">
+    Built with{' '}
+    <a
+      href="https://greglobinski.github.io/gatsby-starter-kit-docs/"
+      target="_blank"
+    >
+      GatsbyJS Starter Kit
+    </a>{' '}
+    | Design by{' '}
+    <a
+      href="https://github.com/greglobinski/react-website-themes"
+      target="_blank"
+    >
+      React Website Themes
+    </a>
+  </div>
+);
+
 class Screen extends React.Component {
   screen = React.createRef();
 
@@ -49,24 +68,7 @@ class Screen extends React.Component {
         </svg>
         <div className="content">
           {children}
-          {id === 6 && (
-            <div className="credits">
-              Built with{' '}
-              <a
-                href="https://greglobinski.github.io/gatsby-starter-kit-docs/"
-                target="_blank"
-              >
-                GatsbyJS Starter Kit
-              </a>{' '}
-              | Design by{' '}
-              <a
-                href="https://github.com/greglobinski/react-website-themes"
-                target="_blank"
-              >
-                React Website Themes
-              </a>
-            </div>
-          )}
+          {id === 6 && <Credist />}
         </div>
       </section>
     );
@@ -75,10 +77,10 @@ class Screen extends React.Component {
 
 Screen.propTypes = {
   id: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
   transitionClass: PropTypes.string,
   superSizeScale: PropTypes.number.isRequired,
   exposedScreenId: PropTypes.number.isRequired,
-  children: PropTypes.node,
   themeStyle: PropTypes.string,
   customStyle: PropTypes.string,
   avatar: PropTypes.string,

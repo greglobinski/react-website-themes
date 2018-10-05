@@ -215,13 +215,12 @@ class Screens extends React.Component {
           superSizeScale={superSizeScale}
           exposedScreenId={exposedScreenId}
         >
-          <h2>{lastScreen.headline}</h2>
-          <p>{lastScreen.body}</p>
+          <div dangerouslySetInnerHTML={{ __html: lastScreen.html }} />
           <Social links={socialLinks} />
         </Screen>
 
         {reversedScreens.map((item, idx) => {
-          const { id, headline, body, transitionClass } = item;
+          const { id, html, transitionClass } = item;
 
           return (
             <Screen
@@ -232,8 +231,7 @@ class Screens extends React.Component {
               numberOfScreens={numberOfScreens}
               exposedScreenId={exposedScreenId}
             >
-              <h2>{headline}</h2>
-              <p>{body}</p>
+              <div dangerouslySetInnerHTML={{ __html: html }} />
             </Screen>
           );
         })}
